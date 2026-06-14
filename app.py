@@ -105,12 +105,6 @@ monetary_range = st.sidebar.slider(
     )
 )
 
-filtered_rfm = rfm[
-    (rfm["Recency"].between(*recency_range)) &
-    (rfm["Frequency"].between(*frequency_range)) &
-    (rfm["Monetary"].between(*monetary_range))
-]
-
 recency = st.sidebar.slider(
     "Recency",
     0,
@@ -131,7 +125,15 @@ monetary = st.sidebar.slider(
     50000,
     1000
 )
-
+filtered_rfm = rfm[
+    (rfm["Cluster"].isin(cluster_choice)) &
+    (rfm["Recency"].between(*recency_range)) &
+    (rfm["Frequency"].between(*frequency_range)) &
+    (rfm["Monetary"].between(*monetary_range))
+    (rfm["Recency"] <= recency) &
+    (rfm["Frequency"] >= frequency) &
+    (rfm["Monetary"] >= monetary) 
+]
 col1, col2, col3=st.columns(3)
 with col1:
      st.metric(

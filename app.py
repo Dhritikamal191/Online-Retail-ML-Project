@@ -231,3 +231,175 @@ elif page == "RFM Analysis":
         st.info(
             "Higher Monetary value indicates high-spending customers."
         )
+
+# ==========================================================
+# ELBOW & SILHOUETTE ANALYSIS
+# ==========================================================
+
+elif page == "Elbow & Silhouette":
+
+    st.title("📉 Cluster Selection Analysis")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+
+        st.subheader("Elbow Method")
+
+        try:
+            elbow_img = Image.open("elbow_plot.png")
+            st.image(
+                elbow_img,
+                use_container_width=True
+            )
+        except:
+            st.warning("elbow_plot.png not found.")
+
+        st.markdown("""
+        **Interpretation:**
+
+        - Shows how inertia decreases as K increases.
+        - The 'elbow' indicates diminishing returns.
+        - Helps identify an appropriate number of clusters.
+        """)
+
+    with col2:
+
+        st.subheader("Silhouette Analysis")
+
+        try:
+            sil_img = Image.open("silhouette_plot.png")
+            st.image(
+                sil_img,
+                use_container_width=True
+            )
+        except:
+            st.warning("silhouette_plot.png not found.")
+
+        st.markdown(f"""
+        **Optimal K selected during training:** `{best_k}`
+
+        The silhouette score measures cluster separation.
+
+        Higher values indicate better-defined clusters.
+        """)
+
+# ==========================================================
+# ALGORITHM COMPARISON
+# ==========================================================
+
+elif page == "Algorithm Comparison":
+
+    st.title("⚖️ Algorithm Comparison")
+
+    st.subheader("Evaluation Metrics")
+
+    st.dataframe(
+        comparison,
+        use_container_width=True
+    )
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+
+        fig = px.bar(
+            comparison,
+            x="Algorithm",
+            y="Silhouette Score",
+            title="Silhouette Score Comparison",
+            text_auto=".3f"
+        )
+
+        st.plotly_chart(
+            fig,
+            use_container_width=True
+        )
+
+    with col2:
+
+        fig = px.bar(
+            comparison,
+            x="Algorithm",
+            y="Davies-Bouldin Index",
+            title="Davies-Bouldin Index Comparison",
+            text_auto=".3f"
+        )
+
+        st.plotly_chart(
+            fig,
+            use_container_width=True
+        )
+
+    st.info("""
+    Interpretation:
+
+    • Higher Silhouette Score is better.
+
+    • Lower Davies-Bouldin Index is better.
+
+    • K-Means was selected for deployment because
+      it supports prediction for new customers.
+    """)
+
+# ==========================================================
+# PCA CLUSTER VISUALIZATION
+# ==========================================================
+
+elif page == "Cluster Visualization":
+
+    st.title("🎯 PCA Cluster Visualization")
+
+    st.markdown("""
+    PCA reduces the three-dimensional RFM space into
+    two dimensions for visualization.
+    """)
+
+    fig = px.scatter(
+        pca_df,
+        x="PC1",
+        y="PC2",
+        color=pca_df["Cluster"].astype(str),
+        title="Customer Clusters (PCA Projection)",
+        labels={"color": "Cluster"},
+        hover_data=["Cluster"]
+    )
+
+    fig.update_traces(
+        marker=dict(size=7)
+    )
+
+    st.plotly_chart(
+        fig,
+        use_container_width=True
+    )
+
+    st.success(
+        f"The final deployed K-Means model identified {best_k} customer clusters."
+    )
+
+    st.subheader("Cluster Distribution")
+
+    cluster_counts = (
+        rfm["Cluster"]
+        .value_counts()
+        .sort_index()
+        .reset_index()
+    )
+
+    cluster_counts.columns = [
+        "Cluster",
+        "Customers"
+    ]
+
+    fig = px.pie(
+        cluster_counts,
+        names="Cluster",
+        values="Customers",
+        title="Customer Distribution Across Clusters"
+    )
+
+    st.plotly_chart(
+        fig,
+        use_container_width=True
+    )

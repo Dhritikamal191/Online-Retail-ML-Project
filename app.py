@@ -79,9 +79,9 @@ filtered_rfm = rfm[
 
 plot_df = pca_df.copy()
 
-if cluster_choice != "All":
+if selected_clusters != "All":
     plot_df = plot_df[
-        plot_df["Cluster"] == cluster_choice
+        plot_df["Cluster"] == selected_clusters
     ]
 
 recency_range = st.sidebar.slider(
@@ -115,6 +115,7 @@ monetary_range = st.sidebar.slider(
 )
 
 filtered_rfm = rfm[
+    (rfm["Cluster"].isin(selected_clusters)) &
     (rfm["Recency"].between(*recency_range)) &
     (rfm["Frequency"].between(*frequency_range)) &
     (rfm["Monetary"].between(*monetary_range))

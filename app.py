@@ -120,6 +120,7 @@ monetary_range = st.sidebar.slider(
 )
 
 filtered_rfm = rfm[
+    (rfm["Cluster"].isin(cluster_choice)) &
     (rfm["Recency"].between(*recency_range)) &
     (rfm["Frequency"].between(*frequency_range)) &
     (rfm["Monetary"].between(*monetary_range))
@@ -456,7 +457,7 @@ elif page == "Cluster Visualization":
     """)
 
     fig = px.scatter(
-        pca_df,
+        plot_df,
         x="PC1",
         y="PC2",
         color=pca_df["Cluster"].astype(str),

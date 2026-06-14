@@ -142,20 +142,22 @@ monetary = st.sidebar.slider(
     1000
 )
 
-st.metric(
-    "Customers Selected",
-    len(filtered_rfm)
-)
-
-st.metric(
-    "Average Monetary",
-    f"₹{filtered_rfm['Monetary'].mean():,.0f}"
-)
-
-st.metric(
-    "Average Frequency",
-    f"{filtered_rfm['Frequency'].mean():.1f}"
-)
+col1, col2, col3=st.columns(3)
+with col1:
+     st.metric(
+     "Customers Selected",
+     len(filtered_rfm)
+     )
+with col2:
+     st.metric(
+     "Average Monetary",
+     f"₹{filtered_rfm['Monetary'].mean():,.0f}"
+     )
+with col3:
+     st.metric(
+     "Average Frequency",
+     f"{filtered_rfm['Frequency'].mean():.1f}"
+     )
 
 # ==========================================================
 # PROJECT OVERVIEW
@@ -192,21 +194,21 @@ if page == "Project Overview":
     """)
 
     col1, col2, col3 = st.columns(3)
-
-    col1.metric(
-        "Customers",
-        len(filtered_rfm)
-    )
-
-    col2.metric(
-        "Optimal K",
-        best_k
-    )
-
-    col3.metric(
-        "Algorithms Compared",
-        3
-    )
+    with col1:
+         st.metric(
+         "Customers",
+         len(filtered_rfm)
+         )
+    with col2:
+         st.metric(
+         "Optimal K",
+         best_k
+         )
+    with col3:
+         st.metric(
+         "Algorithms Compared",
+         3
+         )
 
 # ==========================================================
 # DATASET OVERVIEW
@@ -217,21 +219,21 @@ elif page == "Dataset Overview":
     st.title("📊 Dataset Overview")
 
     col1, col2, col3 = st.columns(3)
-
-    col1.metric(
-        "Total Customers",
-        len(filtered_rfm)
-    )
-
-    col2.metric(
-        "Features",
-        4
-    )
-
-    col3.metric(
-        "Clusters",
-        len(filtered_rfm["Cluster"].unique())
-    )
+    with col1:
+         st.metric(
+         "Total Customers",
+         len(filtered_rfm)
+         ) 
+    with col2:
+         st.metric(
+         "Features",
+         4
+         )
+    with col3:
+         st.metric(
+         "Clusters",
+         len(filtered_rfm["Cluster"].unique())
+         )
 
     st.subheader("RFM Dataset")
 

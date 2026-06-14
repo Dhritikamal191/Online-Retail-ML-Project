@@ -403,3 +403,180 @@ elif page == "Cluster Visualization":
         fig,
         use_container_width=True
     )
+
+# ==========================================================
+# CLUSTER PROFILES
+# ==========================================================
+
+elif page == "Cluster Profiles":
+
+    st.title("👥 Cluster Profiles")
+
+    st.subheader("Average RFM Values by Cluster")
+
+    st.dataframe(
+        profiles,
+        use_container_width=True
+    )
+
+    st.markdown("### Segment Insights")
+
+    for _, row in profiles.iterrows():
+
+        cluster = row["Cluster"]
+        segment = row["Segment"]
+
+        with st.expander(f"Cluster {cluster} : {segment}"):
+
+            st.write(f"**Recency:** {row['Recency']:.2f}")
+            st.write(f"**Frequency:** {row['Frequency']:.2f}")
+            st.write(f"**Monetary:** ₹{row['Monetary']:.2f}")
+
+# ==========================================================
+# CUSTOMER SEGMENT PREDICTOR
+# ==========================================================
+
+elif page == "Segment Predictor":
+
+    st.title("🔮 Customer Segment Predictor")
+
+    st.markdown("""
+    Enter customer RFM values to predict the customer segment.
+    """)
+
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        recency = st.number_input(
+            "Recency (Days)",
+            min_value=0,
+            value=30
+        )
+
+    with col2:
+        frequency = st.number_input(
+            "Frequency",
+            min_value=1,
+            value=5
+        )
+
+    with col3:
+        monetary = st.number_input(
+            "Monetary Value",
+            min_value=0.0,
+            value=1000.0
+        )
+
+    if st.button("Predict Segment"):
+
+        input_df = pd.DataFrame({
+            "Recency": [recency],
+            "Frequency": [frequency],
+            "Monetary": [monetary]
+        })
+
+        # Log Transform
+        input_log = np.log1p(input_df)
+
+        # Scaling
+        input_scaled = scaler.transform(input_log)
+
+        # Prediction
+        cluster = kmeans.predict(input_scaled)[0]
+
+        st.success(f"Predicted Cluster: {cluster}")
+
+        try:
+            segment_name = profiles.loc[
+                profiles["Cluster"] == cluster,
+                "Segment"
+            ].values[0]
+
+            st.info(f"Segment: **{segment_name}**")
+
+        except:
+            st.warning("Segment description unavailable.")
+
+# ==========================================================
+# BUSINESS RECOMMENDATIONS
+# ==========================================================
+
+elif page == "Business Recommendations":
+
+    st.title("💡 Business Recommendations")
+
+    for _, row in profiles.iterrows():
+
+        cluster = row["Cluster"]
+        segment = row["Segment"]
+
+        st.subheader(f"Cluster {cluster}: {segment}")
+
+        segment_lower = str(segment).lower()
+
+        if "vip" in segment_lower:
+
+            st.markdown("""
+            - Offer premium loyalty programs.
+            - Provide exclusive discounts.
+            - Early access to products.
+            - Personalized experiences.
+            """)
+
+        elif "loyal" in segment_lower:
+
+            st.markdown("""
+            - Encourage referrals.
+            - Upsell complementary products.
+            - Maintain engagement.
+            - Reward repeat purchases.
+            """)
+
+        elif "risk" in segment_lower:
+
+            st.markdown("""
+            - Launch win-back campaigns.
+            - Offer time-limited promotions.
+            - Collect feedback.
+            - Re-engage through email marketing.
+            """)
+
+        elif "potential" in segment_lower:
+
+            st.markdown("""
+            - Promote personalized offers.
+            - Increase interaction frequency.
+            - Recommend relevant products.
+            - Encourage repeat purchases.
+            """)
+
+        else:
+
+            st.markdown("""
+            - Monitor customer behavior.
+            - Explore targeted campaigns.
+            - Improve engagement.
+            - Identify growth opportunities.
+            """)
+
+# ==========================================================
+# FOOTER
+# ==========================================================
+
+st.markdown("---")
+
+st.markdown(
+    """
+    **Customer Segmentation Dashboard**
+
+    Built using:
+    - Streamlit
+    - Scikit-learn
+    - Plotly
+    - RFM Analysis
+    - K-Means, Hierarchical Clustering, and DBSCAN
+
+    This project demonstrates end-to-end unsupervised machine learning,
+    model comparison, customer analytics, and deployment readiness.
+    """
+)

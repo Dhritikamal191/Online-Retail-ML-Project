@@ -204,7 +204,7 @@ if page == "Project Overview":
 
     col1.metric(
         "Customers",
-        f"{rfm.shape[0]:,}"
+        len(filtered_rfm)
     )
 
     col2.metric(
@@ -229,7 +229,7 @@ elif page == "Dataset Overview":
 
     col1.metric(
         "Total Customers",
-        f"{rfm.shape[0]:,}"
+        len(filtered_rfm)
     )
 
     col2.metric(
@@ -239,7 +239,7 @@ elif page == "Dataset Overview":
 
     col3.metric(
         "Clusters",
-        len(rfm["Cluster"].unique())
+        len(filtered_rfm["Cluster"].unique())
     )
 
     st.subheader("RFM Dataset")
@@ -252,7 +252,7 @@ elif page == "Dataset Overview":
     st.subheader("Summary Statistics")
 
     st.dataframe(
-        rfm.describe(),
+        filtered_rfm.describe(),
         use_container_width=True
     )
 
@@ -277,7 +277,7 @@ elif page == "RFM Analysis":
         st.subheader("Recency Distribution")
 
         fig = px.histogram(
-            rfm,
+            filtered_rfm,
             x="Recency",
             nbins=30,
             title="Recency Distribution"
@@ -297,7 +297,7 @@ elif page == "RFM Analysis":
         st.subheader("Frequency Distribution")
 
         fig = px.histogram(
-            rfm,
+            filtered_rfm,
             x="Frequency",
             nbins=30,
             title="Frequency Distribution"
@@ -317,7 +317,7 @@ elif page == "RFM Analysis":
         st.subheader("Monetary Distribution")
 
         fig = px.histogram(
-            rfm,
+            filtered_rfm,
             x="Monetary",
             nbins=30,
             title="Monetary Distribution"
@@ -481,7 +481,7 @@ elif page == "Cluster Visualization":
     st.subheader("Cluster Distribution")
 
     cluster_counts = (
-        rfm["Cluster"]
+        filtered_rfm["Cluster"]
         .value_counts()
         .sort_index()
         .reset_index()

@@ -67,7 +67,7 @@ page = st.sidebar.radio(
     ]
 )
 
-selected_clusters = st.sidebar.selectbox(
+selected_clusters = st.sidebar.multiselect(
     "Select Clusters",
     options=sorted(rfm["Cluster"].unique()),
     default=sorted(rfm["Cluster"].unique())

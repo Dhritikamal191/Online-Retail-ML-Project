@@ -67,6 +67,105 @@ page = st.sidebar.radio(
     ]
 )
 
+selected_clusters = st.sidebar.multiselect(
+    "Select Clusters",
+    options=sorted(rfm["Cluster"].unique()),
+    default=sorted(rfm["Cluster"].unique())
+)
+
+filtered_rfm = rfm[
+    rfm["Cluster"].isin(selected_clusters)
+]
+
+cluster_choice = st.sidebar.selectbox(
+    "Highlight Cluster",
+    ["All"] + list(sorted(rfm["Cluster"].unique()))
+)
+
+plot_df = pca_df.copy()
+
+if cluster_choice != "All":
+    plot_df = plot_df[
+        plot_df["Cluster"] == cluster_choice
+    ]
+
+recency_range = st.sidebar.slider(
+    "Recency Range",
+    int(rfm["Recency"].min()),
+    int(rfm["Recency"].max()),
+    (
+        int(rfm["Recency"].min()),
+        int(rfm["Recency"].max())
+    )
+)
+
+frequency_range = st.sidebar.slider(
+    "Frequency Range",
+    int(rfm["Frequency"].min()),
+    int(rfm["Frequency"].max()),
+    (
+        int(rfm["Frequency"].min()),
+        int(rfm["Frequency"].max())
+    )
+)
+
+monetary_range = st.sidebar.slider(
+    "Monetary Range",
+    float(rfm["Monetary"].min()),
+    float(rfm["Monetary"].max()),
+    (
+        float(rfm["Monetary"].min()),
+        float(rfm["Monetary"].max())
+    )
+)
+
+filtered_rfm = rfm[
+    (rfm["Recency"].between(*recency_range)) &
+    (rfm["Frequency"].between(*frequency_range)) &
+    (rfm["Monetary"].between(*monetary_range))
+]
+
+selected_cluster = st.sidebar.selectbox(
+    "Explore Cluster",
+    sorted(profiles["Cluster"])
+)
+
+recency = st.sidebar.slider(
+    "Recency",
+    0,
+    365,
+    30
+)
+
+frequency = st.sidebar.slider(
+    "Frequency",
+    1,
+    100,
+    5
+)
+
+monetary = st.sidebar.slider(
+    "Monetary",
+    0,
+    50000,
+    1000
+)
+
+st.metric(
+    "Customers Selected",
+    len(filtered_rfm)
+)
+
+st.metric(
+    "Average Monetary",
+    f"₹{filtered_rfm['Monetary'].mean():,.0f}"
+)
+
+st.metric(
+    "Average Frequency",
+    f"{filtered_rfm['Frequency'].mean():.1f}"
+)
+
 # ==========================================================
 # PROJECT OVERVIEW
 # ==========================================================

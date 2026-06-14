@@ -67,16 +67,6 @@ page = st.sidebar.radio(
     ]
 )
 
-selected_clusters = st.sidebar.multiselect(
-    "Select Clusters",
-    options=sorted(rfm["Cluster"].unique()),
-    default=sorted(rfm["Cluster"].unique())
-)
-
-filtered_rfm = rfm[
-    rfm["Cluster"].isin(selected_clusters)
-]
-
 cluster_choice = st.sidebar.selectbox("Highlight Cluster",["All"] + list(sorted(rfm["Cluster"].unique())))
 plot_df = pca_df.copy()
 

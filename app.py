@@ -77,11 +77,12 @@ filtered_rfm = rfm[
     rfm["Cluster"].isin(selected_clusters)
 ]
 
+cluster_choice = st.sidebar.selectbox("Highlight Cluster",["All"] + list(sorted(rfm["Cluster"].unique())))
 plot_df = pca_df.copy()
 
-if selected_clusters != "All":
+if cluster_choice != "All":
     plot_df = plot_df[
-        plot_df["Cluster"] == selected_clusters
+        plot_df["Cluster"] == cluster_choice
     ]
 
 recency_range = st.sidebar.slider(

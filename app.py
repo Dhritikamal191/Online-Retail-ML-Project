@@ -121,11 +121,6 @@ filtered_rfm = rfm[
     (rfm["Monetary"].between(*monetary_range))
 ]
 
-selected_cluster = st.sidebar.selectbox(
-    "Explore Cluster",
-    sorted(profiles["Cluster"])
-)
-
 recency = st.sidebar.slider(
     "Recency",
     0,

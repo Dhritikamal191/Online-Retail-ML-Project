@@ -455,7 +455,7 @@ elif page == "Cluster Visualization":
         plot_df,
         x="PC1",
         y="PC2",
-        color=pca_df["Cluster"].astype(str),
+        color=plot_df["Cluster"].astype(str),
         title="Customer Clusters (PCA Projection)",
         labels={"color": "Cluster"},
         hover_data=["Cluster"]

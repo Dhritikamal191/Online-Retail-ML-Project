@@ -129,7 +129,7 @@ filtered_rfm = rfm[
     (rfm["Cluster"]==cluster_choice) &
     (rfm["Recency"].between(*recency_range)) &
     (rfm["Frequency"].between(*frequency_range)) &
-    (rfm["Monetary"].between(*monetary_range))
+    (rfm["Monetary"].between(*monetary_range)) &
     (rfm["Recency"] <= recency) &
     (rfm["Frequency"] >= frequency) &
     (rfm["Monetary"] >= monetary)

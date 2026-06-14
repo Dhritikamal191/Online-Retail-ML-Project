@@ -25,6 +25,7 @@ def load_data():
     rfm = pd.read_csv("rfm_dataset.csv")
     comparison = pd.read_csv("algorithm_comparison.csv")
     profiles = pd.read_csv("cluster_profiles.csv")
+profiles.rename(columns={"Unnamed: 0": "Cluster"}, inplace=True)
     pca_df = pd.read_csv("pca_data.csv")
 
     return rfm, comparison, profiles, pca_df

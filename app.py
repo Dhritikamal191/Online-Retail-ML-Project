@@ -568,14 +568,11 @@ elif page == "Segment Predictor":
 # ==========================================================
 elif page == "Data Analysis":
     monthly_revenue = (
-    df.groupby("YearMonth")["Revenue"]
-    .sum()
-    .reset_index()
-    )
-
+    df.set_inde("InvoiceDate").resample("M")["Revenue"].sum().reset_index())
+   
     fig = px.line(
     monthly_revenue,
-    x="YearMonth",
+    x="InvoiceDate",
     y="Revenue",
     markers=True,
     title="Monthly Revenue Trend"

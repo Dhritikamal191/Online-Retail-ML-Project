@@ -596,18 +596,35 @@ elif page == "Data Analysis":
  
     st.plotly_chart(fig, use_container_width=True)
 
-    monthly_customers = (
-    df.groupby("YearMonth")["CustomerID"]
+    data["Year"] = data["InvoiceDate"].dt.year
+data["Month"] = data["InvoiceDate"].dt.month_name()
+
+    monthly_active = (
+    data.groupby(["Year", "Month"])["CustomerID"]
     .nunique()
     .reset_index(name="Active Customers")
     )
 
+    # Ensure months are in calendar order
+    month_order = [
+    "January", "February", "March", "April",
+    "May", "June", "July", "August",
+    "September", "October", "November", "December"
+    ]
+
+    monthly_active["Month"] = pd.Categorical(
+    monthly_active["Month"],
+    categories=month_order,
+    ordered=True
+    )
+ 
     fig = px.line(
-    monthly_customers,
-    x="YearMonth",
+    monthly_active,
+    x="Month",
     y="Active Customers",
+    color="Year",
     markers=True,
-    title="Monthly Active Customers"
+    title="Monthly Active Customers by Year"
     )
 
     st.plotly_chart(fig, use_container_width=True)

@@ -132,9 +132,9 @@ filtered_rfm = rfm[
     
 ]
 
-pie_df=rfm[(rfm["Recency"] <= recency) &
-    (rfm["Frequency"] >= frequency) &
-    (rfm["Monetary"] >= monetary)
+pie_df=rfm[(rfm["Recency"] == recency) &
+    (rfm["Frequency"] == frequency) &
+    (rfm["Monetary"] == monetary)
 ]
     
 

@@ -568,7 +568,7 @@ elif page == "Segment Predictor":
 # ==========================================================
 elif page == "Data Analysis":
     monthly_revenue = (
-    df.set_inde("InvoiceDate").resample("M")["Revenue"].sum().reset_index())
+    df.set_index("InvoiceDate").resample("M")["Revenue"].sum().reset_index())
    
     fig = px.line(
     monthly_revenue,

@@ -602,6 +602,8 @@ elif page == "Data Analysis":
         .reset_index()
     )
 
+    y_col="Revenue"
+
     elif metric == "Orders":
         trend = (
         filtered_df
@@ -610,6 +612,8 @@ elif page == "Data Analysis":
         .nunique()
         .reset_index(name="Value")
         )
+
+    y_col="Orders"
 
     else:
         trend = (
@@ -620,15 +624,33 @@ elif page == "Data Analysis":
         .reset_index(name="Value")
         )
     
+    y_col="Active Customers"
+
     fig = px.line(
     trend,
     x="InvoiceDate",
-    y="metric",
+    y=y_col,
     markers=True,
-    title="Monthly Revenue Trend"
+    title=f"{metric} Trend ({granularity})"
     )
 
-    st.plotly_chart(fig, use_container_width=True)
+    fig.update_layout(
+    xaxis_title="Period",
+    yaxis_title=metric,
+    hovermode="x unified",
+    template="plotly_white",
+    height=450
+    )
+
+    fig.update_traces(
+    line=dict(width=3),
+    marker=dict(size=8)
+    )
+
+    st.plotly_chart(
+    fig,
+    use_container_width=True
+    )
    
     country_sales = (
     df.groupby("Country")["Revenue"]

@@ -47,7 +47,7 @@ def load_df():
     df["YearMonth"] = df["InvoiceDate"].dt.to_period("M").astype(str)
     return df
 
-rfm, comparison, profiles, pca_df = load_data()
+data = load_data()
 artifacts = load_models()
 df=load_df()
 kmeans=artifacts["kmeans"]

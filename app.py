@@ -659,6 +659,18 @@ elif page == "Data Analysis":
     use_container_width=True
     )
    
+    latest = trend.iloc[-1]["Value"]
+    previous = trend.iloc[-2]["Value"]
+    change = ((latest - previous)/previous)*100
+    if change > 0:
+       st.success(
+        f"{metric} increased by {change:.1f}% compared to the previous period."
+        )
+    else:
+         st.warning(
+         f"{metric} decreased by {abs(change):.1f}% compared to the previous period."
+         )
+
     country_sales = (
     df.groupby("Country")["Revenue"]
     .sum()

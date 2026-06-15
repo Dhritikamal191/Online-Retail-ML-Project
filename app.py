@@ -601,9 +601,7 @@ elif page == "Data Analysis":
         .sum()
         .reset_index()
       )
-
-      col="Revenue"
-
+        
     elif metric == "Orders":
         trend = (
         filtered_df
@@ -613,8 +611,6 @@ elif page == "Data Analysis":
         .reset_index(name="Value")
         )
 
-        col="Orders"
-
     else:
         trend = (
         filtered_df
@@ -623,11 +619,10 @@ elif page == "Data Analysis":
         .nunique()
         .reset_index(name="Value")
         )
-    
-        col="Active Customers"
 
     fig = px.line(trend, 
-         x="InvoiceDate", 
+         x="InvoiceDate",
+         y="Value",
          markers=True,
          title=f"{metric} Trend ({granularity})"
          )

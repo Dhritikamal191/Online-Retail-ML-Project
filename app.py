@@ -594,7 +594,7 @@ elif page == "Data Analysis":
     ["Revenue", "Orders", "Active Customers"]
     )
     if metric == "Revenue":
-    trend = (
+      trend = (
         filtered_df
         .set_index("InvoiceDate")
         .resample("freq")["Revenue"]

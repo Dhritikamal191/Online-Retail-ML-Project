@@ -596,11 +596,11 @@ elif page == "Data Analysis":
  
     st.plotly_chart(fig, use_container_width=True)
 
-    data["Year"] = data["InvoiceDate"].dt.year
-    data["Month"] = data["InvoiceDate"].dt.month_name()
+    df["Year"] = df["InvoiceDate"].dt.year
+    df["Month"] = df["InvoiceDate"].dt.month_name()
 
     monthly_active = (
-    data.groupby(["Year", "Month"])["CustomerID"]
+    df.groupby(["Year", "Month"])["CustomerID"]
     .nunique()
     .reset_index(name="Active Customers")
     )

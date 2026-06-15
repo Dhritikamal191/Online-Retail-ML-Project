@@ -16,7 +16,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("Customer Segmentation with Clustering")
+st.title("🛍 Customer Segmentation with Clustering")
 # ==========================================================
 # LOAD ARTIFACTS
 # ==========================================================
@@ -136,7 +136,7 @@ with col3:
 
 if page == "Project Overview":
 
-    st.title("🛍️ Customer Segmentation Dashboard")
+    st.title("Project Overview")
 
     st.markdown("""
     ### Project Objective

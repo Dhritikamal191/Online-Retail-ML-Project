@@ -5,8 +5,6 @@ import joblib
 import plotly.express as px
 import matplotlib.pyplot as plt
 from PIL import Image
-from sklearn.metrics import silhouette_score
-from sklearn.cluster import KMeans
 
 # ==========================================================
 # PAGE CONFIGURATION
@@ -114,24 +112,6 @@ filtered_rfm = rfm[
     (rfm["Monetary"].between(*monetary_range)) 
     
 ]
-
-def get_optimal_k(X, k_min=3, k_max=6):
-    best_k = k_min
-    best_score = -1
-
-    for k in range(k_min, k_max + 1):
-        model = KMeans(n_clusters=k, random_state=42, n_init=10)
-        labels = model.fit_predict(X)
-
-        # silhouette requires >1 cluster and < n_samples
-        score = silhouette_score(X, labels)
-
-        if score > best_score:
-            best_score = score
-            best_k = k
-
-    return best_k, best_score
-
     
 col1, col2, col3=st.columns(3)
 with col1:

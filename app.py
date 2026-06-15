@@ -209,7 +209,7 @@ if page == "Project Overview":
     with col2:
          st.metric(
          "Optimal K",
-         recommended_k 
+         best_k 
          )
     with col3:
          st.metric(

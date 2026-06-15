@@ -128,13 +128,11 @@ monetary = st.sidebar.slider(
 filtered_rfm = rfm[
     (rfm["Recency"].between(*recency_range)) &
     (rfm["Frequency"].between(*frequency_range)) &
-    (rfm["Monetary"].between(*monetary_range)) &
-    (rfm["Recency"] <= recency) &
-    (rfm["Frequency"] >= frequency) &
-    (rfm["Monetary"] >= monetary)
+    (rfm["Monetary"].between(*monetary_range))
+    
 ]
 
-pie_df = rfm[(rfm["Recency"] <= recency) &
+pie_df=rfm[(rfm["Recency"] <= recency) &
     (rfm["Frequency"] >= frequency) &
     (rfm["Monetary"] >= monetary)
 ]

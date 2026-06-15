@@ -45,12 +45,9 @@ def load_models():
 rfm, comparison, profiles, pca_df = load_data()
 scaler, kmeans, pca = load_models()
 
-rfm_scaled = scaler.transform(
-    rfm[['Recency', 'Frequency', 'Monetary']]
-)
+with open("best_k.txt", "r") as f:
+    best_k = f.read()
 
-clusters = kmeans.fit_predict(rfm_scaled)
-rfm["Cluster"] = clusters
 
 # ==========================================================
 # SIDEBAR
@@ -71,37 +68,6 @@ page = st.sidebar.radio(
         "Segment Predictor",
         "Business Recommendations"
     ]
-)
-
-best_k = None
-best_score = -1
-
-for k in range(2, 11):
-    kmeans = KMeans(
-            n_clusters=k,
-            random_state=42,
-            n_init=10
-        )
-
-    labels = kmeans.fit_predict(rfm_scaled)
-
-    score = silhouette_score(rfm_scaled, labels)
-
-    if score > best_score:
-       best_score = score
-       best_k = k
-
-selected_k = st.sidebar.slider(
-    "Choose Number of Clusters",
-    min_value=2,
-    max_value=10,
-    value=best_k
-)
-
-kmeans = KMeans(
-    n_clusters=selected_k,
-    random_state=42,
-    n_init=10
 )
 
 cluster_choice = st.sidebar.selectbox("Highlight Cluster",["All"] + list(sorted(rfm["Cluster"].unique())))

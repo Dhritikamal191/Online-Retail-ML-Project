@@ -46,7 +46,6 @@ def load_models():
 data = load_data()
 df, rfm, comparison, profiles, pca_df= load_data()
 artifacts = load_models()
-df=load_df()
 kmeans=artifacts["kmeans"]
 scaler=artifacts["scaler"]
 pca=artifacts["pca"]

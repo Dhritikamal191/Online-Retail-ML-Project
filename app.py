@@ -599,7 +599,7 @@ elif page == "Data Analysis":
         .set_index("InvoiceDate")
         .resample(freq)["Revenue"]
         .sum()
-        .reset_index()
+        .reset_index(name="Value")
       )
         
     elif metric == "Orders":

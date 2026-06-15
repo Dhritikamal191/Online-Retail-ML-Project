@@ -574,11 +574,6 @@ elif page == "Data Analysis":
     "May", "June", "July", "August",
     "September", "October", "November", "December"]
 
-    monthly_active["Month"] = pd.Categorical(
-    monthly_active["Month"],
-    categories=month_order,
-    ordered=True)
-    
     monthly_revenue = (
     df.set_index("InvoiceDate").resample("M")["Revenue"].sum().reset_index())
    
@@ -615,6 +610,11 @@ elif page == "Data Analysis":
     .reset_index(name="Active Customers")
     )
 
+    monthly_active["Month"] = pd.Categorical(
+    monthly_active["Month"],
+    categories=month_order,
+    ordered=True)
+    
     fig = px.line(
     monthly_active,
     x="Month",

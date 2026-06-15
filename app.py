@@ -107,10 +107,10 @@ monetary_range = st.sidebar.slider(
 filtered_rfm = rfm[
 (rfm["Recency"].between(*recency_range)) &
     (rfm["Frequency"].between(*frequency_range)) &
-    (rfm["Monetary"].between(*monetary_range)) 
-    
+    (rfm["Monetary"].between(*monetary_range))     
 ]
-    
+dynamic_profiles = (filtered_rfm.groupby("Cluster")[["Recency","Frequency","Monetary"]].mean().round(2).reset_index())
+
 col1, col2, col3=st.columns(3)
 with col1:
      st.metric(
@@ -477,13 +477,13 @@ elif page == "Cluster Profiles":
     st.subheader("Average RFM Values by Cluster")
 
     st.dataframe(
-        profiles,
+        dynamic_profiles,
         use_container_width=True
     )
 
     st.markdown("### Segment Insights")
 
-    for _, row in profiles.iterrows():
+    for _, row in dynamic_profiles.iterrows():
 
         cluster = row["Cluster"]
         segment = row["Segment"]

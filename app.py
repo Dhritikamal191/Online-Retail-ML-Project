@@ -45,7 +45,7 @@ rfm, comparison, profiles, pca_df = load_data()
 scaler, kmeans, pca = load_models()
 
 with open("best_k.txt", "r") as f:
-    best_k = f.read()
+    recommended_k= int(f.read())
 
 # ==========================================================
 # SIDEBAR
@@ -66,6 +66,13 @@ page = st.sidebar.radio(
         "Segment Predictor",
         "Business Recommendations"
     ]
+)
+
+selected_k = st.slider(
+    "Choose Number of Clusters",
+    min_value=2,
+    max_value=10,
+    value=recommended_k
 )
 
 cluster_choice = st.sidebar.selectbox("Highlight Cluster",["All"] + list(sorted(rfm["Cluster"].unique())))
@@ -173,7 +180,7 @@ if page == "Project Overview":
     with col2:
          st.metric(
          "Optimal K",
-         best_k
+         recommended_k 
          )
     with col3:
          st.metric(

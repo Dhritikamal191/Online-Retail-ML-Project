@@ -105,34 +105,11 @@ monetary_range = st.sidebar.slider(
     )
 )
 
-recency = st.sidebar.slider(
-    "Recency",
-    0,
-    365,
-    30
-)
-
-frequency = st.sidebar.slider(
-    "Frequency",
-    1,
-    100,
-    5
-)
-
-monetary = st.sidebar.slider(
-    "Monetary",
-    0,
-    50000,
-    1000
-)
 filtered_rfm = rfm[
 (rfm["Recency"].between(*recency_range)) &
     (rfm["Frequency"].between(*frequency_range)) &
-    (rfm["Monetary"].between(*monetary_range)) &
-
-(rfm["Recency"] <= recency) &
-(rfm["Frequency"] >= frequency) &
-(rfm["Monetary"] >= monetary)    
+    (rfm["Monetary"].between(*monetary_range)) 
+    
 ]
     
 col1, col2, col3=st.columns(3)

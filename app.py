@@ -567,6 +567,18 @@ elif page == "Segment Predictor":
 # BUSINESS RECOMMENDATIONS
 # ==========================================================
 elif page == "Data Analysis":
+    df["Year"] = df["InvoiceDate"].dt.year
+    df["Month"] = df["InvoiceDate"].dt.month_name()
+    month_order = [
+    "January", "February", "March", "April",
+    "May", "June", "July", "August",
+    "September", "October", "November", "December"]
+
+    monthly_active["Month"] = pd.Categorical(
+    monthly_active["Month"],
+    categories=month_order,
+    ordered=True)
+    
     monthly_revenue = (
     df.set_index("InvoiceDate").resample("M")["Revenue"].sum().reset_index())
    
@@ -581,23 +593,21 @@ elif page == "Data Analysis":
     st.plotly_chart(fig, use_container_width=True)
    
     monthly_orders = (
-    df.groupby("YearMonth")["InvoiceNo"]
+    df.groupby(["Year","Month"])["InvoiceNo"]
     .nunique()
     .reset_index(name="Orders")
     )
 
     fig = px.line(
     monthly_orders,
-    x="YearMonth",
+    x="Month",
     y="Orders",
+    color="Year",
     markers=True,
     title="Monthly Orders Trend"
     )
  
     st.plotly_chart(fig, use_container_width=True)
-
-    df["Year"] = df["InvoiceDate"].dt.year
-    df["Month"] = df["InvoiceDate"].dt.month_name()
 
     monthly_active = (
     df.groupby(["Year", "Month"])["CustomerID"]
@@ -605,16 +615,6 @@ elif page == "Data Analysis":
     .reset_index(name="Active Customers")
     )
 
-    month_order = [
-    "January", "February", "March", "April",
-    "May", "June", "July", "August",
-    "September", "October", "November", "December"]
-
-    monthly_active["Month"] = pd.Categorical(
-    monthly_active["Month"],
-    categories=month_order,
-    ordered=True)
- 
     fig = px.line(
     monthly_active,
     x="Month",

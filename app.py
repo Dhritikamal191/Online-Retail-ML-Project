@@ -22,9 +22,10 @@ st.title("🛍 Customer Segmentation with Clustering")
 # LOAD ARTIFACTS
 # ==========================================================
 
+data = pd.read_excel("Online_Retail.xlsx")
+
 @st.cache_data
-def load_data():
-    data = pd.read_excel("Online_Retail.xlsx")
+def load_data():   
     rfm = pd.read_csv("rfm_dataset.csv")
     comparison = pd.read_csv("algorithm_comparison.csv")
     profiles = pd.read_csv("cluster_profiles.csv")

@@ -24,13 +24,17 @@ st.title("🛍 Customer Segmentation with Clustering")
 
 @st.cache_data
 def load_data():   
+    df = pd.read_excel("Online_Retail.xlsx")
+    df["InvoiceDate"] = pd.to_datetime(df["InvoiceDate"])
+    df["Revenue"] = df["Quantity"] * df["UnitPrice"]
+    df["YearMonth"] = df["InvoiceDate"].dt.to_period("M").astype(str)
     rfm = pd.read_csv("rfm_dataset.csv")
     comparison = pd.read_csv("algorithm_comparison.csv")
     profiles = pd.read_csv("cluster_profiles.csv")
     profiles.rename(columns={"Unnamed: 0": "Cluster"}, inplace=True)
     pca_df = pd.read_csv("pca_data.csv")
 
-    return rfm, comparison, profiles, pca_df
+    return df, rfm, comparison, profiles, pca_df
 
 
 @st.cache_resource
@@ -39,15 +43,8 @@ def load_models():
 
     return artifacts
 
-@st.cache_data
-def load_df():
-    df = pd.read_excel("Online_Retail.xlsx")
-    df["InvoiceDate"] = pd.to_datetime(df["InvoiceDate"])
-    df["Revenue"] = df["Quantity"] * df["UnitPrice"]
-    df["YearMonth"] = df["InvoiceDate"].dt.to_period("M").astype(str)
-    return df
-
 data = load_data()
+df, rfm, comparison, profiles, pca_df= load_data()
 artifacts = load_models()
 df=load_df()
 kmeans=artifacts["kmeans"]

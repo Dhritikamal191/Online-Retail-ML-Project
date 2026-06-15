@@ -597,7 +597,7 @@ elif page == "Data Analysis":
       trend = (
         filtered_df
         .set_index("InvoiceDate")
-        .resample("freq")["Revenue"]
+        .resample(freq)["Revenue"]
         .sum()
         .reset_index()
     )
@@ -606,7 +606,7 @@ elif page == "Data Analysis":
         trend = (
         filtered_df
         .set_index("InvoiceDate")
-        .resample("M")["InvoiceNo"]
+        .resample(freq)["InvoiceNo"]
         .nunique()
         .reset_index(name="Value")
         )
@@ -615,7 +615,7 @@ elif page == "Data Analysis":
         trend = (
         filtered_df
         .set_index("InvoiceDate")
-        .resample("M")["CustomerID"]
+        .resample(freq)["CustomerID"]
         .nunique()
         .reset_index(name="Value")
         )

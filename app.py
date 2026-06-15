@@ -143,7 +143,8 @@ selected_country = st.sidebar.multiselect(
 filtered_df = filtered_df[
     filtered_df["Country"].isin(selected_country)
 ]
-top_n =st.slider("Top Countries", 5, 20, 10)
+top_n =st.sidebar.slider("Top Countries", 5, 20, 10)
+
 col1, col2, col3=st.columns(3)
 with col1:
      st.metric(
@@ -658,7 +659,7 @@ elif page == "Data Analysis":
     country_sales = (
     df.groupby("Country")["Revenue"]
     .sum()
-    .nlargest(top_n))
+    .nlargest(top_n)
     .reset_index()
     )
 

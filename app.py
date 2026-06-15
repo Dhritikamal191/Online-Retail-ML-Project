@@ -117,6 +117,23 @@ filtered_rfm = rfm[
 ]
 dynamic_profiles = (filtered_rfm.groupby("Cluster")[["Recency","Frequency","Monetary"]].mean().round(2).reset_index())
 
+min_date = data["InvoiceDate"].min().date()
+max_date = data["InvoiceDate"].max().date()
+
+date_range = st.sidebar.date_input(
+    "Select Date Range",
+    value=(min_date, max_date),
+    min_value=min_date,
+    max_value=max_date
+)
+
+start_date, end_date = date_range
+
+filtered_df = df[
+    (df["InvoiceDate"].dt.date >= start_date) &
+    (df["InvoiceDate"].dt.date <= end_date)
+]
+
 col1, col2, col3=st.columns(3)
 with col1:
      st.metric(
@@ -567,6 +584,41 @@ elif page == "Segment Predictor":
 # BUSINESS RECOMMENDATIONS
 # ==========================================================
 elif page == "Data Analysis":
+    granularity = st.radio(
+    "Time Granularity",
+    ["Monthly", "Quarterly"]
+    )
+    freq = "M" if granularity=="Monthly" else "Q"
+    metric = st.selectbox(
+    "Choose Trend Metric",
+    ["Revenue", "Orders", "Active Customers"]
+    )
+    if metric == "Revenue":
+    trend = (
+        filtered_df
+        .set_index("InvoiceDate")
+        .resample("freq")["Revenue"]
+        .sum()
+        .reset_index()
+    )
+
+    elif metric == "Orders":
+        trend = (
+        filtered_df
+        .set_index("InvoiceDate")
+        .resample("M")["InvoiceNo"]
+        .nunique()
+        .reset_index(name="Value")
+        )
+
+    else:
+        trend = (
+        filtered_df
+        .set_index("InvoiceDate")
+        .resample("M")["CustomerID"]
+        .nunique()
+        .reset_index(name="Value")
+        )
     df["Quarter"] = df["InvoiceDate"].dt.to_period("Q").astype(str)
 
     quarterly_active = (

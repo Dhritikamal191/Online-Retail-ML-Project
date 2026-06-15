@@ -128,16 +128,12 @@ monetary = st.sidebar.slider(
 filtered_rfm = rfm[
     (rfm["Recency"].between(*recency_range)) &
     (rfm["Frequency"].between(*frequency_range)) &
-    (rfm["Monetary"].between(*monetary_range))
+    (rfm["Monetary"].between(*monetary_range)) &
     
-]
-
-pie_df=rfm[(rfm["Recency"] == recency) &
-    (rfm["Frequency"] == frequency) &
-    (rfm["Monetary"] == monetary)
+(rfm["Recency"] == recency) &
+(rfm["Frequency"] == frequency) & (rfm["Monetary"] == monetary)
 ]
     
-
 col1, col2, col3=st.columns(3)
 with col1:
      st.metric(
@@ -470,7 +466,7 @@ elif page == "Cluster Visualization":
     st.subheader("Cluster Distribution")
 
     cluster_counts = (
-        pie_df["Cluster"]
+        filtered_rfm["Cluster"]
         .value_counts()
         .sort_index()
         .reset_index()

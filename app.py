@@ -75,6 +75,10 @@ selected_k = st.sidebar.slider(
     value=recommended_k
 )
 
+rfm_scaled = scaler.transform(
+    rfm[['Recency', 'Frequency', 'Monetary']]
+)
+
 kmeans = KMeans(
     n_clusters=selected_k,
     random_state=42,

@@ -134,7 +134,7 @@ filtered_df = df[
     (df["InvoiceDate"].dt.date <= end_date)
 ]
 
-selected_country = st.multiselect(
+selected_country = st.sidebar.multiselect(
     "Country",
     sorted(df["Country"].unique()),
     default=["United Kingdom"]

@@ -486,9 +486,7 @@ elif page == "Cluster Profiles":
     for _, row in dynamic_profiles.iterrows():
 
         cluster = row["Cluster"]
-        segment = row["Segment"]
-
-        with st.expander(f"Cluster {cluster} : {segment}"):
+        with st.expander(f"Cluster {cluster}"):
 
             st.write(f"**Recency:** {row['Recency']:.2f}")
             st.write(f"**Frequency:** {row['Frequency']:.2f}")

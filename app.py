@@ -626,7 +626,7 @@ elif page == "Data Analysis":
     
         col="Active Customers"
 
-    fig = px.line(trend,x="InvoiceDate",col,markers=True,title=f"{metric} Trend ({granularity})")
+    fig = px.line(trend, x="InvoiceDate", col, markers=True, title=f"{metric} Trend {granularity}")
 
     fig.update_layout(
     xaxis_title="Period",

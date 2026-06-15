@@ -143,7 +143,7 @@ selected_country = st.sidebar.multiselect(
 filtered_df = filtered_df[
     filtered_df["Country"].isin(selected_country)
 ]
-
+top_n =st.slider("Top Countries", 5, 20, 10)
 col1, col2, col3=st.columns(3)
 with col1:
      st.metric(
@@ -658,7 +658,7 @@ elif page == "Data Analysis":
     country_sales = (
     df.groupby("Country")["Revenue"]
     .sum()
-    .nlargest(10)
+    .nlargest(top_n))
     .reset_index()
     )
 
@@ -667,7 +667,7 @@ elif page == "Data Analysis":
     x="Revenue",
     y="Country",
     orientation="h",
-    title="Top 10 Countries by Revenue"
+    title=f"{top_n} Countries by Revenue"
     )
 
     st.plotly_chart(fig, use_container_width=True)

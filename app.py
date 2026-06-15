@@ -629,7 +629,7 @@ elif page == "Data Analysis":
     fig = px.line(
     trend,
     x="InvoiceDate",
-    y=y_col,
+    y=col,
     markers=True,
     title=f"{metric} Trend ({granularity})"
     )

@@ -68,7 +68,7 @@ page = st.sidebar.radio(
     ]
 )
 
-best_k, score = get_optimal_k(X_scaled, k_min=3, k_max=6)
+best_k, best_score = get_optimal_k(X_scaled, k_min=3, k_max=6)
 
 k = st.slider(
     "Select Number of Clusters (K)",

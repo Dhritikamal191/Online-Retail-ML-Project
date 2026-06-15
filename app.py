@@ -621,7 +621,7 @@ elif page == "Data Analysis":
         )
     
     fig = px.line(
-    monthly_revenue,
+    trend,
     x="InvoiceDate",
     y="metric",
     markers=True,

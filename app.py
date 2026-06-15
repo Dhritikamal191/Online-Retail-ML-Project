@@ -47,6 +47,19 @@ scaler, kmeans, pca = load_models()
 with open("best_k.txt", "r") as f:
     recommended_k= int(f.read())
 
+rfm_scaled = scaler.transform(
+    rfm[['Recency', 'Frequency', 'Monetary']]
+)
+
+kmeans = KMeans(
+    n_clusters=selected_k,
+    random_state=42,
+    n_init=10
+)
+
+clusters = kmeans.fit_predict(rfm_scaled)
+rfm["Cluster"] = clusters
+
 # ==========================================================
 # SIDEBAR
 # ==========================================================
@@ -74,19 +87,6 @@ selected_k = st.sidebar.slider(
     max_value=10,
     value=recommended_k
 )
-
-rfm_scaled = scaler.transform(
-    rfm[['Recency', 'Frequency', 'Monetary']]
-)
-
-kmeans = KMeans(
-    n_clusters=selected_k,
-    random_state=42,
-    n_init=10
-)
-
-clusters = kmeans.fit_predict(rfm_scaled)
-rfm["Cluster"] = clusters
 
 cluster_choice = st.sidebar.selectbox("Highlight Cluster",["All"] + list(sorted(rfm["Cluster"].unique())))
 plot_df = pca_df.copy()

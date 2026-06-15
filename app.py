@@ -567,11 +567,8 @@ elif page == "Segment Predictor":
 # BUSINESS RECOMMENDATIONS
 # ==========================================================
 elif page == "Data Analysis":
-    
-    data["YearMonth"] = data["InvoiceDate"].dt.to_period("M").astype(str)
-
     monthly_revenue = (
-    data.groupby("YearMonth")["Revenue"]
+    df.groupby("YearMonth")["Revenue"]
     .sum()
     .reset_index()
     )
@@ -587,7 +584,7 @@ elif page == "Data Analysis":
     st.plotly_chart(fig, use_container_width=True)
    
     monthly_orders = (
-    data.groupby("YearMonth")["InvoiceNo"]
+    df.groupby("YearMonth")["InvoiceNo"]
     .nunique()
     .reset_index(name="Orders")
     )
@@ -603,7 +600,7 @@ elif page == "Data Analysis":
     st.plotly_chart(fig, use_container_width=True)
 
     monthly_customers = (
-    data.groupby("YearMonth")["CustomerID"]
+    df.groupby("YearMonth")["CustomerID"]
     .nunique()
     .reset_index(name="Active Customers")
     )
@@ -619,7 +616,7 @@ elif page == "Data Analysis":
     st.plotly_chart(fig, use_container_width=True)
 
     country_sales = (
-    data.groupby("Country")["Revenue"]
+    df.groupby("Country")["Revenue"]
     .sum()
     .nlargest(10)
     .reset_index()

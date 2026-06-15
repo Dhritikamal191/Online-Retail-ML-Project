@@ -602,7 +602,7 @@ elif page == "Data Analysis":
         .reset_index()
       )
 
-      y_col="Revenue"
+      col="Revenue"
 
     elif metric == "Orders":
         trend = (
@@ -613,7 +613,7 @@ elif page == "Data Analysis":
         .reset_index(name="Value")
         )
 
-        y_col="Orders"
+        col="Orders"
 
     else:
         trend = (
@@ -624,7 +624,7 @@ elif page == "Data Analysis":
         .reset_index(name="Value")
         )
     
-        y_col="Active Customers"
+        col="Active Customers"
 
     fig = px.line(
     trend,

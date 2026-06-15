@@ -126,9 +126,9 @@ monetary = st.sidebar.slider(
     1000
 )
 filtered_rfm = rfm[
-    (rfm["Recency"].between(*recency_range)) &
+(rfm["Recency"].between(*recency_range)) &
     (rfm["Frequency"].between(*frequency_range)) &
-    (rfm["Monetary"].between(*monetary_range)) &
+    (rfm["Monetary"].between(*monetary_range))
     
 ]
     

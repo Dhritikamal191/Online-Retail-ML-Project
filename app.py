@@ -607,7 +607,6 @@ elif page == "Data Analysis":
     monthly_orders,
     x="YearMonth",
     y="Orders",
-    color="Year",
     markers=True,
     title="Monthly Orders Trend"
     )

@@ -32,7 +32,7 @@ def load_data():
     profiles.rename(columns={"Unnamed: 0": "Cluster"}, inplace=True)
     pca_df = pd.read_csv("pca_data.csv")
 
-    return data, rfm, comparison, profiles, pca_df
+    return rfm, comparison, profiles, pca_df
 
 
 @st.cache_resource

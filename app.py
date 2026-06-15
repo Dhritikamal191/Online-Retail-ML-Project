@@ -68,7 +68,7 @@ page = st.sidebar.radio(
     ]
 )
 
-selected_k = st.slider(
+selected_k = st.sidebar.slider(
     "Choose Number of Clusters",
     min_value=2,
     max_value=10,

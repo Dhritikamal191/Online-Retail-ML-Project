@@ -173,7 +173,7 @@ if page == "Project Overview":
     with col2:
          st.metric(
          "Optimal K",
-         best_k
+         best_k(len(filtered_rfm))
          )
     with col3:
          st.metric(
@@ -209,7 +209,7 @@ elif page == "Dataset Overview":
     st.subheader("RFM Dataset")
 
     st.dataframe(
-        rfm.head(20),
+        filtered_rfm.head(20),
         use_container_width=True
     )
 

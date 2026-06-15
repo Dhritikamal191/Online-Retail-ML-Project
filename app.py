@@ -35,20 +35,16 @@ def load_data():
 
 @st.cache_resource
 def load_models():
-    scaler = joblib.load("scaler.pkl")
-    kmeans = joblib.load("kmeans_model.pkl")
-    pca = joblib.load("pca.pkl")
+    artifacts = joblib.load("artifacts.pkl")
 
-    return scaler, kmeans, pca
-
+    return artifacts
 
 rfm, comparison, profiles, pca_df = load_data()
-scaler, kmeans, pca = load_models()
-
-with open("best_k.txt", "r") as f:
-    best_k = f.read()
-
-
+artifacts = load_models()
+kmeans=artifacts["kmeans"]
+scaler=artifacts["scaler"]
+pca=artifacts["pca"]
+best_k=artifacts["best_k"]
 # ==========================================================
 # SIDEBAR
 # ==========================================================

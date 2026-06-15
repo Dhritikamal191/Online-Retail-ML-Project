@@ -16,6 +16,7 @@ st.set_page_config(
     layout="wide"
 )
 
+st.title("Customer Segmentation with Clustering")
 # ==========================================================
 # LOAD ARTIFACTS
 # ==========================================================

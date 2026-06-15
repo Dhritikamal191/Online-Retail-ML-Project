@@ -40,18 +40,17 @@ def load_models():
     return artifacts
 
 @st.cache_data
-def load_data():
-    data = pd.read_excel("Online_Retail.xlsx")
-    data["InvoiceDate"] = pd.to_datetime(data["InvoiceDate"])
-    data["Revenue"] = data["Quantity"] * data["UnitPrice"]
-    data["YearMonth"] = data["InvoiceDate"].dt.to_period("M").astype(str)
-    return data
+def load_df():
+    df = pd.read_excel("Online_Retail.xlsx")
+    df["InvoiceDate"] = pd.to_datetime(df["InvoiceDate"])
+    df["Revenue"] = df["Quantity"] * df["UnitPrice"]
+    df["YearMonth"] = df["InvoiceDate"].dt.to_period("M").astype(str)
+    return df
 
 data = load_data()
-
 rfm, comparison, profiles, pca_df = load_data()
-
 artifacts = load_models()
+df=load_df()
 kmeans=artifacts["kmeans"]
 scaler=artifacts["scaler"]
 pca=artifacts["pca"]

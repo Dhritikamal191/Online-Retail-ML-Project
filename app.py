@@ -598,14 +598,14 @@ elif page == "Data Analysis":
     st.plotly_chart(fig, use_container_width=True)
    
     monthly_orders = (
-    df.groupby(["Year","Month"])["InvoiceNo"]
+    df.groupby("YearMonth")["InvoiceNo"]
     .nunique()
     .reset_index(name="Orders")
     )
 
     fig = px.line(
     monthly_orders,
-    x="Month",
+    x="YearMonth",
     y="Orders",
     color="Year",
     markers=True,

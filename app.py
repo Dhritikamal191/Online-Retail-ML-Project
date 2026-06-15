@@ -22,8 +22,6 @@ st.title("🛍 Customer Segmentation with Clustering")
 # LOAD ARTIFACTS
 # ==========================================================
 
-data = pd.read_excel("Online_Retail.xlsx")
-
 @st.cache_data
 def load_data():   
     rfm = pd.read_csv("rfm_dataset.csv")
@@ -41,11 +39,18 @@ def load_models():
 
     return artifacts
 
-data["InvoiceDate"] = pd.to_datetime(data["InvoiceDate"])
-data["Revenue"] = data["Quantity"] * data["UnitPrice"]
-data["YearMonth"] = data["InvoiceDate"].dt.to_period("M").astype(str)
+@st.cache_data
+def load_data():
+    data = pd.read_excel("Online_Retail.xlsx")
+    data["InvoiceDate"] = pd.to_datetime(data["InvoiceDate"])
+    data["Revenue"] = data["Quantity"] * data["UnitPrice"]
+    data["YearMonth"] = data["InvoiceDate"].dt.to_period("M").astype(str)
+    return data
+
+data = load_data()
 
 rfm, comparison, profiles, pca_df = load_data()
+
 artifacts = load_models()
 kmeans=artifacts["kmeans"]
 scaler=artifacts["scaler"]

@@ -117,8 +117,8 @@ filtered_rfm = rfm[
 ]
 dynamic_profiles = (filtered_rfm.groupby("Cluster")[["Recency","Frequency","Monetary"]].mean().round(2).reset_index())
 
-min_date = data["InvoiceDate"].min().date()
-max_date = data["InvoiceDate"].max().date()
+min_date = df["InvoiceDate"].min().date()
+max_date = df["InvoiceDate"].max().date()
 
 date_range = st.sidebar.date_input(
     "Select Date Range",

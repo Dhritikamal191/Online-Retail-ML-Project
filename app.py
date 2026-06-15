@@ -24,13 +24,14 @@ st.title("🛍 Customer Segmentation with Clustering")
 
 @st.cache_data
 def load_data():
+    data = pd.read_excel("Online_Retail.xlsx")
     rfm = pd.read_csv("rfm_dataset.csv")
     comparison = pd.read_csv("algorithm_comparison.csv")
     profiles = pd.read_csv("cluster_profiles.csv")
     profiles.rename(columns={"Unnamed: 0": "Cluster"}, inplace=True)
     pca_df = pd.read_csv("pca_data.csv")
 
-    return rfm, comparison, profiles, pca_df
+    return data, rfm, comparison, profiles, pca_df
 
 
 @st.cache_resource
@@ -38,6 +39,10 @@ def load_models():
     artifacts = joblib.load("artifacts.pkl")
 
     return artifacts
+
+data["InvoiceDate"] = pd.to_datetime(data["InvoiceDate"])
+data["Revenue"] = data["Quantity"] * data["UnitPrice"]
+data["YearMonth"] = data["InvoiceDate"].dt.to_period("M").astype(str)
 
 rfm, comparison, profiles, pca_df = load_data()
 artifacts = load_models()

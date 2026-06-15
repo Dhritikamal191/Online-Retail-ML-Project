@@ -173,7 +173,7 @@ if page == "Project Overview":
     with col2:
          st.metric(
          "Optimal K",
-         best_k(len(filtered_rfm))
+         best_k
          )
     with col3:
          st.metric(

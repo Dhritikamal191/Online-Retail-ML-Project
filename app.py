@@ -68,15 +68,6 @@ page = st.sidebar.radio(
     ]
 )
 
-best_k, best_score = get_optimal_k(X_scaled, k_min=3, k_max=6)
-
-k = st.slider(
-    "Select Number of Clusters (K)",
-    min_value=3,
-    max_value=6,
-    value=best_k
-)
-
 cluster_choice = st.sidebar.selectbox("Highlight Cluster",["All"] + list(sorted(rfm["Cluster"].unique())))
 plot_df = pca_df.copy()
 

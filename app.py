@@ -62,6 +62,7 @@ page = st.sidebar.radio(
         "Cluster Visualization",
         "Cluster Profiles",
         "Segment Predictor",
+        "Data Analysis",
         "Business Recommendations"
     ]
 )
@@ -560,6 +561,89 @@ elif page == "Segment Predictor":
 # ==========================================================
 # BUSINESS RECOMMENDATIONS
 # ==========================================================
+elif page == "Data Analysis"
+    
+    data["YearMonth"] = data["InvoiceDate"].dt.to_period("M").astype(str)
+
+    monthly_revenue = (
+    data.groupby("YearMonth")["Revenue"]
+    .sum()
+    .reset_index()
+    )
+
+    fig = px.line(
+    monthly_revenue,
+    x="YearMonth",
+    y="Revenue",
+    markers=True,
+    title="Monthly Revenue Trend"
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
+   
+    monthly_orders = (
+    data.groupby("YearMonth")["InvoiceNo"]
+    .nunique()
+    .reset_index(name="Orders")
+    )
+
+    fig = px.line(
+    monthly_orders,
+    x="YearMonth",
+    y="Orders",
+    markers=True,
+    title="Monthly Orders Trend"
+    )
+ 
+    st.plotly_chart(fig, use_container_width=True)
+
+    monthly_customers = (
+    data.groupby("YearMonth")["CustomerID"]
+    .nunique()
+    .reset_index(name="Active Customers")
+    )
+
+    fig = px.line(
+    monthly_customers,
+    x="YearMonth",
+    y="Active Customers",
+    markers=True,
+    title="Monthly Active Customers"
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
+
+    country_sales = (
+    data.groupby("Country")["Revenue"]
+    .sum()
+    .nlargest(10)
+    .reset_index()
+    )
+
+    fig = px.bar(
+    country_sales,
+    x="Revenue",
+    y="Country",
+    orientation="h",
+    title="Top 10 Countries by Revenue"
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
+
+    segment_revenue = (
+    filtered_rfm.groupby("Cluster")["Monetary"]
+    .sum()
+    .reset_index()
+    )
+
+    fig = px.bar(
+    segment_revenue,
+    x="Cluster",
+    y="Monetary",
+    title="Revenue Contribution by Segment"
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
 
 elif page == "Business Recommendations":
 

@@ -136,7 +136,7 @@ filtered_df = df[
 
 selected_country = st.multiselect(
     "Country",
-    sorted(data["Country"].unique()),
+    sorted(df["Country"].unique()),
     default=["United Kingdom"]
 )
 

@@ -127,7 +127,10 @@ date_range = st.sidebar.date_input(
     max_value=max_date
 )
 
-start_date, end_date = date_range
+if len(date_range) == 2:
+    start_date, end_date = date_range
+else:
+    start_date = end_date = date_range[0]
 
 filtered_df = df[
     (df["InvoiceDate"].dt.date >= start_date) &

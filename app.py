@@ -130,8 +130,6 @@ filtered_rfm = rfm[
     (rfm["Frequency"].between(*frequency_range)) &
     (rfm["Monetary"].between(*monetary_range)) &
     
-(rfm["Recency"] == recency) &
-(rfm["Frequency"] == frequency) & (rfm["Monetary"] == monetary)
 ]
     
 col1, col2, col3=st.columns(3)

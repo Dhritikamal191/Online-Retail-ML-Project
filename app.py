@@ -134,6 +134,16 @@ filtered_df = df[
     (df["InvoiceDate"].dt.date <= end_date)
 ]
 
+selected_country = st.multiselect(
+    "Country",
+    sorted(data["Country"].unique()),
+    default=["United Kingdom"]
+)
+
+filtered_df = filtered_df[
+    filtered_df["Country"].isin(selected_country)
+]
+
 col1, col2, col3=st.columns(3)
 with col1:
      st.metric(

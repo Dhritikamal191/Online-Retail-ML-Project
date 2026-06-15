@@ -619,52 +619,17 @@ elif page == "Data Analysis":
         .nunique()
         .reset_index(name="Value")
         )
-    df["Quarter"] = df["InvoiceDate"].dt.to_period("Q").astype(str)
-
-    quarterly_active = (
-    df.groupby("Quarter")["CustomerID"]
-    .nunique()
-    .reset_index(name="Active Customers")
-    )
-
-    fig = px.bar(
-    quarterly_active,
-    x="Quarter",
-    y="Active Customers",
-    title="Quarterly Active Customers"
-    )
-
-    st.plotly_chart(fig, use_container_width=True)
-
-    monthly_revenue = (
-    df.set_index("InvoiceDate").resample("M")["Revenue"].sum().reset_index())
-   
+    
     fig = px.line(
     monthly_revenue,
     x="InvoiceDate",
-    y="Revenue",
+    y="metric",
     markers=True,
     title="Monthly Revenue Trend"
     )
 
     st.plotly_chart(fig, use_container_width=True)
    
-    monthly_orders = (
-    df.groupby("YearMonth")["InvoiceNo"]
-    .nunique()
-    .reset_index(name="Orders")
-    )
-
-    fig = px.line(
-    monthly_orders,
-    x="YearMonth",
-    y="Orders",
-    markers=True,
-    title="Monthly Orders Trend"
-    )
- 
-    st.plotly_chart(fig, use_container_width=True)
-
     country_sales = (
     df.groupby("Country")["Revenue"]
     .sum()

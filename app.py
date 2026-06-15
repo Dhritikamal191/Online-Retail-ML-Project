@@ -44,9 +44,6 @@ def load_models():
 rfm, comparison, profiles, pca_df = load_data()
 scaler, kmeans, pca = load_models()
 
-with open("best_k.txt", "r") as f:
-    recommended_k= int(f.read())
-
 rfm_scaled = scaler.transform(
     rfm[['Recency', 'Frequency', 'Monetary']]
 )
@@ -75,11 +72,29 @@ page = st.sidebar.radio(
     ]
 )
 
+best_k = None
+best_score = -1
+
+for k in range(2, 11):
+    kmeans = KMeans(
+            n_clusters=k,
+            random_state=42,
+            n_init=10
+        )
+
+    labels = kmeans.fit_predict(rfm_scaled)
+
+    score = silhouette_score(rfm_scaled, labels)
+
+    if score > best_score:
+       best_score = score
+       best_k = k
+
 selected_k = st.sidebar.slider(
     "Choose Number of Clusters",
     min_value=2,
     max_value=10,
-    value=recommended_k
+    value=best_k
 )
 
 kmeans = KMeans(

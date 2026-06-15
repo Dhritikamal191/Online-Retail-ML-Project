@@ -133,6 +133,13 @@ filtered_rfm = rfm[
     (rfm["Frequency"] >= frequency) &
     (rfm["Monetary"] >= monetary)
 ]
+
+pie_df = rfm[
+    (rfm["Recency"].between(*recency_range)) &
+    (rfm["Frequency"].between(*frequency_range)) &
+    (rfm["Monetary"].between(*monetary_range))
+]
+
 col1, col2, col3=st.columns(3)
 with col1:
      st.metric(
@@ -465,7 +472,7 @@ elif page == "Cluster Visualization":
     st.subheader("Cluster Distribution")
 
     cluster_counts = (
-        filtered_rfm["Cluster"]
+        pie_df["Cluster"]
         .value_counts()
         .sort_index()
         .reset_index()

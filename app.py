@@ -561,7 +561,7 @@ elif page == "Segment Predictor":
 # ==========================================================
 # BUSINESS RECOMMENDATIONS
 # ==========================================================
-elif page == "Data Analysis"
+elif page == "Data Analysis":
     
     data["YearMonth"] = data["InvoiceDate"].dt.to_period("M").astype(str)
 

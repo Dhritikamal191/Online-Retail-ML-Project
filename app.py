@@ -600,9 +600,9 @@ elif page == "Data Analysis":
         .resample(freq)["Revenue"]
         .sum()
         .reset_index()
-    )
+      )
 
-    y_col="Revenue"
+      y_col="Revenue"
 
     elif metric == "Orders":
         trend = (
@@ -613,7 +613,7 @@ elif page == "Data Analysis":
         .reset_index(name="Value")
         )
 
-    y_col="Orders"
+        y_col="Orders"
 
     else:
         trend = (
@@ -624,7 +624,7 @@ elif page == "Data Analysis":
         .reset_index(name="Value")
         )
     
-    y_col="Active Customers"
+        y_col="Active Customers"
 
     fig = px.line(
     trend,

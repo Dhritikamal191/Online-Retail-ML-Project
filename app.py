@@ -5,7 +5,7 @@ import joblib
 import plotly.express as px
 import matplotlib.pyplot as plt
 from PIL import Image
-
+from sklearn.cluster import KMeans
 # ==========================================================
 # PAGE CONFIGURATION
 # ==========================================================
@@ -74,6 +74,15 @@ selected_k = st.sidebar.slider(
     max_value=10,
     value=recommended_k
 )
+
+kmeans = KMeans(
+    n_clusters=selected_k,
+    random_state=42,
+    n_init=10
+)
+
+clusters = kmeans.fit_predict(rfm_scaled)
+rfm["Cluster"] = clusters
 
 cluster_choice = st.sidebar.selectbox("Highlight Cluster",["All"] + list(sorted(rfm["Cluster"].unique())))
 plot_df = pca_df.copy()

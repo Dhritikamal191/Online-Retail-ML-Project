@@ -40,8 +40,8 @@ def load_data():
 @st.cache_resource
 def load_models():
     artifacts = joblib.load("artifacts.pkl")
-
-    return artifacts
+    figs=joblib.load("evaluation_figures.pkl")
+    return artifacts, figs
 
 data = load_data()
 df, rfm, comparison, profiles, pca_df= load_data()
@@ -346,10 +346,7 @@ elif page == "Elbow & Silhouette":
         st.subheader("Elbow Method")
 
         try:
-            elbow_img = Image.open("elbow_plot.png")
-            st.image(
-                elbow_img,
-                use_container_width=True
+            st.plotly_chart(figs["elbow"],use_container_width=True)
             )
         except:
             st.warning("elbow_plot.png not found.")
@@ -367,11 +364,7 @@ elif page == "Elbow & Silhouette":
         st.subheader("Silhouette Analysis")
 
         try:
-            sil_img = Image.open("silhouette_plot.png")
-            st.image(
-                sil_img,
-                use_container_width=True
-            )
+            st.plotly_chart(figs["silhouette"], use_container_width=True)
         except:
             st.warning("silhouette_plot.png not found.")
 

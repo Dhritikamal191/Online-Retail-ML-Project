@@ -334,7 +334,7 @@ elif page == "RFM Analysis":
 # ELBOW & SILHOUETTE ANALYSIS
 # ==========================================================
 
-elif page == "Elbow & Silhouette":
+elif page == "Cluster Selection":
 
     st.title("📉 Cluster Selection Analysis")
 
@@ -369,6 +369,8 @@ elif page == "Elbow & Silhouette":
                 st.warning("silhouette_plot.png not found.")
 
          st.markdown(f"""
+         **Interpretation:**
+
          - Optimal K selected during training: {best_k}
 
          - The silhouette score measures cluster separation.
@@ -384,6 +386,16 @@ elif page == "Elbow & Silhouette":
          except:
                 st.warning("dbi.png not found.")
 
+         st.markdown("""
+         **Interpretation:**
+
+         - Davies-Bouldin Index (DBI) evaluates the quality of clustering by measuring the average similarity between clusters. It considers both the compactness of clusters and the separation between them.
+
+         - Lower DBI values indicate better clustering performance.
+         - A lower score suggests that clusters are more distinct and well-separated.
+         - DBI complements the Silhouette Score, helping validate the optimal number of customer segments.
+         - In this project, the selected number of clusters balances a high Silhouette Score with a low Davies-Bouldin Index to ensure meaningful and actionable customer segmentation.
+         """)
 # ==========================================================
 # ALGORITHM COMPARISON
 # ==========================================================

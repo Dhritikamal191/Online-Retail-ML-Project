@@ -396,10 +396,6 @@ elif page == "Cluster Selection":
          - Lower DBI values indicate better clustering performance.
          
          - A lower score suggests that clusters are more distinct and well-separated.
-         
-         - DBI complements the Silhouette Score, helping validate the optimal number of customer segments.
-         
-         - In this project, the selected number of clusters balances a high Silhouette Score with a low Davies-Bouldin Index to ensure meaningful and actionable customer segmentation.
          """)
 # ==========================================================                    
 # ALGORITHM COMPARISON

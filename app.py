@@ -347,7 +347,7 @@ elif page == "Elbow & Silhouette":
 
         try:
             st.plotly_chart(figs["elbow"],use_container_width=True)
-            )
+            
         except:
             st.warning("elbow_plot.png not found.")
 

@@ -342,13 +342,13 @@ elif page == "Elbow & Silhouette":
 
     with col1:
 
-        st.subheader("Elbow Method")
+         st.subheader("Elbow Method")
 
-        try:
-            st.image("elbow.png", use_container_width=True)
+         try:
+             st.image("elbow.png", use_container_width=True)
             
-        except:
-            st.warning("elbow.png not found.")
+         except:
+                st.warning("elbow.png not found.")
 
         st.markdown("""
         **Interpretation:**
@@ -360,12 +360,13 @@ elif page == "Elbow & Silhouette":
 
     with col2:
 
-        st.subheader("Silhouette Analysis")
+         st.subheader("Silhouette Analysis")
 
-        try:
-            st.image("silhouette.png", use_container_width=True)
-        except:
-            st.warning("silhouette_plot.png not found.")
+         try:
+             st.image("silhouette.png", use_container_width=True)
+            
+         except:
+                st.warning("silhouette_plot.png not found.")
 
         st.markdown(f"""
         **Optimal K selected during training:** `{best_k}`
@@ -378,10 +379,10 @@ elif page == "Elbow & Silhouette":
     with col3:
          st.subheader("Silhouette Analysis")
 
-        try:
-            st.image("dbi.png", use_container_width=True)
-        except:
-            st.warning("dbi.png not found.")
+         try:
+             st.image("dbi.png", use_container_width=True)
+         except:
+                st.warning("dbi.png not found.")
 
         st.markdown(f"""
         **Optimal K selected during training:** `{best_k}`

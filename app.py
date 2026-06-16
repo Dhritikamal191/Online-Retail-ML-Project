@@ -338,7 +338,7 @@ elif page == "Elbow & Silhouette":
 
     st.title("📉 Cluster Selection Analysis")
 
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
 
     with col1:
 
@@ -348,7 +348,7 @@ elif page == "Elbow & Silhouette":
             st.image("elbow.png", use_container_width=True)
             
         except:
-            st.warning("elbow_plot.png not found.")
+            st.warning("elbow.png not found.")
 
         st.markdown("""
         **Interpretation:**
@@ -363,7 +363,7 @@ elif page == "Elbow & Silhouette":
         st.subheader("Silhouette Analysis")
 
         try:
-            st.image("sil.png", use_container_width=True)
+            st.image("silhouette.png", use_container_width=True)
         except:
             st.warning("silhouette_plot.png not found.")
 
@@ -374,7 +374,22 @@ elif page == "Elbow & Silhouette":
 
         Higher values indicate better-defined clusters.
         """)
+        
+    with col3:
+         st.subheader("Silhouette Analysis")
 
+        try:
+            st.image("dbi.png", use_container_width=True)
+        except:
+            st.warning("dbi.png not found.")
+
+        st.markdown(f"""
+        **Optimal K selected during training:** `{best_k}`
+
+        The silhouette score measures cluster separation.
+
+        Higher values indicate better-defined clusters.
+        """)
 # ==========================================================
 # ALGORITHM COMPARISON
 # ==========================================================

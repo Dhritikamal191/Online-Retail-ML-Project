@@ -369,28 +369,21 @@ elif page == "Elbow & Silhouette":
                 st.warning("silhouette_plot.png not found.")
 
          st.markdown(f"""
-         **Optimal K selected during training:** `{best_k}`
+         - Optimal K selected during training: {best_k}
 
-         The silhouette score measures cluster separation.
+         - The silhouette score measures cluster separation.
 
-         Higher values indicate better-defined clusters.
+         - Higher values indicate better-defined clusters.
          """)
         
     with col3:
-         st.subheader("Silhouette Analysis")
+         st.subheader("Davis-Bouldin-Index Analysis")
 
          try:
              st.image("dbi.png", use_container_width=True)
          except:
                 st.warning("dbi.png not found.")
 
-         st.markdown(f"""
-         **Optimal K selected during training:** `{best_k}`
-
-         The silhouette score measures cluster separation.
-
-         Higher values indicate better-defined clusters.
-         """)
 # ==========================================================
 # ALGORITHM COMPARISON
 # ==========================================================

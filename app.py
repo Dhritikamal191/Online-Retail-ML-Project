@@ -338,65 +338,58 @@ elif page == "Cluster Selection":
 
     st.title("📉 Cluster Selection Analysis")
 
-    col1, col2, col3 = st.columns(3)
-
-    with col1:
-
-         st.subheader("Elbow Method")
-
-         try:
-             st.image("elbow.png", use_container_width=True)
+    st.subheader("Elbow Method")
+    try:
+        st.image("elbow.png", use_container_width=True)
             
-         except:
-                st.warning("elbow.png not found.")
+    except:
+           st.warning("elbow.png not found.")
 
-         st.markdown("""
-         **Interpretation:**
+    st.markdown("""
+    **Interpretation:**
 
-         - Shows how inertia decreases as K increases.
+    - Shows how inertia decreases as K increases.
          
-         - The 'elbow' indicates diminishing returns.
+    - The 'elbow' indicates diminishing returns.
          
-         - Helps identify an appropriate number of clusters.
-         """)
+    - Helps identify an appropriate number of clusters.
+    """)
 
-    with col2:
+   
+    st.subheader("Silhouette Analysis")
 
-         st.subheader("Silhouette Analysis")
-
-         try:
-             st.image("silhouette.png", use_container_width=True)
+    try:
+        st.image("silhouette.png", use_container_width=True)
             
-         except:
-                st.warning("silhouette_plot.png not found.")
+    except:
+           st.warning("silhouette_plot.png not found.")
 
-         st.markdown(f"""
-         **Interpretation:**
+    st.markdown(f"""
+    **Interpretation:**
 
-         - Optimal K selected during training: {best_k}
+    - Optimal K selected during training: {best_k}
 
-         - The silhouette score measures cluster separation.
+    - The silhouette score measures cluster separation.
 
-         - Higher values indicate better-defined clusters.
-         """)
-        
-    with col3:
-         st.subheader("Davis-Bouldin-Index Analysis")
+    - Higher values indicate better-defined clusters.
+    """)    
+    
+    st.subheader("Davis-Bouldin-Index Analysis")
 
-         try:
-             st.image("dbi.png", use_container_width=True)
-         except:
-                st.warning("dbi.png not found.")
+    try:
+        st.image("dbi.png", use_container_width=True)
+    except:
+           st.warning("dbi.png not found.")
 
-         st.markdown(f"""
-         **Interpretation:**
+    st.markdown(f"""
+    **Interpretation:**
 
-         - Davies-Bouldin Index (DBI) evaluates the quality of clustering by measuring the average similarity between clusters. It considers both the compactness of clusters and the separation between them.
+    - Davies-Bouldin Index (DBI) evaluates the quality of clustering by measuring the average similarity between clusters. It considers both the compactness of clusters and the separation between them.
 
-         - Lower DBI values indicate better clustering performance.
+    - Lower DBI values indicate better clustering performance.
          
-         - A lower score suggests that clusters are more distinct and well-separated.
-         """)
+    - A lower score suggests that clusters are more distinct and well-separated.
+    """)
 # ==========================================================                    
 # ALGORITHM COMPARISON
 # ==========================================================

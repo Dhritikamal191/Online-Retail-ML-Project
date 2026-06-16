@@ -350,13 +350,13 @@ elif page == "Elbow & Silhouette":
          except:
                 st.warning("elbow.png not found.")
 
-        st.markdown("""
-        **Interpretation:**
+         st.markdown("""
+         **Interpretation:**
 
-        - Shows how inertia decreases as K increases.
-        - The 'elbow' indicates diminishing returns.
-        - Helps identify an appropriate number of clusters.
-        """)
+         - Shows how inertia decreases as K increases.
+         - The 'elbow' indicates diminishing returns.
+         - Helps identify an appropriate number of clusters.
+         """)
 
     with col2:
 
@@ -368,13 +368,13 @@ elif page == "Elbow & Silhouette":
          except:
                 st.warning("silhouette_plot.png not found.")
 
-        st.markdown(f"""
-        **Optimal K selected during training:** `{best_k}`
+         st.markdown(f"""
+         **Optimal K selected during training:** `{best_k}`
 
-        The silhouette score measures cluster separation.
+         The silhouette score measures cluster separation.
 
-        Higher values indicate better-defined clusters.
-        """)
+         Higher values indicate better-defined clusters.
+         """)
         
     with col3:
          st.subheader("Silhouette Analysis")
@@ -384,13 +384,13 @@ elif page == "Elbow & Silhouette":
          except:
                 st.warning("dbi.png not found.")
 
-        st.markdown(f"""
-        **Optimal K selected during training:** `{best_k}`
+         st.markdown(f"""
+         **Optimal K selected during training:** `{best_k}`
 
-        The silhouette score measures cluster separation.
+         The silhouette score measures cluster separation.
 
-        Higher values indicate better-defined clusters.
-        """)
+         Higher values indicate better-defined clusters.
+         """)
 # ==========================================================
 # ALGORITHM COMPARISON
 # ==========================================================

@@ -24,22 +24,22 @@ st.title("🛍 Customer Segmentation with Clustering")
 
 @st.cache_data
 def load_data():   
-    df = pd.read_excel("Online_Retail.xlsx")
+    df = pd.read_excel("Data/Online_Retail.xlsx")
     df["InvoiceDate"] = pd.to_datetime(df["InvoiceDate"])
     df["Revenue"] = df["Quantity"] * df["UnitPrice"]
     df["YearMonth"] = df["InvoiceDate"].dt.to_period("M").astype(str)
     rfm = pd.read_csv("rfm_dataset.csv")
-    comparison = pd.read_csv("algorithm_comparison.csv")
-    profiles = pd.read_csv("cluster_profiles.csv")
+    comparison = pd.read_csv("Data/algorithm_comparison.csv")
+    profiles = pd.read_csv("Data/cluster_profiles.csv")
     profiles.rename(columns={"Unnamed: 0": "Cluster"}, inplace=True)
-    pca_df = pd.read_csv("pca_data.csv")
+    pca_df = pd.read_csv("Data/pca_data.csv")
 
     return df, rfm, comparison, profiles, pca_df
 
 
 @st.cache_resource
 def load_models():
-    artifacts = joblib.load("artifacts.pkl")
+    artifacts = joblib.load("Model/artifacts.pkl")
     return artifacts
 
 data = load_data()
@@ -331,7 +331,7 @@ elif page == "RFM Analysis":
         )
 
 # ==========================================================
-# ELBOW & SILHOUETTE ANALYSIS
+# CLUSTER SELECTION
 # ==========================================================
 
 elif page == "Cluster Selection":
@@ -340,7 +340,7 @@ elif page == "Cluster Selection":
 
     st.subheader("Elbow Method")
     try:
-        st.image("elbow.png", use_container_width=True)
+        st.image("Images/elbow.png", use_container_width=True)
             
     except:
            st.warning("elbow.png not found.")
@@ -359,7 +359,7 @@ elif page == "Cluster Selection":
     st.subheader("Silhouette Analysis")
 
     try:
-        st.image("silhouette.png", use_container_width=True)
+        st.image("Images/silhouette.png", use_container_width=True)
             
     except:
            st.warning("silhouette_plot.png not found.")
@@ -377,7 +377,7 @@ elif page == "Cluster Selection":
     st.subheader("Davis-Bouldin-Index Analysis")
 
     try:
-        st.image("dbi.png", use_container_width=True)
+        st.image("Images/dbi.png", use_container_width=True)
     except:
            st.warning("dbi.png not found.")
 

@@ -341,7 +341,7 @@ elif page == "Cluster Selection":
 
     st.subheader("Elbow Method")
     try:
-        with open("elbow.html","r", encoding="utf-8") as f:
+        with open("Images/elbow.html","r", encoding="utf-8") as f:
              html = f.read()
         components.html(html,height=500,scrolling=True)
             
@@ -362,7 +362,7 @@ elif page == "Cluster Selection":
     st.subheader("Silhouette Analysis")
 
     try:
-        with open("silhouette.html","r", encoding="utf-8") as f:
+        with open("Images/silhouette.html","r", encoding="utf-8") as f:
              html = f.read()
         components.html(html,height=500,scrolling=True)
             
@@ -382,7 +382,7 @@ elif page == "Cluster Selection":
     st.subheader("Davis-Bouldin-Index Analysis")
 
     try:
-        with open("dbi.html","r", encoding="utf-8") as f:
+        with open("Images/dbi.html","r", encoding="utf-8") as f:
              html = f.read()
         components.html(html,height=500,scrolling=True)
     except:

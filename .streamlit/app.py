@@ -28,7 +28,7 @@ def load_data():
     df["InvoiceDate"] = pd.to_datetime(df["InvoiceDate"])
     df["Revenue"] = df["Quantity"] * df["UnitPrice"]
     df["YearMonth"] = df["InvoiceDate"].dt.to_period("M").astype(str)
-    rfm = pd.read_csv("rfm_dataset.csv")
+    rfm = pd.read_csv("Data/rfm_dataset.csv")
     comparison = pd.read_csv("Data/algorithm_comparison.csv")
     profiles = pd.read_csv("Data/cluster_profiles.csv")
     profiles.rename(columns={"Unnamed: 0": "Cluster"}, inplace=True)

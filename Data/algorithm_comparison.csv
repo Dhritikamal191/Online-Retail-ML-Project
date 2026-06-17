@@ -1,0 +1,4 @@
+Algorithm,Silhouette Score,Davies-Bouldin Index
+K-Means,0.4257,0.8921
+Hierarchical,0.4033,0.9246
+DBSCAN,0.515,1.8796

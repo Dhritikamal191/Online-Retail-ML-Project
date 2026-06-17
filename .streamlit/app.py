@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 from PIL import Image
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
+import streamlit.components.v1 as components
 # ==========================================================
 # PAGE CONFIGURATION
 # ==========================================================
@@ -340,10 +341,12 @@ elif page == "Cluster Selection":
 
     st.subheader("Elbow Method")
     try:
-        st.image("Images/elbow.html", use_container_width=True)
+        with open("elbow.html","r", encoding="utf-8") as f:
+             html = f.read()
+        components.html(html,height=500,scrolling=True)
             
     except:
-           st.warning("elbow.png not found.")
+           st.warning("elbow.html not found.")
 
     st.markdown("""
     **Interpretation:**
@@ -359,10 +362,12 @@ elif page == "Cluster Selection":
     st.subheader("Silhouette Analysis")
 
     try:
-        st.image("Images/silhouette.html", use_container_width=True)
+        with open("silhouette.html","r", encoding="utf-8") as f:
+             html = f.read()
+        components.html(html,height=500,scrolling=True)
             
     except:
-           st.warning("silhouette_plot.png not found.")
+           st.warning("silhouette.html not found.")
 
     st.markdown(f"""
     **Interpretation:**
@@ -377,9 +382,11 @@ elif page == "Cluster Selection":
     st.subheader("Davis-Bouldin-Index Analysis")
 
     try:
-        st.image("Images/dbi.html", use_container_width=True)
+        with open("dbi.html","r", encoding="utf-8") as f:
+             html = f.read()
+        components.html(html,height=500,scrolling=True)
     except:
-           st.warning("dbi.png not found.")
+           st.warning("dbi.html not found.")
 
     st.markdown(f"""
     **Interpretation:**

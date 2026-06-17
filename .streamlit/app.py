@@ -340,7 +340,7 @@ elif page == "Cluster Selection":
 
     st.subheader("Elbow Method")
     try:
-        st.image("Images/elbow.png", use_container_width=True)
+        st.image("Images/elbow.html", use_container_width=True)
             
     except:
            st.warning("elbow.png not found.")
@@ -359,7 +359,7 @@ elif page == "Cluster Selection":
     st.subheader("Silhouette Analysis")
 
     try:
-        st.image("Images/silhouette.png", use_container_width=True)
+        st.image("Images/silhouette.html", use_container_width=True)
             
     except:
            st.warning("silhouette_plot.png not found.")
@@ -377,7 +377,7 @@ elif page == "Cluster Selection":
     st.subheader("Davis-Bouldin-Index Analysis")
 
     try:
-        st.image("Images/dbi.png", use_container_width=True)
+        st.image("Images/dbi.html", use_container_width=True)
     except:
            st.warning("dbi.png not found.")
 

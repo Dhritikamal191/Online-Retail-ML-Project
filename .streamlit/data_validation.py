@@ -4,7 +4,6 @@ from config import load_config
 
 config = load_config()
 
-
 class DataValidation:
 
     def __init__(self, df):

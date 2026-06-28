@@ -56,3 +56,7 @@ model:
   dbscan:
     eps: 0.8
     min_samples: 10
+
+mlflow:
+  experiment_name: Online Retail Customer Segmentation
+  tracking_uri: mlruns

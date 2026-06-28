@@ -1,5 +1,5 @@
-from src.data_ingestion import DataIngestion
-from src.preprocessing import DataPreprocessor
+from data_ingestion import DataIngestion
+from preprocessing import DataPreprocessor
 
 ingestion = DataIngestion()
 

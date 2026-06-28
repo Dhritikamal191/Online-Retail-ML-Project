@@ -1,4 +1,4 @@
-from src.train import TrainModels
+from train import TrainModels
 
 trainer = TrainModels()
 

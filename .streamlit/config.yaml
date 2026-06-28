@@ -29,3 +29,9 @@ validation:
     - UnitPrice
     - CustomerID
     - Country
+
+preprocessing:
+  remove_missing_customer: true
+  remove_cancelled_orders: true
+  remove_negative_quantity: true
+  remove_negative_price: true

@@ -1,11 +1,10 @@
 import os
 import pandas as pd
 
-from src.logger import logger
-from src.config import load_config
+from logger import logger
+from config import load_config
 
 config = load_config()
-
 
 class DataPreprocessor:
 

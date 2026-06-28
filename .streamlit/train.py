@@ -1,7 +1,8 @@
 import os
 import joblib
 import pandas as pd
-
+import mlflow
+import mlflow.sklearn
 from sklearn.cluster import KMeans
 from sklearn.cluster import AgglomerativeClustering
 from sklearn.cluster import DBSCAN
@@ -17,6 +18,11 @@ from src.config import load_config
 
 config = load_config()
 
+mlflow.set_tracking_uri(config["mlflow"]["tracking_uri"])
+
+mlflow.set_experiment(
+    config["mlflow"]["experiment_name"]
+)
 
 class TrainModels:
 

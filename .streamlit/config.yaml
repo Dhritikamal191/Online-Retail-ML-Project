@@ -1,0 +1,20 @@
+project:
+  name: Online Retail Customer Segmentation
+  version: 1.0.0
+
+data:
+  raw_data: data/raw/Online Retail.xlsx
+  processed_data: data/processed/retail_clean.csv
+
+artifacts:
+  model_dir: artifacts/models
+  scaler_dir: artifacts/scalers
+  metrics_dir: artifacts/metrics
+
+model:
+  random_state: 42
+  n_clusters: 4
+
+logging:
+  log_dir: logs
+  log_file: retail.log

@@ -3,7 +3,7 @@ project:
   version: 1.0.0
 
 data:
-  raw_data: data/raw/Online Retail.xlsx
+  raw_data: data/raw/Online_Retail.xlsx
   processed_data: data/processed/retail_clean.csv
 
 artifacts:

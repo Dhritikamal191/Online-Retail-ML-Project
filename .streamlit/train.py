@@ -13,8 +13,8 @@ from sklearn.metrics import (
     calinski_harabasz_score
 )
 
-from src.logger import logger
-from src.config import load_config
+from logger import logger
+from config import load_config
 
 config = load_config()
 
@@ -168,7 +168,6 @@ class TrainModels:
 
                    best_labels = labels
   
-
         os.makedirs(
             "artifacts/models",
             exist_ok=True

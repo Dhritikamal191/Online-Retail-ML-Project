@@ -102,24 +102,72 @@ class TrainModels:
 
         for name, model in models.items():
 
-            logger.info(f"Training {name}")
+            with mlflow.start_run(run_name=name):
 
-            labels = model.fit_predict(self.X)
+                logger.info(f"Training {name}")
 
-            metrics = self.evaluate(name, labels)
+                labels = model.fit_predict(self.X)
 
-            if metrics is None:
-                continue
+                metrics = self.evaluate(name, labels)
 
-            results.append(metrics)
+                if metrics is None:
+                   continue
 
-            if metrics["Silhouette"] > best_score:
+                results.append(metrics)
 
-                best_score = metrics["Silhouette"]
+                mlflow.log_param("Model", name)
 
-                best_model = model
+                if name == "KMeans":
+                   mlflow.log_param(
+                "Clusters",
+                config["model"]["kmeans"]["n_clusters"]
+            )
 
-                best_labels = labels
+                elif name == "Agglomerative":
+                     mlflow.log_param(
+                "Clusters",
+                config["model"]["agglomerative"]["n_clusters"]
+            )
+
+                elif name == "DBSCAN":
+                     mlflow.log_param(
+                "eps",
+                config["model"]["dbscan"]["eps"]
+            )
+
+                mlflow.log_param(
+                "min_samples",
+                config["model"]["dbscan"]["min_samples"]
+            )
+
+                mlflow.log_metric(
+                 "Silhouette",
+            metrics["Silhouette"]
+        )
+
+                mlflow.log_metric(
+            "Davies",
+            metrics["Davies"]
+        )
+
+                mlflow.log_metric(
+            "Calinski",
+            metrics["Calinski"]
+        )
+
+                mlflow.sklearn.log_model(
+            model,
+            name
+        )
+
+                if metrics["Silhouette"] > best_score:
+
+                   best_score = metrics["Silhouette"]
+
+                   best_model = model
+
+                   best_labels = labels
+  
 
         os.makedirs(
             "artifacts/models",
@@ -144,14 +192,23 @@ class TrainModels:
 
         )
 
-        pd.DataFrame(results).to_csv(
+        metrics_df = pd.DataFrame(results)
 
-            "artifacts/model_metrics.csv",
-
-            index=False
-
+        metrics_df.to_csv(
+    "artifacts/model_metrics.csv",
+    index=False
         )
 
+        mlflow.log_artifact(
+    "artifacts/model_metrics.csv"
+        )
+    
+        mlflow.log_artifact(
+    "artifacts/rfm_clustered.csv")
+   
+        mlflow.sklearn.log_model(
+    best_model,artifact_path="best_model")
+       
         logger.info("Best Model Saved")
 
         return pd.DataFrame(results)

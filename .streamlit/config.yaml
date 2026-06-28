@@ -42,3 +42,17 @@ features:
 artifacts:
   rfm_dataset: artifacts/rfm_features.csv
   scaler: artifacts/scalers/rfm_scaler.pkl
+
+model:
+
+  random_state: 42
+
+  kmeans:
+    n_clusters: 4
+
+  agglomerative:
+    n_clusters: 4
+
+  dbscan:
+    eps: 0.8
+    min_samples: 10

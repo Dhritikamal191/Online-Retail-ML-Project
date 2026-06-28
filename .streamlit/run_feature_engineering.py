@@ -1,7 +1,7 @@
 import pandas as pd
 
-from src.feature_engineering import FeatureEngineering
-from src.config import load_config
+from feature_engineering import FeatureEngineering
+from config import load_config
 
 config = load_config()
 

@@ -35,3 +35,10 @@ preprocessing:
   remove_cancelled_orders: true
   remove_negative_quantity: true
   remove_negative_price: true
+
+features:
+  reference_date: "2011-12-10"
+
+artifacts:
+  rfm_dataset: artifacts/rfm_features.csv
+  scaler: artifacts/scalers/rfm_scaler.pkl

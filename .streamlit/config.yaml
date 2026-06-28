@@ -18,3 +18,14 @@ model:
 logging:
   log_dir: logs
   log_file: retail.log
+
+validation:
+  required_columns:
+    - InvoiceNo
+    - StockCode
+    - Description
+    - Quantity
+    - InvoiceDate
+    - UnitPrice
+    - CustomerID
+    - Country

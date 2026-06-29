@@ -1,0 +1,62 @@
+project:
+  name: Online Retail Customer Segmentation
+  version: 1.0.0
+
+data:
+  raw_data: data/Online_Retail.xlsx
+  processed_data: data/retail_clean.csv
+
+artifacts:
+  model_dir: artifacts/models
+  scaler_dir: artifacts/scalers
+  metrics_dir: artifacts/metrics
+
+model:
+  random_state: 42
+  n_clusters: 4
+
+logging:
+  log_dir: logs
+  log_file: retail.log
+
+validation:
+  required_columns:
+    - InvoiceNo
+    - StockCode
+    - Description
+    - Quantity
+    - InvoiceDate
+    - UnitPrice
+    - CustomerID
+    - Country
+
+preprocessing:
+  remove_missing_customer: true
+  remove_cancelled_orders: true
+  remove_negative_quantity: true
+  remove_negative_price: true
+
+features:
+  reference_date: "2011-12-10"
+
+artifacts:
+  rfm_dataset: artifacts/rfm_features.csv
+  scaler: artifacts/scalers/rfm_scaler.pkl
+
+model:
+
+  random_state: 42
+
+  kmeans:
+    n_clusters: 4
+
+  agglomerative:
+    n_clusters: 4
+
+  dbscan:
+    eps: 0.8
+    min_samples: 10
+
+mlflow:
+  experiment_name: Online Retail Customer Segmentation
+  tracking_uri: mlruns

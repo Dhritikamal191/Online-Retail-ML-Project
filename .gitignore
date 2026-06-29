@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+
+logs/
+
+artifacts/models/
+artifacts/scalers/
+artifacts/metrics/
+
+mlruns/
+
+.env
+
+.vscode/
+
+.idea/

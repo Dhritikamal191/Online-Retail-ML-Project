@@ -21,3 +21,12 @@
 2026-06-29 09:25:11,684 | INFO | Creating TotalPrice Feature
 2026-06-29 09:25:17,653 | INFO | Processed Dataset Saved : artifacts/retail_clean.csv
 2026-06-29 09:25:17,654 | INFO | Preprocessing Completed Successfully
+2026-06-29 14:59:22,425 | INFO | Training KMeans
+2026-06-29 14:59:29,058 | INFO | KMeans model saved
+2026-06-29 15:02:46,152 | INFO | Training Agglomerative
+2026-06-29 15:04:33,896 | INFO | Training DBSCAN
+2026-06-29 15:11:10,402 | INFO | Training KMeans
+2026-06-29 15:11:12,457 | INFO | KMeans model saved
+2026-06-29 15:14:01,398 | INFO | Training Agglomerative
+2026-06-29 15:15:33,130 | INFO | Training DBSCAN
+2026-06-29 15:16:53,543 | INFO | Best Model Saved

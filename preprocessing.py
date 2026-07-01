@@ -110,3 +110,13 @@ class DataPreprocessor:
         logger.info("Preprocessing Completed Successfully")
 
         return self.df
+
+if __name__ == "__main__":
+   from data_ingestion import DataIngestion
+   print("Main block running")
+   ingestion = DataIngestion()
+   df = ingestion.load_data()
+   preprocessor = DataPreprocessor(df)
+   clean_df = preprocessor.preprocess()
+   print(clean_df.head)
+   print(clean_df.shape)

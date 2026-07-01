@@ -43,3 +43,5 @@ def detect_drift():
              print("Drift is within acceptable limits.")
 
     return drift_df.to_dict(orient="records")
+
+print(detect_drift())

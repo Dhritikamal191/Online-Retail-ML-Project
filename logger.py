@@ -18,3 +18,6 @@ logging.basicConfig(
 )
 
 logger = logging.getLogger(__name__)
+
+logger.info("Project Started Successfully")
+print("Logger Working")

@@ -30,6 +30,9 @@ CustomerFeatures):
 
     cluster = predict_cluster(customer.dict())
 
+    cluster = int(cluster)
+    segment_names = { 0: "New Customers", 1: "VIP Customers", 2: "At Risk Customers", 3: "Inactive Customers"}
+    segment = segment_names.get(cluster, "Unknown")
     log = customer.dict()
     log["Timestamp"] = datetime.now().strftime("%Y-%m-%d %H:%H:%S")
     log["PredictedCluster"] = int(cluster)
@@ -40,7 +43,7 @@ CustomerFeatures):
     else:
          log_df.to_csv(LOG_FILE, index=False)
 
-    return {"cluster": cluster}
+    return {"cluster": cluster,"segment": segment}
 
 @app.get("/monitor")
 def monitor():

@@ -1,14 +1,11 @@
 import os
 import joblib
 import pandas as pd
-
 from sklearn.preprocessing import StandardScaler
-
 from logger import logger
 from config import load_config
 
 config = load_config()
-
 
 class FeatureEngineering:
 
@@ -140,3 +137,13 @@ class FeatureEngineering:
         self.save_dataset()
 
         return self.rfm, self.scaled_df
+
+config = load_config()
+if __name__ == "__main__":
+   from preprocessing import DataPreprocessor
+   df = pd.read_csv(config["data"]["processed_data"])
+   df["InvoiceDate"] = pd.to_datetime(df["InvoiceDate"])
+   feature = FeatureEngineering(df)
+   rfm, scaled = feature.run()
+   print(rfm.head())
+   print(scaled.head())

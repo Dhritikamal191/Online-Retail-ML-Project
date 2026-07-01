@@ -102,6 +102,14 @@ class TrainModels:
 
         self.df["Cluster"] = best_labels
 
+        cluster_profiles= self.df.groupby("Cluster").agg({"Recency": "mean", "Frequency": "mean", "Monetary": "mean"}).round(2)
+
+        segment_names = { 0: "New Customers", 1: "VIP Customers", 2: "At Risk Customers", 3: "Inactive Customers"}
+
+        cluster_profiles["Segment"] = cluster_profiles.index.map(segment_names)
+
+        cluster_profiles.to_csv("artifacts/cluster_profiles.csv")
+
         self.df.to_csv("artifacts/rfm_clustered.csv",index=False)
 
         metrics_df = pd.DataFrame(results)
@@ -117,3 +125,8 @@ class TrainModels:
         logger.info("Best Model Saved")
 
         return pd.DataFrame(results)
+
+if __name__ == "__main__":
+   print("Main block running")
+   trainer =TrainModels()
+   trainer.train()

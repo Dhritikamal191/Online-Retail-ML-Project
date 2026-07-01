@@ -2,7 +2,6 @@ import pandas as pd
 from logger import logger
 from config import load_config
 import os
-
 config = load_config()
 
 class DataValidation:
@@ -84,3 +83,12 @@ class DataValidation:
         self.check_negative_values()
 
         logger.info("Validation Completed Successfully")
+
+if __name__ == "__main__":
+   from data_ingestion import DataIngestion
+   ingestion = DataIngestion()
+   print("Main block running")
+   df= ingestion.load_data()
+   validator = DataValidation(df)
+   validator.validate()
+   print("Validation Completed")

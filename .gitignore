@@ -1,5 +1,7 @@
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
 
 logs/
 
@@ -8,6 +10,8 @@ artifacts/scalers/
 artifacts/metrics/
 
 mlruns/
+
+mlflow.db
 
 .env
 

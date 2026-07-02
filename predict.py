@@ -1,19 +1,44 @@
 import joblib
 import pandas as pd
-from datetime import datetime
-model=joblib.load("artifacts/models/kmeans_model.pkl")
-scaler=joblib.load("artifacts/scalers/rfm_scaler.pkl")
+
+model = joblib.load("artifacts/models/kmeans_model.pkl")
+scaler = joblib.load("artifacts/scalers/rfm_scaler.pkl")
+
+SEGMENT_NAMES = {
+    0: "New Customers",
+    1: "VIP Customers",
+    2: "At Risk Customers",
+    3: "Inactive Customers"
+}
 
 def predict_cluster(data):
-    df=pd.DataFrame([{"Recency": recency, "Frequency": frequency, "Monetary": monetary, "AverageageOrderValue": average_order_value, "CustomerValue": customer_value}])
-    print("Input columns:", df.columns.tolist())
-    if hasattr(scaler, "feature_names_in_"):
-       print("Expected columns:", scaler.feature_names_in_)
+
+    recency = data["Recency"]
+    frequency = data["Frequency"]
+    monetary = data["Monetary"]
+
+    # Engineer the missing features
+    average_order_value = monetary / frequency if frequency > 0 else 0
+    customer_value = frequency * average_order_value
+
+    df = pd.DataFrame([{
+        "Recency": recency,
+        "Frequency": frequency,
+        "Monetary": monetary,
+        "AverageOrderValue": average_order_value,
+        "CustomerValue": customer_value
+    }])
+
     scaled = scaler.transform(df)
-    cluster = model.predict(scaled)
-    return int(cluster[0])
 
-if __name__ == "__main__":
-   test = {"Recency": 30, "Frequency": 5, "Monetary": 500}
+    cluster = int(model.predict(scaled)[0])
 
-   print(predict_cluster(test))
+    segment = SEGMENT_NAMES.get(cluster, "Unknown")
+
+    distance = float(model.transform(scaled).min())
+
+    return {
+        "cluster": cluster,
+        "segment": segment,
+        "distance": distance
+    }

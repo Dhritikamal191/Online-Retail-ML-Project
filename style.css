@@ -1,0 +1,170 @@
+/* --------------------------
+   GLOBAL
+-------------------------- */
+
+html,
+body,
+[data-testid="stAppViewContainer"]{
+
+    background:#0f172a;
+    color:white;
+
+}
+
+/* --------------------------
+   SIDEBAR
+-------------------------- */
+
+section[data-testid="stSidebar"]{
+
+    background:#111827;
+
+}
+
+/* --------------------------
+   HEADINGS
+-------------------------- */
+
+h1,h2,h3,h4,h5{
+
+    color:white;
+
+}
+
+/* --------------------------
+   KPI CARDS
+-------------------------- */
+
+.metric-card{
+
+    background:#1e293b;
+
+    border-radius:18px;
+
+    padding:20px;
+
+    border:1px solid #334155;
+
+    box-shadow:0px 6px 20px rgba(0,0,0,.35);
+
+}
+
+/* --------------------------
+   STREAMLIT METRICS
+-------------------------- */
+
+div[data-testid="metric-container"]{
+
+    background:#1e293b;
+
+    border-radius:15px;
+
+    border:1px solid #334155;
+
+    padding:18px;
+
+}
+
+/* --------------------------
+   BUTTONS
+-------------------------- */
+
+.stButton>button{
+
+    width:100%;
+
+    border-radius:12px;
+
+    background:#2563eb;
+
+    color:white;
+
+    border:none;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.stButton>button:hover{
+
+    background:#1d4ed8;
+
+}
+
+/* --------------------------
+   DATAFRAMES
+-------------------------- */
+
+[data-testid="stDataFrame"]{
+
+    border-radius:15px;
+
+}
+
+/* --------------------------
+   INPUTS
+-------------------------- */
+
+.stSelectbox,
+.stNumberInput,
+.stSlider{
+
+    background:#1e293b;
+
+}
+
+/* --------------------------
+   SUCCESS
+-------------------------- */
+
+.stSuccess{
+
+    border-radius:12px;
+
+}
+
+/* --------------------------
+   WARNING
+-------------------------- */
+
+.stWarning{
+
+    border-radius:12px;
+
+}
+
+/* --------------------------
+   ERROR
+-------------------------- */
+
+.stError{
+
+    border-radius:12px;
+
+}
+
+/* --------------------------
+   INFO
+-------------------------- */
+
+.stInfo{
+
+    border-radius:12px;
+
+}
+
+/* --------------------------
+   FOOTER
+-------------------------- */
+
+.footer{
+
+    text-align:center;
+
+    color:#94a3b8;
+
+    padding:25px;
+
+}

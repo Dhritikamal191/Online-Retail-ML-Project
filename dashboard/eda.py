@@ -1,0 +1,311 @@
+import streamlit as st
+import pandas as pd
+from utils import load_dataset
+import plotly.express as px
+import plotly.graph_objects as go
+
+def eda_page():
+    st.title("📊 Exploratory Data Analysis")
+
+    # Load dataset
+    df = load_dataset()
+
+    # -----------------------------
+    # Sidebar Filters
+    # -----------------------------
+    
+    st.sidebar.header("EDA Filters")
+
+    cluster_filter = st.sidebar.multiselect("Select Cluster",sorted(df["Cluster"].unique()),default=sorted(df["Cluster"].unique()))
+
+    df = df[df["Cluster"].isin(cluster_filter)]
+
+    # -----------------------------
+    # KPI Cards
+    # -----------------------------
+
+    col1, col2, col3, col4 = st.columns(4)
+
+    col1.metric("Customers",len(df))
+
+    col2.metric("Clusters",df["Cluster"].nunique())
+
+    col3.metric("Avg Monetary",f"{df['Monetary'].mean():.2f}")
+
+    col4.metric("Avg Frequency",f"{df['Frequency'].mean():.2f}")
+
+    st.divider()
+
+    # ==========================================
+    # Cluster Distribution
+    # ==========================================
+
+    st.subheader("Customer Distribution by Cluster")
+
+    cluster_counts = (df["Cluster"].value_counts().sort_index().reset_index())
+
+    cluster_counts.columns = ["Cluster", "Customers"]
+
+    fig = px.bar(cluster_counts,x="Cluster",y="Customers",color="Cluster",text="Customers",title="Customers in Each Cluster")
+
+    fig.update_layout(xaxis_title="Cluster",yaxis_title="Number of Customers",template="plotly_white")
+
+    st.plotly_chart(fig, use_container_width=True)
+
+    # ==========================================
+    # Recency Distribution
+    # ==========================================
+
+    st.subheader("Recency Distribution")
+
+    fig = px.histogram(df,x="Recency",nbins=40,color="Cluster",marginal="box",title="Customer Recency")
+
+    fig.update_layout(template="plotly_white")
+
+    st.plotly_chart(fig, use_container_width=True)
+
+    # ==========================================
+    # Frequency Distribution
+    # ==========================================
+
+    st.subheader("Frequency Distribution")
+
+    fig = px.histogram(df,x="Frequency",nbins=40,color="Cluster",marginal="box",title="Purchase Frequency")
+
+    fig.update_layout(template="plotly_white")
+
+    st.plotly_chart(fig, use_container_width=True)
+
+    # ==========================================
+    # Monetary Distribution
+    # ==========================================
+
+    st.subheader("Monetary Distribution")
+
+    fig = px.histogram(df,x="Monetary",nbins=40,color="Cluster",marginal="box",title="Customer Spending")
+
+    fig.update_layout(template="plotly_white")
+
+    st.plotly_chart(fig, use_container_width=True)
+
+    st.divider()
+
+    # =====================================================
+    # RFM SCATTER PLOTS
+    # =====================================================
+
+    st.header("📈 RFM Relationship Analysis")
+
+    plot_df = df.copy()
+
+    plot_df["Monetary_Size"] = plot_df["Monetary"].abs() + 1
+    plot_df["Recency_Size"] = plot_df["Recency"].abs() + 1
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+
+         fig = px.scatter(plot_df,x= "Recency",y="Frequency",color="Cluster",
+size="Monetary_Size",hover_data=["Recency", "Frequency", "Monetary"],title="Recency vs Frequency")
+
+         fig.update_layout (template="plotly_dark")
+
+         st.plotly_chart(fig, use_container_width=True)
+
+    with col2:
+
+         fig = px.scatter(plot_df,x= "Frequency",y="Monetary",color="Cluster",
+size="Recency_Size",hover_data=["Recency", "Frequency", "Monetary"],title="Frequency vs Monetary")
+
+         fig.update_layout (template="plotly_dark")
+
+         st.plotly_chart(fig, use_container_width=True)
+
+    # =====================================
+    # BUBBLE CHART
+    # =====================================
+
+    st.markdown("---")    
+
+    st.subheader("Customer Bubble Analysis")
+
+    plot_df = df.copy()
+
+    plot_df["Frequency_Size"] = plot_df["Frequency"].abs() + 1
+
+    fig = px.scatter(
+    plot_df,
+    x="Recency",
+    y="Monetary",
+    size="Frequency_Size",
+    color="Cluster",
+    hover_data=["Recency", "Frequency", "Monetary"],
+    title="Customer Segments"
+    )
+
+    fig.update_layout(
+    template="plotly_dark",
+    height=650
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
+
+    # =====================================================
+    # CORRELATION HEATMAP
+    # =====================================================
+
+    st.markdown("---")
+
+    st.subheader("Correlation Heatmap")
+
+    corr = df[["Recency","Frequency","Monetary"]].corr()
+
+    fig = px.imshow(corr,text_auto=True,color_continuous_scale="Blues",aspect="auto")
+
+    fig.update_layout(template="plotly_dark",height=500)
+
+    st.plotly_chart(fig,use_container_width=True)
+
+    # =====================================================
+    # CLUSTER SUMMARY
+    # =====================================================
+
+    st.markdown("---")
+
+    st.subheader("Cluster Statistics")
+
+    summary = (df.groupby("Cluster")[["Recency","Frequency","Monetary"]].mean().round(2))
+
+    st.dataframe(summary,use_container_width=True)
+
+    # =====================================================
+    # TOP CUSTOMERS
+    # =====================================================
+
+    st.markdown("---")
+
+    st.subheader("Top 20 High Value Customers")
+
+    top_customers = (df.sort_values(by="Monetary",ascending=False).head(20))
+
+    st.dataframe(top_customers,use_container_width=True)
+
+    # =====================================================
+    # MONETARY CONTRIBUTION
+    # =====================================================
+
+    st.markdown("---")
+
+    st.subheader("Revenue Contribution")
+
+    cluster_sales = (df.groupby("Cluster")["Monetary"].sum().reset_index())
+
+    fig = px.pie(cluster_sales,names="Cluster",values="Monetary",hole=.55,title="Revenue Contribution by Cluster")
+
+    fig.update_layout(template="plotly_dark",height=600)
+
+    st.plotly_chart(fig,use_container_width=True)
+
+    # ==========================================================
+    # ADVANCED ANALYTICS
+    # ==========================================================
+
+    st.header("📈 Advanced Business Analytics")
+
+    # ----------------------------------------------------------
+    # Treemap
+    # ----------------------------------------------------------
+
+    st.subheader("Customer Value Treemap")
+
+    fig = px.treemap(df,path=["Cluster"],values="Monetary",color="Monetary",color_continuous_scale="Blues")
+
+    fig.update_layout(template="plotly_dark",height=650)
+
+    st.plotly_chart(fig,use_container_width=True)
+
+    # ----------------------------------------------------------
+    # Box Plot
+    # ----------------------------------------------------------
+
+    st.markdown("---")
+
+    col1,col2=st.columns(2)
+
+    with col1:
+         fig=px.box(df,x="Cluster",y="Monetary",color="Cluster",title="Monetary Distribution")
+         fig.update_layout(template="plotly_dark")
+         st.plotly_chart(fig,use_container_width=True)
+
+    with col2:
+         fig=px.box(df,x="Cluster",y="Frequency",color="Cluster",title="Frequency Distribution")
+         fig.update_layout(template="plotly_dark")
+         st.plotly_chart(fig,use_container_width=True)
+
+    # ----------------------------------------------------------
+    # Violin Plot
+    # ----------------------------------------------------------
+
+    st.markdown("---")
+
+    fig=px.violin(df,x="Cluster",y="Recency",color="Cluster",box=True,title="Customer Recency")
+
+    fig.update_layout(template="plotly_dark",height=600)
+
+    st.plotly_chart(fig,use_container_width=True)
+
+    # ----------------------------------------------------------
+    # Radar Chart
+    # ----------------------------------------------------------
+
+    st.markdown("---")
+
+    st.subheader("Cluster Profile Radar")
+
+    radar = (df.groupby("Cluster")[["Recency","Frequency","Monetary"]].mean())
+
+    cluster_choice = st.selectbox("Select Cluster",radar.index)
+
+    values = radar.loc[cluster_choice]
+
+    fig = go.Figure()
+
+    fig.add_trace(go.Scatterpolar(r=values.values,theta=["Recency","Frequency","Monetary"],fill="toself",name=f"Cluster {cluster_choice}"))
+
+    fig.update_layout(polar=dict(radialaxis=dict(visible=True)),template="plotly_dark",height=600)
+
+    st.plotly_chart(fig,use_container_width=True)
+
+    # ----------------------------------------------------------
+    # Parallel Coordinates
+    # ----------------------------------------------------------
+
+    st.markdown("---")
+
+    st.subheader("Parallel Coordinates")
+
+    fig = px.parallel_coordinates(df,color="Cluster",dimensions=["Recency","Frequency","Monetary"],color_continuous_scale=px.colors.sequential.Blues)
+
+    st.plotly_chart(fig,use_container_width=True)
+
+    # ----------------------------------------------------------
+    # Cluster Table
+    # ----------------------------------------------------------
+
+    st.markdown("---")
+
+    st.subheader("Cluster Summary")
+
+    summary = (df.groupby("Cluster").agg({"Recency":"mean","Frequency":"mean","Monetary":"mean"}).round(2))
+
+    st.dataframe(summary,use_container_width=True)
+
+    # ----------------------------------------------------------
+    # Download Analytics
+    # ----------------------------------------------------------
+
+    st.markdown("---")
+
+    csv = summary.to_csv(index=True).encode()
+
+    st.download_button("⬇ Download Cluster Summary",csv,"cluster_summary.csv","text/csv")

@@ -1,0 +1,5 @@
+Cluster,Recency,Frequency,Monetary,Segment
+0,-0.52,0.1,0.01,New Customers
+1,-0.85,9.32,20.55,VIP Customers
+2,1.52,-0.35,-0.17,At Risk Customers
+3,0.7,-0.36,13.44,Inactive Customers

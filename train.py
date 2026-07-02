@@ -100,9 +100,15 @@ class TrainModels:
 
         joblib.dump(best_model,"artifacts/models/best_model.pkl")
 
-        self.df["Cluster"] = best_labels
+        kmeans = KMeans(n_clusters=config["model"]["kmeans"]["n_clusters"],random_state=config["model"]["random_state"])
 
-        cluster_profiles= self.df.groupby("Cluster").agg({"Recency": "mean", "Frequency": "mean", "Monetary": "mean"}).round(2)
+        kmeans_labels = kmeans.fit_predict(self.X)
+
+        joblib.dump(kmeans, "artifacts/models/kmeans_model.pkl")
+
+        self.df["Cluster"] = kmeans_labels
+
+        cluster_profiles = self.df.groupby("Cluster").agg({"Recency": "mean","Frequency": "mean","Monetary": "mean"}).round(2)
 
         segment_names = { 0: "New Customers", 1: "VIP Customers", 2: "At Risk Customers", 3: "Inactive Customers"}
 

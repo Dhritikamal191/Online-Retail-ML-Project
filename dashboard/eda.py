@@ -44,7 +44,7 @@ def eda_page():
     float(df["Recency"].max())
     )
 
-top_n = st.sidebar.slider("Top Customers",10,
+    top_n = st.sidebar.slider("Top Customers",10,
 100,20)
 
     filtered_df = df[

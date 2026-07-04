@@ -1,0 +1,15 @@
+artifact_path: file:C:/Users/Lenovo/Downloads/Online_Retail_Project/mlruns/1/models/m-c9e172847db24a518353b8a005e9d82f/artifacts
+flavors:
+  sklearn:
+    code: null
+    pickled_model: model.skops
+    serialization_format: skops
+    sklearn_version: 1.5.0
+    skops_trusted_types: null
+mlflow_version: 3.14.0
+model_id: m-c9e172847db24a518353b8a005e9d82f
+model_size_bytes: 247183
+model_uuid: m-c9e172847db24a518353b8a005e9d82f
+prompts: null
+run_id: 5583a61df997414da47b35518286b1c6
+utc_time_created: '2026-06-29 09:34:42.239878'

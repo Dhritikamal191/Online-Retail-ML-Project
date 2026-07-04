@@ -1,0 +1,34 @@
+2026-06-30 22:13:48,374 | INFO | Training KMeans
+2026-06-30 22:13:52,218 | INFO | KMeans model saved
+2026-06-30 22:18:19,266 | INFO | Training Agglomerative
+2026-06-30 22:19:28,532 | INFO | Training DBSCAN
+2026-06-30 22:20:36,364 | INFO | Best Model Saved
+2026-06-30 22:29:12,567 | INFO | Loading Dataset
+2026-06-30 22:31:38,476 | INFO | Dataset Loaded Successfully : (541909, 8)
+2026-06-30 22:32:51,506 | INFO | Loading Dataset
+2026-06-30 22:35:05,728 | INFO | Dataset Loaded Successfully : (541909, 8)
+2026-06-30 22:35:05,728 | INFO | Checking Required Columns
+2026-06-30 22:35:07,657 | INFO | Column Validation Passed
+2026-06-30 22:35:07,659 | INFO | Checking Missing Values
+2026-06-30 22:35:07,934 | INFO | 
+InvoiceNo           0
+StockCode           0
+Description      1454
+Quantity            0
+InvoiceDate         0
+UnitPrice           0
+CustomerID     135080
+Country             0
+dtype: int64
+2026-06-30 22:35:08,742 | INFO | Checking Duplicate Rows
+2026-06-30 22:35:10,238 | INFO | Duplicate Rows : 5268
+2026-06-30 22:35:10,238 | INFO | Checking Negative Quantity and UnitPrice
+2026-06-30 22:35:10,264 | INFO | Negative Quantity : 10624
+2026-06-30 22:35:10,265 | INFO | Negative Price : 2517
+2026-06-30 22:35:10,265 | INFO | Validation Completed Successfully
+2026-06-30 22:38:00,615 | INFO | Loading Dataset
+2026-06-30 22:40:12,704 | INFO | Dataset Loaded Successfully : (541909, 8)
+2026-06-30 22:46:11,714 | INFO | Loading Dataset
+2026-06-30 22:48:25,944 | INFO | Dataset Loaded Successfully : (541909, 8)
+2026-06-30 22:50:22,690 | INFO | Loading Dataset
+2026-06-30 22:52:40,086 | INFO | Dataset Loaded Successfully : (541909, 8)

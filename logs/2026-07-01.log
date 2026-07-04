@@ -1,0 +1,89 @@
+2026-07-01 06:57:43,511 | INFO | Loading Dataset
+2026-07-01 07:00:43,516 | INFO | Dataset Loaded Successfully : (541909, 8)
+2026-07-01 07:33:26,821 | INFO | Project Started Successfully
+2026-07-01 07:33:27,348 | INFO | Loading Dataset
+2026-07-01 07:34:35,368 | INFO | Project Started Successfully
+2026-07-01 07:35:26,646 | INFO | Dataset Loaded Successfully : (541909, 8)
+2026-07-01 07:36:15,690 | INFO | Project Started Successfully
+2026-07-01 07:37:19,835 | INFO | Project Started Successfully
+2026-07-01 07:38:44,171 | INFO | Project Started Successfully
+2026-07-01 07:40:48,827 | INFO | Project Started Successfully
+2026-07-01 07:48:33,976 | INFO | Project Started Successfully
+2026-07-01 07:50:45,544 | INFO | Project Started Successfully
+2026-07-01 07:52:18,816 | INFO | Project Started Successfully
+2026-07-01 07:53:31,980 | INFO | Project Started Successfully
+2026-07-01 07:55:25,723 | INFO | Project Started Successfully
+2026-07-01 07:56:37,412 | INFO | Project Started Successfully
+2026-07-01 07:56:58,892 | INFO | Project Started Successfully
+2026-07-01 07:59:22,383 | INFO | Project Started Successfully
+2026-07-01 08:00:26,711 | INFO | Project Started Successfully
+2026-07-01 08:02:23,063 | INFO | Project Started Successfully
+2026-07-01 08:02:23,213 | INFO | Loading Dataset
+2026-07-01 08:03:21,000 | INFO | Project Started Successfully
+2026-07-01 08:04:11,539 | INFO | Dataset Loaded Successfully : (541909, 8)
+2026-07-01 08:04:11,540 | INFO | Checking Required Columns
+2026-07-01 08:04:11,609 | INFO | Column Validation Passed
+2026-07-01 08:04:11,609 | INFO | Checking Missing Values
+2026-07-01 08:04:11,747 | INFO | 
+InvoiceNo           0
+StockCode           0
+Description      1454
+Quantity            0
+InvoiceDate         0
+UnitPrice           0
+CustomerID     135080
+Country             0
+dtype: int64
+2026-07-01 08:04:12,286 | INFO | Checking Duplicate Rows
+2026-07-01 08:04:12,943 | INFO | Duplicate Rows : 5268
+2026-07-01 08:04:12,944 | INFO | Checking Negative Quantity and UnitPrice
+2026-07-01 08:04:12,954 | INFO | Negative Quantity : 10624
+2026-07-01 08:04:12,955 | INFO | Negative Price : 2517
+2026-07-01 08:04:12,955 | INFO | Validation Completed Successfully
+2026-07-01 08:05:12,352 | INFO | Project Started Successfully
+2026-07-01 08:06:07,037 | INFO | Project Started Successfully
+2026-07-01 08:06:07,112 | INFO | Loading Dataset
+2026-07-01 08:07:33,908 | INFO | Project Started Successfully
+2026-07-01 08:07:54,037 | INFO | Dataset Loaded Successfully : (541909, 8)
+2026-07-01 08:09:33,327 | INFO | Project Started Successfully
+2026-07-01 08:11:28,679 | INFO | Project Started Successfully
+2026-07-01 08:11:28,753 | INFO | Loading Dataset
+2026-07-01 08:13:15,724 | INFO | Dataset Loaded Successfully : (541909, 8)
+2026-07-01 08:14:44,182 | INFO | Project Started Successfully
+2026-07-01 08:14:44,254 | INFO | Loading Dataset
+2026-07-01 08:16:24,334 | INFO | Dataset Loaded Successfully : (541909, 8)
+2026-07-01 08:17:04,524 | INFO | Project Started Successfully
+2026-07-01 08:17:04,599 | INFO | Loading Dataset
+2026-07-01 08:17:33,375 | INFO | Project Started Successfully
+2026-07-01 08:18:51,492 | INFO | Dataset Loaded Successfully : (541909, 8)
+2026-07-01 08:19:34,833 | INFO | Project Started Successfully
+2026-07-01 08:19:34,901 | INFO | Loading Dataset
+2026-07-01 08:21:17,770 | INFO | Dataset Loaded Successfully : (541909, 8)
+2026-07-01 08:21:17,795 | INFO | Removing Missing CustomerID
+2026-07-01 08:21:17,980 | INFO | Removed 135080 rows
+2026-07-01 08:21:17,980 | INFO | Removing Cancelled Orders
+2026-07-01 08:21:18,379 | INFO | Removed 8905 cancelled invoices
+2026-07-01 08:21:18,379 | INFO | Removing Invalid Quantity
+2026-07-01 08:21:18,406 | INFO | Removed 0 rows
+2026-07-01 08:21:18,406 | INFO | Removing Invalid UnitPrice
+2026-07-01 08:21:18,461 | INFO | Removed 40 rows
+2026-07-01 08:21:18,461 | INFO | Converting InvoiceDate
+2026-07-01 08:21:18,730 | INFO | Creating TotalPrice Feature
+2026-07-01 08:21:23,369 | INFO | Processed Dataset Saved : artifacts/retail_clean.csv
+2026-07-01 08:21:23,370 | INFO | Preprocessing Completed Successfully
+2026-07-01 08:25:14,620 | INFO | Project Started Successfully
+2026-07-01 08:26:33,807 | INFO | Project Started Successfully
+2026-07-01 08:27:05,175 | INFO | Project Started Successfully
+2026-07-01 08:29:54,519 | INFO | Project Started Successfully
+2026-07-01 08:29:59,997 | INFO | Creating RFM Features
+2026-07-01 08:30:01,174 | INFO | RFM Created
+2026-07-01 08:30:01,174 | INFO | Creating Business Features
+2026-07-01 08:30:01,177 | INFO | Scaling Features
+2026-07-01 08:30:01,427 | INFO | Scaler Saved
+2026-07-01 08:30:01,820 | INFO | Feature Dataset Saved
+2026-07-01 08:31:06,033 | INFO | Project Started Successfully
+2026-07-01 08:31:46,775 | INFO | Training KMeans
+2026-07-01 08:31:50,535 | INFO | KMeans model saved
+2026-07-01 08:34:55,521 | INFO | Training Agglomerative
+2026-07-01 08:36:21,821 | INFO | Training DBSCAN
+2026-07-01 08:40:44,588 | INFO | Best Model Saved

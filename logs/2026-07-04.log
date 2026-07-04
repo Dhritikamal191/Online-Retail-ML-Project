@@ -1,0 +1,16 @@
+2026-07-04 12:19:41,701 | INFO | Project Started Successfully
+2026-07-04 12:19:49,343 | INFO | Creating RFM Features
+2026-07-04 12:19:50,781 | INFO | RFM Created
+2026-07-04 12:19:51,204 | INFO | Raw RFM dataset saved
+2026-07-04 12:19:51,205 | INFO | Creating Business Features
+2026-07-04 12:19:51,207 | INFO | Scaling Features
+2026-07-04 12:19:51,285 | INFO | Scaler Saved
+2026-07-04 12:19:51,345 | INFO | Feature Dataset Saved
+2026-07-04 13:11:00,431 | INFO | Project Started Successfully
+2026-07-04 13:17:46,925 | INFO | Project Started Successfully
+2026-07-04 13:18:30,803 | INFO | Training KMeans
+2026-07-04 13:18:39,810 | INFO | KMeans model saved
+2026-07-04 13:23:19,963 | INFO | Training Agglomerative
+2026-07-04 13:24:20,883 | INFO | Training DBSCAN
+2026-07-04 13:24:21,397 | WARNING | DBSCAN produced only one cluster.
+2026-07-04 13:24:58,234 | INFO | Best Model Saved

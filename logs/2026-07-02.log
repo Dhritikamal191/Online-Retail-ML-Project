@@ -1,0 +1,63 @@
+2026-07-02 13:33:11,738 | INFO | Project Started Successfully
+2026-07-02 13:34:22,591 | INFO | Training KMeans
+2026-07-02 13:34:29,777 | INFO | KMeans model saved
+2026-07-02 13:40:07,852 | INFO | Training Agglomerative
+2026-07-02 13:40:54,052 | INFO | Training DBSCAN
+2026-07-02 13:41:54,534 | INFO | Best Model Saved
+2026-07-02 17:44:18,192 | INFO | Project Started Successfully
+2026-07-02 17:45:15,959 | INFO | Training KMeans
+2026-07-02 17:50:20,373 | INFO | Project Started Successfully
+2026-07-02 17:50:57,782 | INFO | Training KMeans
+2026-07-02 17:51:01,614 | INFO | KMeans model saved
+2026-07-02 17:55:05,923 | INFO | Training Agglomerative
+2026-07-02 17:56:17,492 | INFO | Training DBSCAN
+2026-07-02 17:59:32,897 | INFO | Best Model Saved
+2026-07-02 18:14:55,753 | INFO | Project Started Successfully
+2026-07-02 18:14:56,192 | INFO | Loading Dataset
+2026-07-02 18:17:07,959 | INFO | Dataset Loaded Successfully : (541909, 8)
+2026-07-02 18:19:31,780 | INFO | Project Started Successfully
+2026-07-02 18:19:32,269 | INFO | Loading Dataset
+2026-07-02 18:21:37,264 | INFO | Dataset Loaded Successfully : (541909, 8)
+2026-07-02 18:21:37,324 | INFO | Checking Required Columns
+2026-07-02 18:21:37,629 | INFO | Column Validation Passed
+2026-07-02 18:21:37,629 | INFO | Checking Missing Values
+2026-07-02 18:21:37,847 | INFO | 
+InvoiceNo           0
+StockCode           0
+Description      1454
+Quantity            0
+InvoiceDate         0
+UnitPrice           0
+CustomerID     135080
+Country             0
+dtype: int64
+2026-07-02 18:21:39,031 | INFO | Checking Duplicate Rows
+2026-07-02 18:21:42,129 | INFO | Duplicate Rows : 5268
+2026-07-02 18:21:42,130 | INFO | Checking Negative Quantity and UnitPrice
+2026-07-02 18:21:42,135 | INFO | Negative Quantity : 10624
+2026-07-02 18:21:42,135 | INFO | Negative Price : 2517
+2026-07-02 18:21:42,135 | INFO | Validation Completed Successfully
+2026-07-02 18:22:51,634 | INFO | Project Started Successfully
+2026-07-02 18:24:00,883 | INFO | Project Started Successfully
+2026-07-02 18:24:02,840 | INFO | Creating RFM Features
+2026-07-02 18:24:03,766 | INFO | RFM Created
+2026-07-02 18:24:03,767 | INFO | Creating Business Features
+2026-07-02 18:24:03,769 | INFO | Scaling Features
+2026-07-02 18:24:03,842 | INFO | Scaler Saved
+2026-07-02 18:24:03,915 | INFO | Feature Dataset Saved
+2026-07-02 18:24:26,251 | INFO | Project Started Successfully
+2026-07-02 18:25:21,130 | INFO | Project Started Successfully
+2026-07-02 18:25:21,448 | INFO | Loading Dataset
+2026-07-02 18:27:08,766 | INFO | Dataset Loaded Successfully : (541909, 8)
+2026-07-02 18:27:08,791 | INFO | Removing Missing CustomerID
+2026-07-02 18:27:09,199 | INFO | Removed 135080 rows
+2026-07-02 18:27:09,199 | INFO | Removing Cancelled Orders
+2026-07-02 18:27:09,602 | INFO | Removed 8905 cancelled invoices
+2026-07-02 18:27:09,602 | INFO | Removing Invalid Quantity
+2026-07-02 18:27:09,630 | INFO | Removed 0 rows
+2026-07-02 18:27:09,630 | INFO | Removing Invalid UnitPrice
+2026-07-02 18:27:09,685 | INFO | Removed 40 rows
+2026-07-02 18:27:09,685 | INFO | Converting InvoiceDate
+2026-07-02 18:27:10,199 | INFO | Creating TotalPrice Feature
+2026-07-02 18:27:15,382 | INFO | Processed Dataset Saved : artifacts/retail_clean.csv
+2026-07-02 18:27:15,383 | INFO | Preprocessing Completed Successfully

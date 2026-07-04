@@ -16,15 +16,6 @@ LOG_DIR = "artifacts/logs"
 LOG_FILE = os.path.join(LOG_DIR,"prediction_logs.csv")
 os.makedirs(LOG_DIR, exist_ok=True)
 
-log["AverageOrderValue"] = (
-    log["Monetary"] / log["Frequency"]
-    if log["Frequency"] > 0 else 0
-)
-
-log["CustomerValue"] = (
-    log["Frequency"] * log["AverageOrderValue"]
-)
-
 @app.get("/")
 def home():
     return {"message": "Online Retail API Running"}
@@ -40,7 +31,7 @@ CustomerFeatures):
     cluster = predict_cluster(customer.dict())
 
     cluster = result["cluster"]
-    segment_names = { 0: "New Customers", 1: "VIP Customers", 2: "At Risk Customers", 3: "Inactive Customers"}
+    
     segment = rseult["segment"]
 
     log = customer.dict()

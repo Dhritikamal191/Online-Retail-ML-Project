@@ -27,15 +27,13 @@ def predict_cluster(data):
         "Monetary": monetary,
         "AverageOrderValue": average_order_value,
         "CustomerValue": customer_value
-    }])
-
-    scaled = scaler.transform(df)
+    }])    
 
     cluster = int(model.predict(scaled)[0])
 
     segment = SEGMENT_NAMES.get(cluster, "Unknown")
 
-    distance = float(model.transform(scaled).min())
+    distance = float(model.transform(df).min())
 
     return {
         "cluster": cluster,

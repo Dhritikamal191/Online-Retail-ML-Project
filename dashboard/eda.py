@@ -16,23 +16,59 @@ def eda_page():
     
     st.sidebar.header("EDA Filters")
 
-    cluster_filter = st.sidebar.multiselect("Select Cluster",sorted(df["Cluster"].unique()),default=sorted(df["Cluster"].unique()))
+    feature = st.sidebar.selectbox(
+    "Feature",["Recency", "Frequency", "Monetary","CustomerValue","AverageOrderValue],key="eda_feature_filter")
 
-    df = df[df["Cluster"].isin(cluster_filter)]
+    selected_clusters =st.sidebar.multiselect ("Select Cluster", sorted (df["Cluster"].unique()),default=sorted(df["Cluster"].unique()),key="cluster_filter")
 
+    selected_features =st.sidebar.multiselect ("Distribution Features",["Recency", "Frequency","Monetary"],default=["Recency","Frequency","Monetary"],key="distribution_feature")
+
+    min_monetary = st.sidebar.slider(
+    "Minimum Monetary",
+    float(df["Monetary"].min()),
+    float(df["Monetary"].max()),
+    float(df["Monetary"].min())
+    )
+
+    min_frequency = st.sidebar.slider(
+    "Minimum Frequency",
+    int(df["Frequency"].min()),
+    int(df["Frequency"].max()),
+    int(df["Frequency"].min())
+    )
+
+    max_recency = st.sidebar.slider(
+    "Maximum Recency",
+    float(df["Recency"].min()),
+    float(df["Recency"].max()),
+    float(df["Recency"].max())
+    )
+
+top_n = st.sidebar.slider("Top Customers",10,
+100,20)
+
+    filtered_df = df[
+    (df["Cluster"].isin(selected_clusters)) &
+    (df["Monetary"] >= min_monetary) &
+    (df["Frequency"] >= min_frequency) &
+    (df["Recency"] <= max_recency)
+    ].copy()
+   
     # -----------------------------
     # KPI Cards
     # -----------------------------
 
     col1, col2, col3, col4 = st.columns(4)
 
-    col1.metric("Customers",len(df))
+    col1.metric("Customers",len(filtered_df))
 
-    col2.metric("Clusters",df["Cluster"].nunique())
+    col2.metric("Avg Monetary",f"{filtered_df['Monetary'].mean():.2f}")
 
-    col3.metric("Avg Monetary",f"{df['Monetary'].mean():.2f}")
+    col3.metric("Avg Frequency",f"{filtered_df['Frequency'].mean():.2f}")
 
-    col4.metric("Avg Frequency",f"{df['Frequency'].mean():.2f}")
+    col4.metric("Avg Recency",f"{filtered_df['Recency'].mean():.2f}")
+
+     col5.metric("Avg ",f"{filtered_df['CustomerValue'].mean():.2f}")
 
     st.divider()
 
@@ -42,7 +78,7 @@ def eda_page():
 
     st.subheader("Customer Distribution by Cluster")
 
-    cluster_counts = (df["Cluster"].value_counts().sort_index().reset_index())
+    cluster_counts = (filtered_df["Cluster"].value_counts().sort_index().reset_index())
 
     cluster_counts.columns = ["Cluster", "Customers"]
 
@@ -58,7 +94,7 @@ def eda_page():
 
     st.subheader("Recency Distribution")
 
-    fig = px.histogram(df,x="Recency",nbins=40,color="Cluster",marginal="box",title="Customer Recency")
+    fig = px.histogram(filtered_df,x="Recency",nbins=40,color="Cluster",marginal="box",title="Customer Recency")
 
     fig.update_layout(template="plotly_white")
 
@@ -70,7 +106,7 @@ def eda_page():
 
     st.subheader("Frequency Distribution")
 
-    fig = px.histogram(df,x="Frequency",nbins=40,color="Cluster",marginal="box",title="Purchase Frequency")
+    fig = px.histogram(filtered_df,x="Frequency",nbins=40,color="Cluster",marginal="box",title="Purchase Frequency")
 
     fig.update_layout(template="plotly_white")
 
@@ -82,7 +118,7 @@ def eda_page():
 
     st.subheader("Monetary Distribution")
 
-    fig = px.histogram(df,x="Monetary",nbins=40,color="Cluster",marginal="box",title="Customer Spending")
+    fig = px.histogram(filtered_df,x="Monetary",nbins=40,color="Cluster",marginal="box",title="Customer Spending")
 
     fig.update_layout(template="plotly_white")
 

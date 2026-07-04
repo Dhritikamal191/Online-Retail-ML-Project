@@ -17,112 +17,53 @@ class FeatureEngineering:
 
         logger.info("Creating RFM Features")
 
-        reference_date = pd.to_datetime(
-            config["features"]["reference_date"]
-        )
+        reference_date = pd.to_datetime(config["features"]["reference_date"])
 
-        rfm = self.df.groupby("CustomerID").agg({
+        rfm = self.df.groupby("CustomerID").agg({"InvoiceDate":lambda x: (reference_date - x.max()).days,"InvoiceNo":"nunique","TotalPrice":"sum"})
 
-            "InvoiceDate":
-                lambda x: (reference_date - x.max()).days,
-
-            "InvoiceNo":
-                "nunique",
-
-            "TotalPrice":
-                "sum"
-
-        })
-
-        rfm.columns = [
-            "Recency",
-            "Frequency",
-            "Monetary"
-        ]
+        rfm.columns = ["Recency","Frequency","Monetary"]
 
         self.rfm = rfm.reset_index()
 
         logger.info("RFM Created")
 
+        self.rfm.to_csv("artifacts/data/rfm_raw.csv", index=False)
+       
+        logger.info("Raw RFM dataset saved")
+
     def additional_features(self):
 
         logger.info("Creating Business Features")
 
-        self.rfm["AverageOrderValue"] = (
+        self.rfm["AverageOrderValue"] = (self.rfm["Monetary"] / self.rfm["Frequency"])
 
-            self.rfm["Monetary"] /
-            self.rfm["Frequency"]
-
-        )
-
-        self.rfm["CustomerValue"] = (
-
-            self.rfm["Frequency"] *
-            self.rfm["AverageOrderValue"]
-
-        )
+        self.rfm["CustomerValue"] = (self.rfm["Frequency"] * self.rfm["AverageOrderValue"])
 
     def scale_features(self):
 
         logger.info("Scaling Features")
 
-        features = [
-
-            "Recency",
-            "Frequency",
-            "Monetary",
-            "AverageOrderValue",
-            "CustomerValue"
-
-        ]
+        features = ["Recency","Frequency","Monetary","AverageOrderValue","CustomerValue"]
 
         scaler = StandardScaler()
 
-        scaled = scaler.fit_transform(
+        scaled = scaler.fit_transform(self.rfm[features])
 
-            self.rfm[features]
-
-        )
-
-        self.scaled_df = pd.DataFrame(
-
-            scaled,
-
-            columns=features
-
-        )
+        self.scaled_df = pd.DataFrame(scaled,columns=features)
 
         self.scaled_df["CustomerID"] = self.rfm["CustomerID"]
 
-        os.makedirs(
-            "artifacts/scalers",
-            exist_ok=True
-        )
+        os.makedirs("artifacts/scalers",exist_ok=True)
 
-        joblib.dump(
-
-            scaler,
-
-            config["artifacts"]["scaler"]
-
-        )
+        joblib.dump(scaler,config["artifacts"]["scaler"])
 
         logger.info("Scaler Saved")
 
     def save_dataset(self):
 
-        os.makedirs(
-            "artifacts",
-            exist_ok=True
-        )
+        os.makedirs("artifacts",exist_ok=True)
 
-        self.scaled_df.to_csv(
-
-            config["artifacts"]["rfm_dataset"],
-
-            index=False
-
-        )
+        self.scaled_df.to_csv(config["artifacts"]["rfm_dataset"],index=False)
 
         logger.info("Feature Dataset Saved")
 

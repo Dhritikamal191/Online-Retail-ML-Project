@@ -20,7 +20,7 @@ class TrainModels:
 
     def __init__(self):
 
-        self.df = pd.read_csv("artifacts/rfm_features.csv")
+        self.df = pd.read_csv("artifacts/data/rfm_raw.csv")
 
         self.X = self.df.drop(columns=["CustomerID"])
 

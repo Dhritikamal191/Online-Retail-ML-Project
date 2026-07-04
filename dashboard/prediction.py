@@ -3,7 +3,7 @@ import pandas as pd
 from predict import predict_cluster
 import plotly.graph_objects as go
 from predict import predict_cluster
-from utils import load_dataset
+from utils import load_scaled_dataset
 import os
 from datetime import datetime
 import requests

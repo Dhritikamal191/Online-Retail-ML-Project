@@ -26,10 +26,7 @@ class FeatureEngineering:
         self.rfm = rfm.reset_index()
 
         logger.info("RFM Created")
-
-        self.rfm.to_csv("artifacts/data/rfm_raw.csv", index=False)
-       
-        logger.info("Raw RFM dataset saved")
+        
 
     def additional_features(self):
 
@@ -39,6 +36,9 @@ class FeatureEngineering:
 
         self.rfm["CustomerValue"] = (self.rfm["Frequency"] * self.rfm["AverageOrderValue"])
 
+        self.rfm.to_csv("artifacts/data/rfm_raw.csv", index=False)
+       
+        logger.info("Raw RFM dataset saved")
     def scale_features(self):
 
         logger.info("Scaling Features")

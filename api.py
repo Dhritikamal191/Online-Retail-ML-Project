@@ -44,8 +44,8 @@ CustomerFeatures):
     log["Frequency"] * log["AverageOrderValue"])
 
     log["Timestamp"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-log["PredictedCluster"] = cluster
-log["Segment"] = segment
+    log["PredictedCluster"] = cluster
+    log["Segment"] = segment
     log_df = pd.DataFrame([log])
 
     if os.path.exists(LOG_FILE):

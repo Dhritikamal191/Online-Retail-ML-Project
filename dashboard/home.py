@@ -1,10 +1,8 @@
 import streamlit as st
 import pandas as pd
-from utils import (
-    load_dataset,
-    load_metrics,
-    load_cluster_profiles,
-)
+from utils import (load_dataset,load_metrics,
+load_cluster_profiles)
+
 def home_page():
     st.set_page_config(page_title="Online Retail ML Dashboard",page_icon="🛒",layout="wide")
     st.title("🛒 Online Retail Customer Segmentation")

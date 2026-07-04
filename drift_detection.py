@@ -44,4 +44,5 @@ def detect_drift():
 
     return drift_df.to_dict(orient="records")
 
-print(detect_drift())
+if __name__ == "__main__":
+    print(detect_drift())

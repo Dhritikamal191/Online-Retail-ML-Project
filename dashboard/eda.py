@@ -117,7 +117,7 @@ height=500)
     with col1:
 
          fig = px.scatter(filtered_df,x= "Recency",y="Frequency",color="Cluster",
-size="Monetary_Size",hover_data=["Recency", "Frequency", "Monetary"],title="Recency vs Frequency")
+size="Monetary",hover_data=["Recency", "Frequency", "Monetary"],title="Recency vs Frequency")
 
          fig.update_layout (template="plotly_dark")
 

@@ -68,7 +68,7 @@ def eda_page():
 
     col4.metric("Avg Recency",f"{filtered_df['Recency'].mean():.2f}")
 
-     col5.metric("Avg ",f"{filtered_df['CustomerValue'].mean():.2f}")
+    col5.metric("Avg ",f"{filtered_df['CustomerValue'].mean():.2f}")
 
     st.divider()
 

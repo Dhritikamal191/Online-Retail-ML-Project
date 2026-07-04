@@ -29,7 +29,7 @@ def home_page():
     # -----------------------
 
     col1, col2, col3, col4 = st.columns(4)
-    col1.metric("Customers",len(raw_df))
+    col1.metric("Customers",len(scaled_df))
     col2.metric("Clusters",raw_df["Cluster"].nunique())
     col3.metric("Average Recency",round(raw_df["Recency"].mean(), 2))
     col4.metric("Average Monetary",round(raw_df["Monetary"].mean(), 2))

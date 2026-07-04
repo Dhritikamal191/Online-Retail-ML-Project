@@ -39,12 +39,22 @@ CustomerFeatures):
 
     cluster = predict_cluster(customer.dict())
 
-    cluster = int(cluster)
+    cluster = result["cluster"]
     segment_names = { 0: "New Customers", 1: "VIP Customers", 2: "At Risk Customers", 3: "Inactive Customers"}
-    segment = segment_names.get(cluster, "Unknown")
+    segment = rseult["segment"]
+
     log = customer.dict()
-    log["Timestamp"] = datetime.now().strftime("%Y-%m-%d %H:%H:%S")
-    log["PredictedCluster"] = int(cluster)
+
+    log["AverageOrderValue"] = (
+    log["Monetary"] / log["Frequency"]
+    if log["Frequency"] > 0 else 0)
+
+    log["CustomerValue"] = (
+    log["Frequency"] * log["AverageOrderValue"])
+
+    log["Timestamp"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+log["PredictedCluster"] = cluster
+log["Segment"] = segment
     log_df = pd.DataFrame([log])
 
     if os.path.exists(LOG_FILE):

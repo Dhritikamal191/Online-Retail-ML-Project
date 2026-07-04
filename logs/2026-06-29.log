@@ -1,0 +1,32 @@
+2026-06-29 07:52:26,949 | INFO | Training KMeans
+2026-06-29 07:56:28,657 | INFO | Training Agglomerative
+2026-06-29 07:58:11,162 | INFO | Training DBSCAN
+2026-06-29 08:00:36,207 | INFO | Best Model Saved
+2026-06-29 08:21:13,412 | INFO | Training KMeans
+2026-06-29 08:21:15,065 | INFO | KMeans model saved
+2026-06-29 08:23:50,130 | INFO | Training Agglomerative
+2026-06-29 08:24:35,972 | INFO | Training DBSCAN
+2026-06-29 08:27:18,850 | INFO | Best Model Saved
+2026-06-29 09:22:53,597 | INFO | Loading Dataset
+2026-06-29 09:25:10,337 | INFO | Dataset Loaded Successfully : (541909, 8)
+2026-06-29 09:25:10,364 | INFO | Removing Missing CustomerID
+2026-06-29 09:25:10,863 | INFO | Removed 135080 rows
+2026-06-29 09:25:10,863 | INFO | Removing Cancelled Orders
+2026-06-29 09:25:11,249 | INFO | Removed 8905 cancelled invoices
+2026-06-29 09:25:11,250 | INFO | Removing Invalid Quantity
+2026-06-29 09:25:11,276 | INFO | Removed 0 rows
+2026-06-29 09:25:11,276 | INFO | Removing Invalid UnitPrice
+2026-06-29 09:25:11,329 | INFO | Removed 40 rows
+2026-06-29 09:25:11,329 | INFO | Converting InvoiceDate
+2026-06-29 09:25:11,684 | INFO | Creating TotalPrice Feature
+2026-06-29 09:25:17,653 | INFO | Processed Dataset Saved : artifacts/retail_clean.csv
+2026-06-29 09:25:17,654 | INFO | Preprocessing Completed Successfully
+2026-06-29 14:59:22,425 | INFO | Training KMeans
+2026-06-29 14:59:29,058 | INFO | KMeans model saved
+2026-06-29 15:02:46,152 | INFO | Training Agglomerative
+2026-06-29 15:04:33,896 | INFO | Training DBSCAN
+2026-06-29 15:11:10,402 | INFO | Training KMeans
+2026-06-29 15:11:12,457 | INFO | KMeans model saved
+2026-06-29 15:14:01,398 | INFO | Training Agglomerative
+2026-06-29 15:15:33,130 | INFO | Training DBSCAN
+2026-06-29 15:16:53,543 | INFO | Best Model Saved

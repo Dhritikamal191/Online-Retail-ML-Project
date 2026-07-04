@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from utils import load_dataset
+from utils import load_raw_dataset
 import plotly.express as px
 import plotly.graph_objects as go
 

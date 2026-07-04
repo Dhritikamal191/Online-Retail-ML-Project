@@ -71,8 +71,8 @@ def home_page():
 
     with left:
          st.info(f"""Total Customers : **{len(df)}**
-         Total Features : **{df.shape[1]}**
-         Clusters : **{df['Cluster'].nunique()}**
+         Total Features : **{raw_df.shape[1]}**
+         Clusters : **{raw_df['Cluster'].nunique()}**
          """)
 
     with right:

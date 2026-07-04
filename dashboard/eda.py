@@ -126,7 +126,7 @@ size="Monetary",hover_data=["Recency", "Frequency", "Monetary"],title="Recency v
     with col2:
 
          fig = px.scatter(filtered_df,x= "Frequency",y="Monetary",color="Cluster",
-size="Recency_Size",hover_data=["Recency", "Frequency", "Monetary"],title="Frequency vs Monetary")
+size="Recency",hover_data=["Recency", "Frequency", "Monetary"],title="Frequency vs Monetary")
 
          fig.update_layout (template="plotly_dark")
 

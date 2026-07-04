@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from utils import (load_dataset,load_metrics,
+from utils import (load_raw_dataset,load_scaled_dataset,load_metrics,
 load_cluster_profiles)
 
 def home_page():
@@ -12,7 +12,8 @@ def home_page():
     # Load Data
     # -----------------------
     
-    df = load_dataset()
+    raw_df = load_raw_dataset()
+    scaled_df = load_scaled_dataset()
     metrics = load_metrics()
     profiles = load_cluster_profiles()
     

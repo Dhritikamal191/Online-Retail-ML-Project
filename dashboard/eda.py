@@ -9,7 +9,7 @@ def eda_page():
 
     # Load dataset
     
-    df = load_raw_dataset()
+    raw_df = load_raw_dataset()
 
     # -----------------------------
     # Sidebar Filters

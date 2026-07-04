@@ -44,6 +44,8 @@ def eda_page():
     float(df["Recency"].max())
     )
 
+    df["CustomerValue"] = df["Frequency"] * df["Monetary"]
+
     top_n = st.sidebar.slider("Top Customers",10,
 100,20)
 

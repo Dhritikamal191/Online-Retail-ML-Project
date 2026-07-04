@@ -58,7 +58,7 @@ def eda_page():
     # KPI Cards
     # -----------------------------
 
-    col1, col2, col3, col4 = st.columns(4)
+    col1, col2, col3, col4, col5 = st.columns(5)
 
     col1.metric("Customers",len(filtered_df))
 

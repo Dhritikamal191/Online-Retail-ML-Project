@@ -5,7 +5,7 @@ from logger import logger
 def retrain():
     logger.info("Starting model retraining...")
 
-    subprocess.run(["python","train.py"], check=rue)
+    subprocess.run(["python","train.py"], check=True)
 
     logger.info("Retraining completed successfully.")
 

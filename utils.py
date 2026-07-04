@@ -14,7 +14,8 @@ ARTIFACTS = Path("artifacts")
 
 MODEL_PATH = ARTIFACTS / "models" / "kmeans_model.pkl"
 SCALER_PATH = ARTIFACTS / "scalers" / "rfm_scaler.pkl"
-DATA_PATH = ARTIFACTS / "rfm_clustered.csv"
+SCALED_DATA_PATH = ARTIFACTS / "rfm_dataset.csv"
+"RAW_DATA_PATH = ARTIFACTS/ "rfm_raw.csv"
 SUMMARY_PATH = ARTIFACTS / "cluster_profiles.csv"
 METRICS_PATH = ARTIFACTS /"model_metrics.csv"
 LOG_PATH =Path("logs") /"prediction_logs.csv"
@@ -36,12 +37,11 @@ def load_model():
 # LOAD DATASET
 # =====================================
 
-def load_dataset():
+def load_raw_dataset():
+    return pd.read_csv(RAW_DATA_PATH)
 
-    if DATA_PATH.exists():
-        return pd.read_csv(DATA_PATH)
-
-    return pd.DataFrame()
+def load_scaled_dataset():
+    return pd.read_csv(SCALED_DATA_PATH)
 
 # =====================================
 # LOAD CLUSTER SUMMARY

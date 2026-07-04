@@ -2,7 +2,7 @@ import os
 import pandas as pd
 from retrain import retrain
 
-TRAIN_FILE = "artifacts/data/rfm_dataset.csv"
+TRAIN_FILE = "artifacts/data/rfm_raw.csv"
 LOG_FILE = "artifacts/logs/prediction_logs.csv"
 
 def detect_drift():

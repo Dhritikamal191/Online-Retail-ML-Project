@@ -30,9 +30,9 @@ def home_page():
 
     col1, col2, col3, col4 = st.columns(4)
     col1.metric("Customers",len(scaled_df))
-    col2.metric("Clusters",raw_df["Cluster"].nunique())
-    col3.metric("Average Recency",round(raw_df["Recency"].mean(), 2))
-    col4.metric("Average Monetary",round(raw_df["Monetary"].mean(), 2))
+    col2.metric("Clusters",scaled_df["Cluster"].nunique())
+    col3.metric("Average Recency",round(scaled_df["Recency"].mean(), 2))
+    col4.metric("Average Monetary",round(scaled_df["Monetary"].mean(), 2))
     
     st.divider()
 
@@ -41,7 +41,7 @@ def home_page():
     # -----------------------
 
     st.subheader("Dataset Preview")
-    st.dataframe(raw_df.head(10),use_container_width=True)
+    st.dataframe(scal3d_df.head(10),use_container_width=True)
 
     st.divider()
 
@@ -71,8 +71,8 @@ def home_page():
 
     with left:
          st.info(f"""Total Customers : **{len(df)}**
-         Total Features : **{raw_df.shape[1]}**
-         Clusters : **{raw_df['Cluster'].nunique()}**
+         Total Features : **{scaled_df.shape[1]}**
+         Clusters : **{scaled_df['Cluster'].nunique()}**
          """)
 
     with right:

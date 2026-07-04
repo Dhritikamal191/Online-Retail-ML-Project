@@ -8,7 +8,8 @@ def eda_page():
     st.title("📊 Exploratory Data Analysis")
 
     # Load dataset
-    df = load_dataset()
+    
+    df = load_raw_dataset()
 
     # -----------------------------
     # Sidebar Filters

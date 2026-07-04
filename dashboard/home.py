@@ -29,10 +29,10 @@ def home_page():
     # -----------------------
 
     col1, col2, col3, col4 = st.columns(4)
-    col1.metric("Customers",len(df))
-    col2.metric("Clusters",df["Cluster"].nunique())
-    col3.metric("Average Recency",round(df["Recency"].mean(), 2))
-    col4.metric("Average Monetary",round(df["Monetary"].mean(), 2))
+    col1.metric("Customers",len(raw_df))
+    col2.metric("Clusters",raw_df["Cluster"].nunique())
+    col3.metric("Average Recency",round(raw_df["Recency"].mean(), 2))
+    col4.metric("Average Monetary",round(raw_df["Monetary"].mean(), 2))
     
     st.divider()
 
@@ -41,7 +41,7 @@ def home_page():
     # -----------------------
 
     st.subheader("Dataset Preview")
-    st.dataframe(df.head(10),use_container_width=True)
+    st.dataframe(raw_df.head(10),use_container_width=True)
 
     st.divider()
 

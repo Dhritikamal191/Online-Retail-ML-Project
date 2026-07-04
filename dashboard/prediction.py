@@ -37,12 +37,9 @@ def prediction_page():
     with left:
          recency = st.slider("Recency (Days)",0,365,30)
          frequency = st.slider("Purchase Frequency",1,100,5)
-         monetary = st.number_input("Monetary Value",min_value=1.0,value=500.0,step=50.0)
-
+         
     with right:
-         average_order_value= st.number_input ("Average Order Value",min_value=1.0, value= 100.0)
-         customer_value = st.number_input(
-"Customer Value",min_value=1.0,value=500.0)
+         monetary = st.number_input("Monetary Value",min_value=1.0,value=500.0,step=50.0)
 
     st.divider()
 
@@ -68,7 +65,7 @@ def prediction_page():
 
     if st.button("🚀 Predict Customer Segment", use_container_width=True):
        
-       customer = {"Recency": recency, "Frequency": frequency,"Monetary": monetary,"CustomerValue": customer_value,"AverageOrderValue": average_order_value}
+       customer = {"Recency": recency, "Frequency": frequency,"Monetary": monetary}
 
        result = predict_cluster(customer)
 

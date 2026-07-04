@@ -24,7 +24,7 @@ def prediction_page():
     # LOAD DATA
     # ==========================================
 
-    df = load_dataset()
+    df = load_scaled_dataset()
 
     # ==========================================
     # CUSTOMER INPUT

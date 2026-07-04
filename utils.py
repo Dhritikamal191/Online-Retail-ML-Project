@@ -14,8 +14,8 @@ ARTIFACTS = Path("artifacts")
 
 MODEL_PATH = ARTIFACTS / "models" / "kmeans_model.pkl"
 SCALER_PATH = ARTIFACTS / "scalers" / "rfm_scaler.pkl"
-SCALED_DATA_PATH = ARTIFACTS / "rfm_dataset.csv"
-RAW_DATA_PATH = ARTIFACTS/ "rfm_raw.csv"
+SCALED_DATA_PATH = ARTIFACTS / "data" / "rfm_dataset.csv"
+RAW_DATA_PATH = ARTIFACTS/ "data" / "rfm_raw.csv"
 SUMMARY_PATH = ARTIFACTS / "cluster_profiles.csv"
 METRICS_PATH = ARTIFACTS /"model_metrics.csv"
 LOG_PATH =Path("logs") /"prediction_logs.csv"

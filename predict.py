@@ -29,6 +29,8 @@ def predict_cluster(data):
         "CustomerValue": customer_value
     }])    
 
+    scaled = scaler.transform(df)
+
     cluster = int(model.predict(scaled)[0])
 
     segment = SEGMENT_NAMES.get(cluster, "Unknown")

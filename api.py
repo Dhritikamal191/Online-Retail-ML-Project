@@ -16,6 +16,15 @@ LOG_DIR = "artifacts/logs"
 LOG_FILE = os.path.join(LOG_DIR,"prediction_logs.csv")
 os.makedirs(LOG_DIR, exist_ok=True)
 
+log["AverageOrderValue"] = (
+    log["Monetary"] / log["Frequency"]
+    if log["Frequency"] > 0 else 0
+)
+
+log["CustomerValue"] = (
+    log["Frequency"] * log["AverageOrderValue"]
+)
+
 @app.get("/")
 def home():
     return {"message": "Online Retail API Running"}

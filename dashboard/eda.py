@@ -112,17 +112,18 @@ height=500)
 
     st.header("📈 RFM Relationship Analysis")
 
-    plot_df = df.copy()
+    plot_df = filtered_df.copy()
 
     plot_df["Monetary_Size"] = plot_df["Monetary"].abs() + 1
     plot_df["Recency_Size"] = plot_df["Recency"].abs() + 1
+    plot_df["Frequency_Size"] = plot_df["Frequency"].abs() + 1
 
     col1, col2 = st.columns(2)
 
     with col1:
 
-         fig = px.scatter(filtered_df,x= "Recency",y="Frequency",color="Cluster",
-size="Monetary",hover_data=["Recency", "Frequency", "Monetary"],title="Recency vs Frequency")
+         fig = px.scatter(plot_df,x= "Recency_Size",y="Frequency",color="Cluster",
+size="Monetary_Size",hover_data=["Recency", "Frequency_Size", "Monetary"],title="Recency vs Frequency")
 
          fig.update_layout (template="plotly_dark")
 
@@ -130,8 +131,7 @@ size="Monetary",hover_data=["Recency", "Frequency", "Monetary"],title="Recency v
 
     with col2:
 
-         fig = px.scatter(filtered_df,x= "Frequency",y="Monetary",color="Cluster",
-size="Recency",hover_data=["Recency", "Frequency", "Monetary"],title="Frequency vs Monetary")
+         fig = px.scatter(plot_df,x= "Frequency_Size",y="Monetary_Size",color="Cluster",size= "Recency_Size", hover_data= ["Recency","Frequency", "Monetary"], title="Frequency vs Monetary")
 
          fig.update_layout (template="plotly_dark")
 
@@ -154,15 +154,15 @@ key="bubble_y")
     size = st.selectbox("Bubble Size",
 ["Frequency","Monetary", "Recency"],key="bubble_size")
 
-    plot_df = df.copy()
+    plot_df = filtered_df.copy()
 
     plot_df["Frequency_Size"] = plot_df["Frequency"].abs() + 1
 
     fig = px.scatter(
     filtered_df,
-    x="Recency",
-    y="Monetary",
-    size="Frequency",
+    x="Recency_Size",
+    y="Monetary_Size",
+    size="Frequency_Size",
     color="Cluster",
     hover_data=["Recency", "Frequency", "Monetary"],
     title="Customer Segments"
@@ -211,7 +211,7 @@ key="bubble_y")
 
     st.subheader("Top 20 High Value Customers")
 
-    top_customers = (filtered_df.sort_values(by="Monetary",ascending=False).head(20))
+    top_customers = (filtered_df.sort_values(by=feature,ascending=False).head(20))
 
     st.dataframe(top_customers,use_container_width=True)
 
@@ -223,9 +223,9 @@ key="bubble_y")
 
     st.subheader("Revenue Contribution")
 
-    cluster_sales = (filtered_df.groupby("Cluster")["Monetary"].sum().reset_index())
+    cluster_sales = (filtered_df.groupby("Cluster")[feature].sum().reset_index())
 
-    fig = px.pie(cluster_sales,names="Cluster",values="Monetary",hole=.55,title="Revenue Contribution by Cluster")
+    fig = px.pie(cluster_sales,names="Cluster",values=feature,hole=.55,title="Revenue Contribution by Cluster")
 
     fig.update_layout(template="plotly_dark",height=600)
 
@@ -243,11 +243,11 @@ key="bubble_y")
 
     st.subheader("Customer Value Treemap")
 
-    fig = px.treemap(filtered_df,path=["Cluster"],values="Monetary",color="Monetary",color_continuous_scale="Blues")
+    fig = px.treemap(filtered_df,path=["Cluster"],values=feature,color=feature,color_continuous_scale="Blues")
 
-    fig.update_layout(template="plotly_dark",height=650)
+    fig.update_layout (template= "plotly_dark",height=650)
 
-    st.plotly_chart(fig,use_container_width=True)
+    st.plotly_chart (fig, use_container_width=True)
 
     # ----------------------------------------------------------
     # Box Plot
@@ -255,17 +255,9 @@ key="bubble_y")
 
     st.markdown("---")
 
-    col1,col2=st.columns(2)
-
-    with col1:
-         fig=px.box(filtered_df,x="Cluster",y="Monetary",color="Cluster",title="Monetary Distribution")
-         fig.update_layout(template="plotly_dark")
-         st.plotly_chart(fig,use_container_width=True)
-
-    with col2:
-         fig=px.box(filtered_df,x="Cluster",y= feature,color="Cluster",title= f"{feature} Distribution")
-         fig.update_layout(template="plotly_dark")
-         st.plotly_chart(fig,use_container_width=True)
+    fig= px.box(filtered_df,x="Cluster",y= feature,color="Cluster",title= f"{feature} Distribution")
+    fig.update_layout (template="plotly_dark")
+    st.plotly_chart (fig,use_container_width=True)
 
     # ----------------------------------------------------------
     # Violin Plot
@@ -273,11 +265,11 @@ key="bubble_y")
 
     st.markdown("---")
 
-    fig=px.violin(filtered_df,x="Cluster",y="Recency",color="Cluster",box=True,title="Customer Recency")
+    fig= px.violin (filtered_df, x="Cluster", y=feature,color="Cluster",box=True,title="Customer f"{feature}")
 
-    fig.update_layout(template="plotly_dark",height=600)
+    fig.update_layout (template= "plotly_dark",height=600)
 
-    st.plotly_chart(fig,use_container_width=True)
+    st.plotly_chart (fig, use_container_width=True)
 
     # ----------------------------------------------------------
     # Radar Chart

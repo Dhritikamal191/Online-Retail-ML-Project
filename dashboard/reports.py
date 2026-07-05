@@ -124,22 +124,11 @@ def reports_page():
 
             path = os.path.join(root, file)
 
-            files.append({
-
-            "File": file,
-
-            "Folder": root,
-
-            "Size (KB)": round(
-                os.path.getsize(path)/1024,
-                2)})
+            files.append({"File": file,"Folder": root,"Size (KB)": round(os.path.getsize(path)/1024,2)})
 
     if len(files):
 
-        st.dataframe(
-        pd.DataFrame(files),
-        use_container_width=True
-        )
+        st.dataframe(pd.DataFrame(files),use_container_width=True)
 
     ########################################
     # Download Center
@@ -165,15 +154,7 @@ def reports_page():
 
            with open(file, "rb") as f:
 
-                st.download_button(
-
-                f"Download {Path(file).name}",
-
-                f,
-
-                Path(file).name
-
-                )
+                st.download_button(f"Download {Path(file).name}",f,Path(file).name)
 
     st.divider()
 

@@ -1,96 +1,128 @@
 import streamlit as st
-import pandas as pd
-from utils import (load_raw_dataset,load_metrics, load_clustered_dataset(),
-load_cluster_profiles)
+from utils import (
+    load_clustered_dataset,
+    load_metrics,
+    load_cluster_profiles,
+    model_last_updated,
+    model_size,
+    artifact_count
+)
 
 def home_page():
-    st.set_page_config(page_title="Online Retail ML Dashboard",page_icon="🛒",layout="wide")
-    st.title("🛒 Online Retail Customer Segmentation")
-    st.markdown("### End-to-End MLOps Dashboard")
-    
-    # -----------------------
+
+    st.title("🛍️ Online Retail Customer Segmentation Platform")
+    st.markdown("### End-to-End Machine Learning & MLOps Dashboard")
+
+    # -----------------------------
     # Load Data
-    # -----------------------
-        
-    metrics = load_metrics()
+    # -----------------------------
     df = load_clustered_dataset()
+    metrics = load_metrics()
     profiles = load_cluster_profiles()
-    # -----------------------
+
+    # -----------------------------
     # Sidebar
-    # -----------------------
-    
-    st.sidebar.title("Dashboard")
-    st.sidebar.success("Pipeline Status: ✅ Running")
-    
-    # -----------------------
-    # KPIs
-    # -----------------------
+    # -----------------------------
+    st.sidebar.success("✅ Pipeline Running")
 
-    col1, col2, col3, col4 = st.columns(4)
-    col1.metric("Customers",len(df))
-    col2.metric("Clusters",df["Cluster"].nunique())
-    col3.metric("Average Recency",round(df["Recency"].mean(), 2))
-    col4.metric("Average Monetary",round(df["Monetary"].mean(), 2))
-    
+    # -----------------------------
+    # KPI Cards
+    # -----------------------------
+    col1, col2, col3, col4, col5 = st.columns(5)
+
+    col1.metric("Customers", len(df))
+    col2.metric("Clusters", df["Cluster"].nunique())
+    col3.metric("Avg Recency", round(df["Recency"].mean(), 2))
+    col4.metric("Avg Frequency", round(df["Frequency"].mean(), 2))
+    col5.metric("Avg Monetary", f"${df['Monetary'].mean():,.2f}")
+
     st.divider()
 
-    # -----------------------
+    # -----------------------------
     # Dataset Preview
-    # -----------------------
-
+    # -----------------------------
     st.subheader("Dataset Preview")
-    st.dataframe(df.head(10),use_container_width=True)
+    st.dataframe(df.head(10), use_container_width=True)
 
     st.divider()
 
-    # -----------------------
-    # Cluster Profiles
-    # -----------------------
-
+    # -----------------------------
+    # Cluster Summary
+    # -----------------------------
     st.subheader("Cluster Profiles")
-    st.dataframe(profiles,use_container_width=True)
+
+    if not profiles.empty:
+        st.dataframe(profiles, use_container_width=True)
+    else:
+        st.warning("Cluster profile file not found.")
 
     st.divider()
 
-    # -----------------------
-    # Model Metrics
-    # -----------------------
+    # -----------------------------
+    # Model Performance
+    # -----------------------------
+    st.subheader("Model Comparison")
 
-    st.subheader("Model Metrics")
-    st.dataframe(metrics,use_container_width=True)
+    if not metrics.empty:
+        st.dataframe(metrics, use_container_width=True)
+    else:
+        st.warning("Model metrics not found.")
 
     st.divider()
 
-    # -----------------------
-    # Dataset Information
-    # -----------------------
-
+    # -----------------------------
+    # Project Information
+    # -----------------------------
     left, right = st.columns(2)
 
     with left:
-         st.info(f"""Total Customers : **{len(df)}**
-         Total Features : **{df.shape[1]}**
-         Clusters : **{df['Cluster'].nunique()}**
-         """)
+
+        st.markdown("### Dataset Summary")
+
+        st.write(f"**Total Customers:** {len(df)}")
+        st.write(f"**Features:** {df.shape[1]}")
+        st.write(f"**Clusters:** {df['Cluster'].nunique()}")
+        st.write(f"**Average Customer Value:** ${df['CustomerValue'].mean():,.2f}")
 
     with right:
 
-         st.success("""
-             ✅ Data Ingestion
+        st.markdown("### Model Information")
 
-             ✅ Data Validation
-
-             ✅ Feature Engineering
-
-             ✅ Model Training
-
-             ✅ Drift Detection
-
-             ✅ MLflow Tracking
-
-             ✅ Automatic Retraining Ready
-             """)
+        st.write(f"**Last Updated:** {model_last_updated()}")
+        st.write(f"**Model Size:** {model_size()} MB")
+        st.write(f"**Artifacts:** {artifact_count()}")
 
     st.divider()
 
-    st.caption("Developed using Streamlit • MLflow • Evidently AI • Docker • GitHub Actions")
+    # -----------------------------
+    # Pipeline Status
+    # -----------------------------
+    st.subheader("Pipeline Status")
+
+    st.success("""
+    ✅ Data Ingestion
+
+    ✅ Data Validation
+
+    ✅ Feature Engineering
+
+    ✅ Customer Segmentation
+
+    ✅ Model Evaluation
+
+    ✅ MLflow Experiment Tracking
+
+    ✅ Drift Detection
+
+    ✅ Automatic Retraining
+
+    ✅ FastAPI Deployment
+
+    ✅ CI/CD with GitHub Actions
+    """)
+
+    st.divider()
+
+    st.caption(
+        "Built with Streamlit • Scikit-learn • MLflow • FastAPI • Docker • GitHub Actions"
+    )

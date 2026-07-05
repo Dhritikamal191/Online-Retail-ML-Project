@@ -2,7 +2,6 @@ import joblib
 import pandas as pd
 
 model = joblib.load("artifacts/models/kmeans_model.pkl")
-scaler = joblib.load("artifacts/scalers/rfm_scaler.pkl")
 
 SEGMENT_NAMES = {
     0: "New Customers",
@@ -27,11 +26,9 @@ def predict_cluster(data):
         "Monetary": monetary,
         "AverageOrderValue": average_order_value,
         "CustomerValue": customer_value
-    }])    
+    }])       
 
-    scaled = scaler.transform(df)
-
-    cluster = int(model.predict(scaled)[0])
+    cluster = int(model.predict(df)[0])
 
     segment = SEGMENT_NAMES.get(cluster, "Unknown")
 

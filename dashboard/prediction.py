@@ -33,10 +33,21 @@ def prediction_page():
     with left:
          recency = st.slider("Recency (Days)",0,365,30)
          frequency = st.slider("Purchase Frequency",1,100,5)
-         
+         average_order_value = st.number_input(
+         "Average Order Value",
+         min_value=0.0,
+         value=100.0,
+         step=10.0
+         )
+
     with right:
          monetary = st.number_input("Monetary Value",min_value=1.0,value=500.0,step=50.0)
-
+         customer_value = st.number_input(
+         "Customer Value",
+         min_value=0.0,
+         value=500.0,
+         step=50.0
+         )
     st.divider()
 
     # ==========================================
@@ -45,13 +56,17 @@ def prediction_page():
 
     st.subheader("Customer Summary")
 
-    c1, c2, c3 = st.columns(3)
+    c1, c2, c3, c4, c5 = st.columns(5)
 
     c1.metric("Recency",recency)
 
     c2.metric("Frequency",frequency)
 
     c3.metric("Monetary",f"${monetary:,.2f}")
+
+    c4.metric("CustomerValue",f"${customer_value:,.2f}")
+
+    c5.metric("AverageOrderValue",f"${average_order_value:,.2f}")
 
     st.divider()
 

@@ -156,15 +156,21 @@ key="bubble_y")
 
     plot_df = filtered_df.copy()
 
-    plot_df["Frequency_Size"] = plot_df["Frequency"].abs() + 1
+    plot_df["BubbleSize"] = plot_df[size].abs() + 1
 
     fig = px.scatter(
-    filtered_df,
-    x="Recency_Size",
-    y="Monetary_Size",
-    size="Frequency_Size",
+    plot_df,
+    x=x_axis,
+    y=y_axis,
+    size="BubbleSize",
     color="Cluster",
-    hover_data=["Recency", "Frequency", "Monetary","AverageOrderValue","CustomerValue"],
+    hover_data=[
+        "Recency",
+        "Frequency",
+        "Monetary",
+        "AverageOrderValue",
+        "CustomerValue"
+    ],
     title="Customer Segments"
     )
 
@@ -173,7 +179,7 @@ key="bubble_y")
     height=650
     )
 
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, use_container_width= True)
 
     # =====================================================
     # CORRELATION HEATMAP

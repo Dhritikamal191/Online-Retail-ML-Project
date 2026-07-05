@@ -45,7 +45,11 @@ def eda_page():
     float(df["Recency"].max())
     )
 
-    df["CustomerValue"] = df["Frequency"] * df["Monetary"]
+    if "AverageOrderValue" not in df.columns:
+       df["AverageOrderValue"] = (df["Monetary"] / df["Frequency"].replace(0, 1))
+
+    if "CustomerValue" not in df.columns:
+       df["CustomerValue"] = (df["Frequency"] * df["AverageOrderValue"])
 
     top_n = st.sidebar.slider("Top Customers",10,
 100,20)

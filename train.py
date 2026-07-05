@@ -108,7 +108,7 @@ class TrainModels:
 
         self.df["Cluster"] = kmeans_labels
 
-        cluster_profiles = self.df.groupby("Cluster").agg({"Recency": "mean","Frequency": "mean","Monetary": "mean"}).round(2)
+        cluster_profiles = self.df.groupby("Cluster").agg({"Recency": "mean","Frequency": "mean","Monetary": "mean","AverageOrderValue": "mean","CustomerValue": "mean"}).round(2)
 
         segment_names = { 0: "New Customers", 1: "VIP Customers", 2: "At Risk Customers", 3: "Inactive Customers"}
 

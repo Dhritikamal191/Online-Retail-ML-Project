@@ -1,5 +1,5 @@
-Cluster,Recency,Frequency,Monetary,Segment
-0,94.57,3.48,1167.53,New Customers
-1,2.0,76.4,209342.33,VIP Customers
-2,46.26,40.79,65622.71,At Risk Customers
-3,16.58,22.74,14127.69,Inactive Customers
+Cluster,Recency,Frequency,Monetary,AverageOrderValue,CustomerValue,Segment
+0,94.57,3.48,1167.53,349.15,1167.53,New Customers
+1,2.0,76.4,209342.33,19469.44,209342.33,VIP Customers
+2,16.58,22.74,14127.69,968.28,14127.69,At Risk Customers
+3,46.26,40.79,65622.71,7327.26,65622.71,Inactive Customers

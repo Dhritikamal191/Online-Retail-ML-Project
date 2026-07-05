@@ -272,7 +272,7 @@ def eda_page():
 
     fig.add_trace(go.Scatterpolar(r=values.values,theta=["Recency","Frequency","Monetary"],fill="toself",name=f"Cluster {cluster_choice}"))
 
-    fig.update_layout(polar=dict(radialaxis=dict(visible=True))font=dict(size=17,color= "white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+    fig.update_layout(polar=dict(radialaxis=dict(visible=True)),font=dict(size=17,color= "white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
 
     st.plotly_chart(fig,use_container_width=True)
 

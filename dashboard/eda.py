@@ -90,7 +90,7 @@ def eda_page():
 
     fig = px.bar(cluster_counts,x="Cluster",y="Customers",color="Cluster",text="Customers",title="Customers in Each Cluster")
 
-    fig.update_layout(xaxis_title="Cluster",yaxis_title="Number of Customers",xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+    fig.update_layout(xaxis_title="Cluster",yaxis_title="Number of Customers",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
 
     st.plotly_chart(fig, use_container_width=True)
 
@@ -98,7 +98,7 @@ def eda_page():
 
     fig = px.histogram(filtered_df,x=feature, color="Cluster",marginal="box",nbins=35)
 
-    fig.update_layout(xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+    fig.update_layout(font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
 
     st.plotly_chart(fig, use_container_width=True)
 
@@ -122,7 +122,7 @@ def eda_page():
 
          fig = px.scatter(plot_df,x= "Recency_Size",y="Frequency",color="Cluster",size="Monetary_Size",hover_data=["Recency", "Frequency_Size", "Monetary"],title="Recency vs Frequency")
 
-         fig.update_layout (xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+         fig.update_layout (font=dict(size=17, color="white"), legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
 
          st.plotly_chart(fig, use_container_width=True)
 
@@ -130,7 +130,7 @@ def eda_page():
 
          fig = px.scatter(plot_df,x= "Frequency_Size",y="Monetary_Size",color="Cluster",size= "Recency_Size", hover_data= ["Recency","Frequency", "Monetary"], title="Frequency vs Monetary")
 
-         fig.update_layout (xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+         fig.update_layout (font=dict(size=17, color="white"), legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
 
          st.plotly_chart(fig, use_container_width=True)
 
@@ -154,7 +154,7 @@ def eda_page():
 
     fig = px.scatter(plot_df,x=x_axis,y=y_axis,size="BubbleSize",color="Cluster",hover_data=["Recency","Frequency","Monetary","AverageOrderValue","CustomerValue"],title="Customer Segments")
 
-    fig.update_layout(xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+    fig.update_layout(font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
 
     st.plotly_chart(fig, use_container_width= True)
 
@@ -170,7 +170,7 @@ def eda_page():
 
     fig = px.imshow(corr,text_auto=True,color_continuous_scale="Blues",aspect="auto")
 
-    fig.update_layout(xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+    fig.update_layout(font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
 
     st.plotly_chart(fig,use_container_width=True)
 
@@ -210,7 +210,7 @@ def eda_page():
 
     fig = px.pie(cluster_sales,names="Cluster",values=feature,hole=.55,title="Revenue Contribution by Cluster")
 
-    fig.update_layout(xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+    fig.update_layout(font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
 
     st.plotly_chart(fig,use_container_width=True)
 
@@ -228,7 +228,7 @@ def eda_page():
 
     fig = px.treemap(filtered_df,path=["Cluster"],values=feature,color=feature,color_continuous_scale="Blues")
 
-    fig.update_layout (xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+    fig.update_layout (font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
 
     st.plotly_chart (fig, use_container_width=True)
 
@@ -239,7 +239,7 @@ def eda_page():
     st.markdown("---")
 
     fig= px.box(filtered_df,x="Cluster",y= feature,color="Cluster",title= f"{feature} Distribution")
-    fig.update_layout (xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+    fig.update_layout (font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
     st.plotly_chart (fig,use_container_width=True)
 
     # ----------------------------------------------------------
@@ -250,7 +250,7 @@ def eda_page():
 
     fig= px.violin (filtered_df, x="Cluster", y=feature,color="Cluster",box=True,title= f"{feature} Customers")
 
-    fig.update_layout (xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+    fig.update_layout (font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
 
     st.plotly_chart (fig, use_container_width=True)
 
@@ -272,7 +272,7 @@ def eda_page():
 
     fig.add_trace(go.Scatterpolar(r=values.values,theta=["Recency","Frequency","Monetary"],fill="toself",name=f"Cluster {cluster_choice}"))
 
-    fig.update_layout(polar=dict(radialaxis=dict(visible=True)),xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+    fig.update_layout(polar=dict(radialaxis=dict(visible=True))font=dict(size=17,color= "white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
 
     st.plotly_chart(fig,use_container_width=True)
 
@@ -286,7 +286,7 @@ def eda_page():
 
     fig = px.parallel_coordinates(filtered_df,color="Cluster",dimensions=["Recency","Frequency","Monetary"],color_continuous_scale=px.colors.sequential.Blues)
 
-    fig.update_layout(xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+    fig.update_layout(font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
     
     st.plotly_chart(fig,use_container_width=True)
 

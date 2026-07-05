@@ -120,7 +120,7 @@ def prediction_page():
 
           fig = go.Figure(go.Indicator(mode="gauge+number",value=confidence,title={"text":"Prediction Confidence"},gauge={"axis":{"range":[0,100]},"bar":{"color":"royalblue"},"steps":[{"range":[0,40],"color":"red"},{"range":[40,75],"color":"orange"},{"range":[75,100],"color":"green"}]}))
 
-          fig.update_layout(xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+          fig.update_layout(font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
           
           st.plotly_chart(fig, use_container_width=True)
 
@@ -173,7 +173,7 @@ def prediction_page():
 
        fig.add_trace (go.Scatterpolar(r=[recency,frequency,monetary/100],theta= ["Recency","Frequency","Monetary"],fill="toself",name=segment))
 
-       fig.update_layout (polar=dict(radialaxis=dict(visible=True)),xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+       fig.update_layout (polar=dict(radialaxis=dict(visible=True)),font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
 
        st.plotly_chart(fig, use_container_width=True)
 
@@ -241,14 +241,14 @@ def prediction_page():
           with col1:
                fig = px.histogram(history,x="Segment",color="Segment",title="Predicted Customer Segments")
 
-               fig.update_layout(xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+               fig.update_layout(font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
               
                st.plotly_chart (fig,use_container_width=True)
 
           with col2:
                fig = px.scatter(history,x="Frequency",y="Monetary",color="Segment",size="Monetary",hover_data=["Recency"],title="Prediction Distribution")
 
-               fig.update_layout(xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+               fig.update_layout(font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
                
                st.plotly_chart (fig,use_container_width=True)
 

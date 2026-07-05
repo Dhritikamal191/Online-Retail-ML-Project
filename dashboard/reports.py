@@ -82,7 +82,7 @@ def reports_page():
 
     st.header("📈 Drift Report")
 
-    html_report = "reports/drift_report.html"
+    html_report = "artifacts/drift/drift_report.csv"
 
     if os.path.exists(html_report):
 

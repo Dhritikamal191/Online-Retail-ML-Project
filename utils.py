@@ -65,6 +65,9 @@ def load_metrics():
 
     return pd.DataFrame()
 
+def load_clustered_dataset():
+    return pd.read_csv(CLUSTER_PATH)
+
 # =====================================
 # LOAD PREDICTION LOGS
 # =====================================

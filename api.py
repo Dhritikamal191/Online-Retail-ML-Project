@@ -28,7 +28,7 @@ def health():
 def predict(customer:
 CustomerFeatures):
 
-    cluster = predict_cluster(customer.dict())
+    result = predict_cluster(customer.dict())
 
     cluster = result["cluster"]
     

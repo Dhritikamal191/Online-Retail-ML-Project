@@ -69,7 +69,7 @@ def model_dashboard_page():
 
            fig = px.bar(metrics,x="Model",y="Silhouette",color="Model",text="Silhouette",title="Silhouette Score")
 
-           fig.update_layout(xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+           fig.update_layout(font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
            
            st.plotly_chart(fig,use_container_width=True)
 
@@ -83,7 +83,7 @@ def model_dashboard_page():
 
           fig = px.bar(metrics,x="Model",y="Davies-Bouldin",color="Model",title="Davies-Bouldin Index")
 
-          fig.update_layout(xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+          fig.update_layout(font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
           
           st.plotly_chart(fig,use_container_width=True)
 
@@ -97,7 +97,7 @@ def model_dashboard_page():
 
           fig = px.bar(metrics,x="Model",y="Calinski-Harabasz",color="Model",title="Calinski-Harabasz Score")
 
-          fig.update_layout(xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+          fig.update_layout(font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
           
           st.plotly_chart(fig, use_container_width=True)
 
@@ -117,7 +117,7 @@ def model_dashboard_page():
 
     fig = go.Figure(go.Indicator (mode="gauge+number",value=health,title={"text":"Overall Model Health"},gauge={'axis':{'range':[0,100]},'bar':{'color':"#2563eb"},'steps':[{'range':[0,60],'color':'red'},{'range':[60,85],'color':'orange'},{'range':[85,100],'color':'green'}]}))
 
-    fig.update_layout(xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+    fig.update_layout(font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
     
     st.plotly_chart(fig, use_container_width=True)
 

@@ -28,11 +28,7 @@ def home_page():
     # -----------------------------
     # KPI Cards
     # -----------------------------
-    
-    customer_value = (df["Frequency"] * df["Monetary"]).mean()
-
-    df["CustomerValue"]=customer_value
-
+        
     col1, col2, col3, col4, col5 = st.columns(5)
 
     col1.metric("Customers", len(df))
@@ -87,8 +83,12 @@ def home_page():
         st.write(f"**Total Customers:** {len(df)}")
         st.write(f"**Features:** {df.shape[1]}")
         st.write(f"**Clusters:** {df['Cluster'].nunique()}")
-        st.write(f"**Average Customer Value:** ${df['CustomerValue'].mean():,.2f}")
+        if "CustomerValue" in df.columns:
+           customer_value = df["CustomerValue"].mean()
+        else:
+             customer_value = (df["Frequency"] * df["Monetary"]).mean()
 
+        st.write(f"**Average Customer Value:** ${customer_value:,.2f}")
     with right:
 
         st.markdown("### Model Information")

@@ -11,10 +11,9 @@ def home_page():
     # -----------------------
     # Load Data
     # -----------------------
-    
-    df = load_raw_dataset()    
+        
     metrics = load_metrics()
-    df[Cluster] = load_clustered_dataset()
+    df = load_clustered_dataset()
     
     # -----------------------
     # Sidebar

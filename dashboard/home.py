@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from utils import (load_raw_dataset,load_scaled_dataset,load_metrics,
+from utils import (load_raw_dataset,load_metrics,
 load_cluster_profiles)
 
 def home_page():
@@ -12,8 +12,7 @@ def home_page():
     # Load Data
     # -----------------------
     
-    raw_df = load_raw_dataset()
-    scaled_df = load_scaled_dataset()
+    df = load_raw_dataset()    
     metrics = load_metrics()
     profiles = load_cluster_profiles()
     
@@ -30,9 +29,9 @@ def home_page():
 
     col1, col2, col3, col4 = st.columns(4)
     col1.metric("Customers",len(scaled_df))
-    col2.metric("Clusters",scaled_df["Cluster"].nunique())
-    col3.metric("Average Recency",round(scaled_df["Recency"].mean(), 2))
-    col4.metric("Average Monetary",round(scaled_df["Monetary"].mean(), 2))
+    col2.metric("Clusters",df["Cluster"].nunique())
+    col3.metric("Average Recency",round(df["Recency"].mean(), 2))
+    col4.metric("Average Monetary",round(df["Monetary"].mean(), 2))
     
     st.divider()
 
@@ -41,7 +40,7 @@ def home_page():
     # -----------------------
 
     st.subheader("Dataset Preview")
-    st.dataframe(scal3d_df.head(10),use_container_width=True)
+    st.dataframe(df.head(10),use_container_width=True)
 
     st.divider()
 
@@ -71,8 +70,8 @@ def home_page():
 
     with left:
          st.info(f"""Total Customers : **{len(df)}**
-         Total Features : **{scaled_df.shape[1]}**
-         Clusters : **{scaled_df['Cluster'].nunique()}**
+         Total Features : **{df.shape[1]}**
+         Clusters : **{df['Cluster'].nunique()}**
          """)
 
     with right:

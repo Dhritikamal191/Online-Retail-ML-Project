@@ -74,7 +74,7 @@ def prediction_page():
 
     if st.button("🚀 Predict Customer Segment", use_container_width=True):
        
-       customer = {"Recency": recency, "Frequency": frequency,"Monetary": monetary}
+       customer = {"Recency": recency, "Frequency": frequency,"Monetary": monetary,"CustomerValue":customer_value,"AverageOrderValue":average_order_value}
 
        result = predict_cluster(customer)
 

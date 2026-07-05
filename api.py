@@ -32,7 +32,7 @@ CustomerFeatures):
 
     cluster = result["cluster"]
     
-    segment = rseult["segment"]
+    segment = result["segment"]
 
     log = customer.dict()
 

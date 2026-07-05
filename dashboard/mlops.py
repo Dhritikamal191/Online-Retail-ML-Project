@@ -81,7 +81,7 @@ Production Monitoring Dashboard
 
         response=requests.get(
 
-        "http://127.0.0.1:8000/health",
+        "https://online-retail-ml-project.onrender.com/docs#/default/health_health_get",
 
         timeout=3)
 

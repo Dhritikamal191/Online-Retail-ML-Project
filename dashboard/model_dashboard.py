@@ -3,20 +3,14 @@ import os
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-from utils import (
-    load_metrics,
-    model_last_updated,
-    model_size,
-    artifact_count
-)
+from utils import (load_metrics,model_last_updated,model_size,artifact_count)
 
 def model_dashboard_page():
 
     st.title("🤖 Model Dashboard")
 
     st.markdown("""
-Monitor model performance, experiment tracking,
-training metrics and deployment status.
+    Monitor model performance, experiment tracking, training metrics and deployment status.
     """)
 
     st.divider()
@@ -73,11 +67,11 @@ training metrics and deployment status.
 
        if "Silhouette" in metrics.columns:
 
-           fig = px.bar(metrics,x="Model",
-y="Silhouette",color="Model",text="Silhouette",title="Silhouette Score")
+           fig = px.bar(metrics,x="Model",y="Silhouette",color="Model",text="Silhouette",title="Silhouette Score")
 
-           st.plotly_chart(fig,
-use_container_width=True)
+           fig.update_layout(xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+           
+           st.plotly_chart(fig,use_container_width=True)
 
     # =====================================
     # DAVIES BOULDIN
@@ -87,12 +81,11 @@ use_container_width=True)
 
        if "Davies-Bouldin" in metrics.columns:
 
-          fig = px.bar(metrics,x="Model",
-y="Davies-Bouldin",color="Model",
-title="Davies-Bouldin Index")
+          fig = px.bar(metrics,x="Model",y="Davies-Bouldin",color="Model",title="Davies-Bouldin Index")
 
-          st.plotly_chart(fig,
-use_container_width=True)
+          fig.update_layout(xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+          
+          st.plotly_chart(fig,use_container_width=True)
 
     # ====================================
     # CALINSKI
@@ -102,10 +95,10 @@ use_container_width=True)
 
        if "Calinski-Harabasz" in metrics.columns:
 
-          fig = px.bar(metrics,x="Model",
-y="Calinski-Harabasz",color="Model",
-title="Calinski-Harabasz Score")
- 
+          fig = px.bar(metrics,x="Model",y="Calinski-Harabasz",color="Model",title="Calinski-Harabasz Score")
+
+          fig.update_layout(xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+          
           st.plotly_chart(fig, use_container_width=True)
 
     st.divider()
@@ -116,16 +109,16 @@ title="Calinski-Harabasz Score")
 
     st.subheader("Model Health")
 
-    health = 97
+    try:
+        joblib.load("artifacts/models/kmeans_model.pkl")
+        model_health =100
+    except:
+           model_health =0
 
-    fig = go.Figure(go.Indicator (mode="gauge+number",value=health,
-title={"text":"Overall Model Health"},
-gauge={'axis':{'range':[0,100]},
-'bar':{'color':"#2563eb"},'steps':[
-{'range':[0,60],'color':'red'},
-{'range':[60,85],'color':'orange'},
-{'range':[85,100],'color':'green'}]}))
+    fig = go.Figure(go.Indicator (mode="gauge+number",value=health,title={"text":"Overall Model Health"},gauge={'axis':{'range':[0,100]},'bar':{'color':"#2563eb"},'steps':[{'range':[0,60],'color':'red'},{'range':[60,85],'color':'orange'},{'range':[85,100],'color':'green'}]}))
 
+    fig.update_layout(xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+    
     st.plotly_chart(fig, use_container_width=True)
 
     st.divider()
@@ -206,8 +199,7 @@ gauge={'axis':{'range':[0,100]},
   
     })
   
-    st.dataframe(artifact_data,
-use_container_width=True)
+    st.dataframe(artifact_data,use_container_width=True)
 
     st.divider()
 
@@ -235,5 +227,4 @@ use_container_width=True)
 
     st.divider()
 
-    st.caption(
-"Retail Customer Segmentation | Model Dashboard")
+    st.caption("Retail Customer Segmentation | Model Dashboard")

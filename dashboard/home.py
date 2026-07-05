@@ -14,7 +14,7 @@ def home_page():
         
     metrics = load_metrics()
     df = load_clustered_dataset()
-    Profiles = load_cluster_profiles()
+    profiles = load_cluster_profiles()
     # -----------------------
     # Sidebar
     # -----------------------

@@ -17,8 +17,7 @@ def eda_page():
     
     st.sidebar.header("EDA Filters")
 
-    feature = st.sidebar.selectbox(
-"Feature",["Recency", "Frequency", "Monetary","CustomerValue","AverageOrderValue"],key="eda_feature_filter")
+    feature = st.sidebar.selectbox("Feature",["Recency", "Frequency", "Monetary","CustomerValue","AverageOrderValue"],key="eda_feature_filter")
 
     selected_clusters =st.sidebar.multiselect ("Select Cluster", sorted (df["Cluster"].unique()),default=sorted(df["Cluster"].unique()),key="cluster_filter")
 
@@ -91,7 +90,7 @@ def eda_page():
 
     fig = px.bar(cluster_counts,x="Cluster",y="Customers",color="Cluster",text="Customers",title="Customers in Each Cluster")
 
-    fig.update_layout(xaxis_title="Cluster",yaxis_title="Number of Customers",template="plotly_white")
+    fig.update_layout(xaxis_title="Cluster",yaxis_title="Number of Customers",xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
 
     st.plotly_chart(fig, use_container_width=True)
 
@@ -99,8 +98,7 @@ def eda_page():
 
     fig = px.histogram(filtered_df,x=feature, color="Cluster",marginal="box",nbins=35)
 
-    fig.update_layout(template="plotly_dark",
-height=500)
+    fig.update_layout(xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
 
     st.plotly_chart(fig, use_container_width=True)
 
@@ -122,10 +120,9 @@ height=500)
 
     with col1:
 
-         fig = px.scatter(plot_df,x= "Recency_Size",y="Frequency",color="Cluster",
-size="Monetary_Size",hover_data=["Recency", "Frequency_Size", "Monetary"],title="Recency vs Frequency")
+         fig = px.scatter(plot_df,x= "Recency_Size",y="Frequency",color="Cluster",size="Monetary_Size",hover_data=["Recency", "Frequency_Size", "Monetary"],title="Recency vs Frequency")
 
-         fig.update_layout (template="plotly_dark")
+         fig.update_layout (xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
 
          st.plotly_chart(fig, use_container_width=True)
 
@@ -133,7 +130,7 @@ size="Monetary_Size",hover_data=["Recency", "Frequency_Size", "Monetary"],title=
 
          fig = px.scatter(plot_df,x= "Frequency_Size",y="Monetary_Size",color="Cluster",size= "Recency_Size", hover_data= ["Recency","Frequency", "Monetary"], title="Frequency vs Monetary")
 
-         fig.update_layout (template="plotly_dark")
+         fig.update_layout (xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
 
          st.plotly_chart(fig, use_container_width=True)
 
@@ -147,37 +144,17 @@ size="Monetary_Size",hover_data=["Recency", "Frequency_Size", "Monetary"],title=
 
     x_axis = st.selectbox("X Axis", ["Recency","Frequency","Monetary"],key="bubble_x")
 
-    y_axis = st.selectbox("Y Axis",
-["Recency","Frequency","Monetary"],index=2,
-key="bubble_y")
+    y_axis = st.selectbox("Y Axis",["Recency","Frequency","Monetary"],index=2,key="bubble_y")
 
-    size = st.selectbox("Bubble Size",
-["Frequency","Monetary", "Recency"],key="bubble_size")
+    size = st.selectbox("Bubble Size",["Frequency","Monetary", "Recency"],key="bubble_size")
 
     plot_df = filtered_df.copy()
 
     plot_df["BubbleSize"] = plot_df[size].abs() + 1
 
-    fig = px.scatter(
-    plot_df,
-    x=x_axis,
-    y=y_axis,
-    size="BubbleSize",
-    color="Cluster",
-    hover_data=[
-        "Recency",
-        "Frequency",
-        "Monetary",
-        "AverageOrderValue",
-        "CustomerValue"
-    ],
-    title="Customer Segments"
-    )
+    fig = px.scatter(plot_df,x=x_axis,y=y_axis,size="BubbleSize",color="Cluster",hover_data=["Recency","Frequency","Monetary","AverageOrderValue","CustomerValue"],title="Customer Segments")
 
-    fig.update_layout(
-    template="plotly_dark",
-    height=650
-    )
+    fig.update_layout(xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
 
     st.plotly_chart(fig, use_container_width= True)
 
@@ -193,7 +170,7 @@ key="bubble_y")
 
     fig = px.imshow(corr,text_auto=True,color_continuous_scale="Blues",aspect="auto")
 
-    fig.update_layout(template="plotly_dark",height=500)
+    fig.update_layout(xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
 
     st.plotly_chart(fig,use_container_width=True)
 
@@ -233,7 +210,7 @@ key="bubble_y")
 
     fig = px.pie(cluster_sales,names="Cluster",values=feature,hole=.55,title="Revenue Contribution by Cluster")
 
-    fig.update_layout(template="plotly_dark",height=600)
+    fig.update_layout(xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
 
     st.plotly_chart(fig,use_container_width=True)
 
@@ -251,7 +228,7 @@ key="bubble_y")
 
     fig = px.treemap(filtered_df,path=["Cluster"],values=feature,color=feature,color_continuous_scale="Blues")
 
-    fig.update_layout (template= "plotly_dark",height=650)
+    fig.update_layout (xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
 
     st.plotly_chart (fig, use_container_width=True)
 
@@ -262,7 +239,7 @@ key="bubble_y")
     st.markdown("---")
 
     fig= px.box(filtered_df,x="Cluster",y= feature,color="Cluster",title= f"{feature} Distribution")
-    fig.update_layout (template="plotly_dark")
+    fig.update_layout (xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
     st.plotly_chart (fig,use_container_width=True)
 
     # ----------------------------------------------------------
@@ -273,7 +250,7 @@ key="bubble_y")
 
     fig= px.violin (filtered_df, x="Cluster", y=feature,color="Cluster",box=True,title= f"{feature} Customers")
 
-    fig.update_layout (template= "plotly_dark",height=600)
+    fig.update_layout (xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
 
     st.plotly_chart (fig, use_container_width=True)
 
@@ -295,7 +272,7 @@ key="bubble_y")
 
     fig.add_trace(go.Scatterpolar(r=values.values,theta=["Recency","Frequency","Monetary"],fill="toself",name=f"Cluster {cluster_choice}"))
 
-    fig.update_layout(polar=dict(radialaxis=dict(visible=True)),template="plotly_dark",height=600)
+    fig.update_layout(polar=dict(radialaxis=dict(visible=True)),xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
 
     st.plotly_chart(fig,use_container_width=True)
 
@@ -309,6 +286,8 @@ key="bubble_y")
 
     fig = px.parallel_coordinates(filtered_df,color="Cluster",dimensions=["Recency","Frequency","Monetary"],color_continuous_scale=px.colors.sequential.Blues)
 
+    fig.update_layout(xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+    
     st.plotly_chart(fig,use_container_width=True)
 
     # ----------------------------------------------------------

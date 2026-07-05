@@ -258,12 +258,12 @@ key="bubble_y")
     col1,col2=st.columns(2)
 
     with col1:
-         fig=px.box(filtered_df,x="Cluster",y="feature",color="Cluster",title="Monetary Distribution")
+         fig=px.box(filtered_df,x="Cluster",y="Monetary",color="Cluster",title="Monetary Distribution")
          fig.update_layout(template="plotly_dark")
          st.plotly_chart(fig,use_container_width=True)
 
     with col2:
-         fig=px.box(filtered_df,x="Cluster",y="Frequency",color="Cluster",title="Frequency Distribution")
+         fig=px.box(filtered_df,x="Cluster",y= feature,color="Cluster",title= f"{feature} Distribution")
          fig.update_layout(template="plotly_dark")
          st.plotly_chart(fig,use_container_width=True)
 
@@ -273,7 +273,7 @@ key="bubble_y")
 
     st.markdown("---")
 
-    fig=px.violin(filtered_df,x="Cluster",y="feature",color="Cluster",box=True,title="Customer Recency")
+    fig=px.violin(filtered_df,x="Cluster",y="Recency",color="Cluster",box=True,title="Customer Recency")
 
     fig.update_layout(template="plotly_dark",height=600)
 

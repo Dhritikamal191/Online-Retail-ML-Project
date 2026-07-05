@@ -19,7 +19,7 @@ RAW_DATA_PATH = ARTIFACTS/ "data" / "rfm_raw.csv"
 SUMMARY_PATH = ARTIFACTS / "cluster_profiles.csv"
 METRICS_PATH = ARTIFACTS /"model_metrics.csv"
 LOG_PATH =Path("logs") /"prediction_logs.csv"
-
+CLUSTER_PATH = ARTIFACTS / "rfm_clustered.csv"
 REPORTS = Path("reports")
 
 # =====================================

@@ -1,7 +1,7 @@
 import joblib
 import pandas as pd
 
-model = joblib.load("artifacts/models/kmeans_model.pkl")
+model = joblib.load("artifacts/models/best_model.pkl")
 scaler = joblib.load("artifacts/scalers/rfm_scaler.pkl")
 
 SEGMENT_NAMES = {

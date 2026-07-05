@@ -164,7 +164,7 @@ key="bubble_y")
     y="Monetary_Size",
     size="Frequency_Size",
     color="Cluster",
-    hover_data=["Recency", "Frequency", "Monetary"],
+    hover_data=["Recency", "Frequency", "Monetary","AverageOrderValue","CustomerValue"],
     title="Customer Segments"
     )
 

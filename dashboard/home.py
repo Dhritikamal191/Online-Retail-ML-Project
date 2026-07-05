@@ -28,6 +28,9 @@ def home_page():
     # -----------------------------
     # KPI Cards
     # -----------------------------
+    
+    customer_value = (df["Frequency"] * df["Monetary"]).mean()
+
     col1, col2, col3, col4, col5 = st.columns(5)
 
     col1.metric("Customers", len(df))

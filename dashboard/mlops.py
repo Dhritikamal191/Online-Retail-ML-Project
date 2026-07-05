@@ -158,8 +158,9 @@ mode="gauge+number",value=drift_score*100,
 title={"text":"Drift Score"},gauge={
 "axis":{"range":[0,100]},"bar":{"color": "royalblue"},"steps":[{"range":[0,30], "color":"green"},{"range": [30,60], "color": "orange"},{"range":[60,100], "color": "red"}]}))
 
-       st.plotly_chart(fig,
-use_container_width=True)
+       fig.update_layout(xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+       
+       st.plotly_chart(fig,use_container_width=True)
 
     else:
          st.info("Drift report unavailable.")
@@ -181,9 +182,10 @@ use_container_width=True)
        st.dataframe(history.tail(20),
 use_container_width=True)
 
-       fig=px.histogram(history,x="Segment",
-color="Segment",title="Prediction Distribution")
+       fig=px.histogram(history,x="Segment",color="Segment",title="Prediction Distribution")
 
+       fig.update_layout(xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+       
        st.plotly_chart(fig, use_container_width=True)
 
     else:
@@ -223,10 +225,10 @@ use_container_width=True)
 
     health=96
 
-    fig=go.Figure(go.Indicator (mode="gauge+number",value=health,
-title={"text":"Pipeline Health"},gauge={
-'axis':{'range':[0,100]},'bar':{'color':'#2563eb'},'steps':[{'range':[0,60],'color':'red'},{'range':[60,85],'color':'orange'},{'range':[85,100],'color':'green'}]}))
+    fig=go.Figure(go.Indicator (mode="gauge+number",value=health,title={"text":"Pipeline Health"},gauge={'axis':{'range':[0,100]},'bar':{'color':'#2563eb'},'steps':[{'range':[0,60],'color':'red'},{'range':[60,85],'color':'orange'},{'range':[85,100],'color':'green'}]}))
 
+    fig.update_layout(xanchor="center",font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+    
     st.plotly_chart(fig, use_container_width=True)
 
     st.divider()

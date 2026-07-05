@@ -121,7 +121,8 @@ def prediction_page():
        **Frequency:** {frequency}
 
        **Monetary:** ${monetary:,.2f}
-
+       **CustomerValue:** ${customer_value:,.2f}
+       **AverageOrderValue:** ${average_order_value:,.2f}
        """)
 
        # ===================================
@@ -184,7 +185,7 @@ def prediction_page():
 
        fig = go.Figure()
 
-       fig.add_trace (go.Scatterpolar(r=[recency,frequency,monetary/100],theta= ["Recency","Frequency","Monetary"],fill="toself",name=segment))
+       fig.add_trace (go.Scatterpolar(r=[recency,frequency,monetary,customer_value,average_order_value/100],theta= ["Recency","Frequency","Monetary","CustomerValue","AverageOrderValue"],fill="toself",name=segment))
 
        fig.update_layout (polar=dict(radialaxis=dict(visible=True)),font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
 
@@ -202,7 +203,7 @@ def prediction_page():
 
        log_file= os.path.join(log_dir,"prediction_logs.csv")
 
-       prediction= pd.DataFrame({"Timestamp":[datetime.now()],"Recency":[recency],"Frequency":[frequency],"Monetary":[monetary],"Cluster":[cluster],"Segment":[segment],"Distance":[distance]})
+       prediction= pd.DataFrame({"Timestamp":[datetime.now()],"Recency":[recency],"Frequency":[frequency],"Monetary":[monetary],"Cluster":[cluster],"Segment":[segment],"Distance":[distance],"CustomerValue":[customer_value],"AverageOrderValue":[average_order_value]})
 
        if os.path.exists(log_file):
           prediction.to_csv (log_file,mode="a",header=False,index=False)

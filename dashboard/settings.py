@@ -192,6 +192,4 @@ def settings_page():
 
     st.divider()
 
-    st.caption(
-"Retail Customer Segmentation | Version 1.0"
-    )
+    st.caption("Retail Customer Segmentation | Version 1.0")

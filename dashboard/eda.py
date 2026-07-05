@@ -265,7 +265,7 @@ key="bubble_y")
 
     st.markdown("---")
 
-    fig= px.violin (filtered_df, x="Cluster", y=feature,color="Cluster",box=True,title="Customer f"{feature}")
+    fig= px.violin (filtered_df, x="Cluster", y=feature,color="Cluster",box=True,title= f"{feature} Customers")
 
     fig.update_layout (template= "plotly_dark",height=600)
 

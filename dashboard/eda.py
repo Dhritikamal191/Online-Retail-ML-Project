@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from utils import load_raw_dataset, load_clustered_dataset 
+from utils import load_clustered_dataset, show_table
 import plotly.express as px
 import plotly.graph_objects as go
 
@@ -184,7 +184,7 @@ def eda_page():
 
     summary = (filtered_df.groupby("Cluster")[["Recency","Frequency","Monetary"]].mean().round(2))
 
-    st.dataframe(summary,use_container_width=True)
+    show_table(summary)
 
     # =====================================================
     # TOP CUSTOMERS
@@ -196,7 +196,7 @@ def eda_page():
 
     top_customers = (filtered_df.sort_values(by=feature,ascending=False).head(20))
 
-    st.dataframe(top_customers,use_container_width=True)
+    show_table(top_customers)
 
     # =====================================================
     # MONETARY CONTRIBUTION
@@ -300,7 +300,7 @@ def eda_page():
 
     summary = (filtered_df.groupby("Cluster").agg({"Recency":"mean","Frequency":"mean","Monetary":"mean"}).round(2))
 
-    st.dataframe(summary,use_container_width=True)
+    show_table(summary)
 
     # ----------------------------------------------------------
     # Download Analytics

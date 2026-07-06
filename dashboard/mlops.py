@@ -179,9 +179,10 @@ Production Monitoring Dashboard
        st.dataframe(history.tail(20),
 use_container_width=True)
 
-       Segment= ["Recency","Frequency","Monetary","AverageOrderValue","CustomerValue"]
+       feature = st.selectbox("Select Feature",["Recency", "Frequency", "Monetary", "AverageOrderValue", "CustomerValue"])
 
-       fig=px.histogram (history,x= Segment,color= Segment,title="Prediction Distribution")
+       fig = px.histogram(history,x=feature,
+color="Segment",title=f"{feature} Distribution by Segment",marginal="box")
 
        fig.update_layout(font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
        

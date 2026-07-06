@@ -144,11 +144,11 @@ Production Monitoring Dashboard
 
     st.subheader("📈 Drift Detection")
 
-    if os.path.exists("reports/drift_metrics.json"):
+    if os.path.exists("artifacts/drift/drift_reports.csv"):
 
        with open(
 
-        "reports/drift_metrics.json") as f:
+        "artifacts/drift/drift_reports.csv") as f:
 
             drift=json.load(f)
 

@@ -177,8 +177,7 @@ Production Monitoring Dashboard
 
        history=pd.read_csv(log)
 
-       st.dataframe(history.tail(20),
-use_container_width=True)
+       show_table(history.tail(20))
 
        plot_df = history.melt (id_vars= "PredictedCluster",value_vars=["Recency","Frequency",
 "Monetary","AverageOrderValue","CustomerValue"],var_name="Feature",value_name="Value")

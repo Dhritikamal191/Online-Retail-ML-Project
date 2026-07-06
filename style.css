@@ -194,59 +194,7 @@ div[data-testid="stExpander"] {
 div[data-testid="stExpander"] pre {
     background-color: #1e293b !important;
     color: #f8fafc !important;
-}
-    
-.custom-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: #0f172a;
-    color: white;
-    border-radius: 12px;
-    overflow: hidden;
-    font-size: 15px;
-}
-
-.custom-table th {
-    background: #1e293b;
-    color: white;
-    padding: 12px;
-    text-align: center;
-    font-weight: bold;
-}
-
-.custom-table td {
-    background: #0f172a;
-    color: white;
-    padding: 10px;
-    text-align: center;
-}
-
-.custom-table tr:nth-child(even) td {
-    background: #111827;
-}
-
-.custom-table tr:hover td {
-    background: #1d4ed8;
-}
-
-def styled_table(df):
-
-    html = '<table class="custom-table">'
-
-    html += "<tr>"
-    for col in df.columns:
-        html += f"<th>{col}</th>"
-    html += "</tr>"
-
-    for _, row in df.iterrows():
-        html += "<tr>"
-        for value in row:
-            html += f"<td>{value}</td>"
-        html += "</tr>"
-
-    html += "</table>"
-
-    return html    
+}    
 
 def kpi_card(title, value, icon):
     

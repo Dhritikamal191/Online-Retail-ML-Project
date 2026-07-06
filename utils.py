@@ -214,7 +214,7 @@ def show_table(df):
     styled_df = df.style.set_properties(
         **{
             "background-color": "#0f172a",
-            "color": "white",
+            "color": "black",
             "text-align": "center"
         }
     )

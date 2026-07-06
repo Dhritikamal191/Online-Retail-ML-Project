@@ -9,6 +9,9 @@ from utils import (
     artifact_count
 )
 
+with open("style.css") as f:
+    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
 def home_page():
 
     st.title("🛍️ Online Retail Customer Segmentation Platform")

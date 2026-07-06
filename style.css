@@ -196,58 +196,41 @@ div[data-testid="stExpander"] pre {
     color: #f8fafc !important;
 }
 
-/* DataFrame Container */
-div[data-testid="stDataFrame"] {
-    border: 2px solid #3b82f6 !important;
-    border-radius: 12px !important;
-    overflow: hidden !important;
-    background: #0f172a !important;
+/* DataFrame container */
+div[data-testid="stDataFrame"]{
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
-/* Table */
-div[data-testid="stDataFrame"] table {
-    background-color: #0f172a !important;
+/* Table background */
+div[data-testid="stDataFrame"] table{
+    background: transparent !important;
     color: white !important;
-    border-collapse: collapse !important;
 }
 
 /* Header */
-div[data-testid="stDataFrame"] thead tr th {
-    background: #2563eb !important;
+div[data-testid="stDataFrame"] thead th{
+    background: #0f172a !important;
     color: white !important;
-    font-weight: bold !important;
-    text-align: center !important;
-    border: 1px solid #3b82f6 !important;
+    border: none !important;
 }
 
-/* Cells */
-div[data-testid="stDataFrame"] tbody td {
-    background: #111827 !important;
+/* Body cells */
+div[data-testid="stDataFrame"] tbody td{
+    background: #0f172a !important;
     color: white !important;
-    border: 1px solid #374151 !important;
-    text-align: center !important;
+    border: none !important;
 }
 
 /* Alternate rows */
-div[data-testid="stDataFrame"] tbody tr:nth-child(even) td {
-    background: #1f2937 !important;
+div[data-testid="stDataFrame"] tbody tr:nth-child(even) td{
+    background: #111827 !important;
 }
 
 /* Hover */
-div[data-testid="stDataFrame"] tbody tr:hover td {
-    background: #1d4ed8 !important;
-    color: white !important;
-}
-
-/* Scrollbar */
-div[data-testid="stDataFrame"] ::-webkit-scrollbar {
-    height: 10px;
-    width: 10px;
-}
-
-div[data-testid="stDataFrame"] ::-webkit-scrollbar-thumb {
-    background: #3b82f6;
-    border-radius: 10px;
+div[data-testid="stDataFrame"] tbody tr:hover td{
+    background: #1e293b !important;
 }
 
 def kpi_card(title, value, icon):

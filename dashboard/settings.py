@@ -95,7 +95,9 @@ def settings_page():
 
     }
 
-    st.json(versions)
+    st.code(
+    json.dumps(versions, indent=4),
+    language="json")
 
     # =====================================
     # SYSTEM
@@ -117,7 +119,9 @@ def settings_page():
 
     }
 
-    st.json(system)
+    st.code(
+    json.dumps(system, indent=4),
+    language="json")
 
     # =================================
     # PIPELINE

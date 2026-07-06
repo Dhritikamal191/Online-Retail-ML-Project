@@ -270,35 +270,41 @@ h1,h2,h3{
     margin-bottom:12px;
 }
 
-/* Selectbox */
-.stSelectbox > div > div {
-    background-color: #253352 !important;
+/* Closed Selectbox */
+div[data-baseweb="select"] > div {
+    background: #2B3A5B !important;
     color: white !important;
-    border: 1px solid #3B4A69 !important;
-    border-radius: 10px !important;
+    border: 1px solid #415A77 !important;
+    border-radius: 12px !important;
 }
 
-/* Selected value */
-.stSelectbox div[data-baseweb="select"] > div {
-    background-color: #253352 !important;
-    color: white !important;
+/* Opened dropdown container */
+div[data-baseweb="popover"] {
+    background: #2B3A5B !important;
+    border-radius: 12px !important;
 }
 
 /* Dropdown menu */
-div[data-baseweb="popover"] {
-    background-color: #253352 !important;
+ul[role="listbox"] {
+    background: #2B3A5B !important;
+    border: 1px solid #415A77 !important;
 }
 
-div[data-baseweb="menu"] {
-    background-color: #253352 !important;
-}
-
-div[data-baseweb="menu"] div {
+/* Dropdown options */
+li[role="option"] {
+    background: #2B3A5B !important;
     color: white !important;
 }
 
-div[data-baseweb="menu"] div:hover {
-    background-color: #3B4A69 !important;
+/* Hovered option */
+li[role="option"]:hover {
+    background: #415A77 !important;
+}
+
+/* Selected option */
+li[aria-selected="true"] {
+    background: #506C8F !important;
+    color: white !important;
 }
 
 def kpi_card(title, value, icon):

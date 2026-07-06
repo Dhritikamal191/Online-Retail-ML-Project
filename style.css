@@ -196,42 +196,51 @@ div[data-testid="stExpander"] pre {
     color: #f8fafc !important;
 }
 
-/* DataFrame container */
-div[data-testid="stDataFrame"]{
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-}
+def styled_table(df):
+    
+    .custom-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #1C2541;
+        color: white;
+        border-radius: 10px;
+        overflow: hidden;
+    }
 
-/* Table background */
-div[data-testid="stDataFrame"] table{
-    background: transparent !important;
-    color: white !important;
-}
+    .custom-table th {
+        background-color: #3A506B;
+        padding: 10px;
+        text-align: center;
+    }
 
-/* Header */
-div[data-testid="stDataFrame"] thead th{
-    background: #0f172a !important;
-    color: white !important;
-    border: none !important;
-}
+    .custom-table td {
+        padding: 10px;
+        text-align: center;
+        border-top: 1px solid #2D3748;
+    }
 
-/* Body cells */
-div[data-testid="stDataFrame"] tbody td{
-    background: #0f172a !important;
-    color: white !important;
-    border: none !important;
-}
+    .custom-table tr:hover {
+        background-color: #2A3A5A;
+    }
 
-/* Alternate rows */
-div[data-testid="stDataFrame"] tbody tr:nth-child(even) td{
-    background: #111827 !important;
-}
+    <table class="custom-table">
+    <tr>
 
-/* Hover */
-div[data-testid="stDataFrame"] tbody tr:hover td{
-    background: #1e293b !important;
-}
+    # Header
+    for col in df.columns:
+        html += f"<th>{col}</th>"
+    html += "</tr>"
+
+    # Rows
+    for _, row in df.iterrows():
+        html += "<tr>"
+        for val in row:
+            html += f"<td>{val}</td>"
+        html += "</tr>"
+
+    html += "</table>"
+
+    return html
 
 def kpi_card(title, value, icon):
     

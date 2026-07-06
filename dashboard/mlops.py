@@ -183,7 +183,7 @@ use_container_width=True)
 "Monetary","AverageOrderValue","CustomerValue"],var_name="Feature",value_name="Value")
 
        fig = px.histogram(plot_df,x="Value",
-color="Feature",facet_col="Feature",title="Prediction Distribution")
+color="Feature",facet_col="Feature",title="Prediction Feature Distribution")
 
        fig.update_layout(font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
        

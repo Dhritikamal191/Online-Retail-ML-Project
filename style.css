@@ -196,33 +196,59 @@ div[data-testid="stExpander"] pre {
     color: #f8fafc !important;
 }
 
-def styled_table(df):
+/* DataFrame Container */
+div[data-testid="stDataFrame"] {
+    border: 2px solid #3b82f6 !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    background: #0f172a !important;
+}
 
-        .custom-table {
-        width: 100%;
-        border-collapse: collapse;
-        background-color: #1C2541;
-        color: white;
-        border-radius: 10px;
-        overflow: hidden;
-        }
+/* Table */
+div[data-testid="stDataFrame"] table {
+    background-color: #0f172a !important;
+    color: white !important;
+    border-collapse: collapse !important;
+}
 
-        .custom-table th {
-        background-color: #3A506B;
-        padding: 10px;
-        text-align: center;
-        }
+/* Header */
+div[data-testid="stDataFrame"] thead tr th {
+    background: #2563eb !important;
+    color: white !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    border: 1px solid #3b82f6 !important;
+}
 
-        .custom-table td {
-        padding: 10px;
-        text-align: center;
-        border-top: 1px solid #2D3748;
-        }
+/* Cells */
+div[data-testid="stDataFrame"] tbody td {
+    background: #111827 !important;
+    color: white !important;
+    border: 1px solid #374151 !important;
+    text-align: center !important;
+}
 
-        .custom-table tr:hover {
-        background-color: #2A3A5A;
-        }
-       
+/* Alternate rows */
+div[data-testid="stDataFrame"] tbody tr:nth-child(even) td {
+    background: #1f2937 !important;
+}
+
+/* Hover */
+div[data-testid="stDataFrame"] tbody tr:hover td {
+    background: #1d4ed8 !important;
+    color: white !important;
+}
+
+/* Scrollbar */
+div[data-testid="stDataFrame"] ::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+}
+
+div[data-testid="stDataFrame"] ::-webkit-scrollbar-thumb {
+    background: #3b82f6;
+    border-radius: 10px;
+}
 
 def kpi_card(title, value, icon):
     

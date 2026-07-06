@@ -150,7 +150,7 @@ Production Monitoring Dashboard
 
         "artifacts/drift/drift_reports.csv") as f:
 
-            drift=json.load(f)
+            drift= load(f)
 
             drift_score=drift.get ("drift_score",0)
 

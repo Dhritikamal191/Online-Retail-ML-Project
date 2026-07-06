@@ -19,7 +19,7 @@ def reports_page():
 
     st.header("📜 Prediction Logs")
 
-    log_path = "artifacts / logs /prediction_logs.csv"
+    log_path = "artifacts/logs/prediction_logs.csv"
 
     if os.path.exists(log_path):
 

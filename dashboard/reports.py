@@ -25,7 +25,7 @@ def reports_page():
     log_path = os.path.join(log_dir, "prediction_logs.csv")
 
     prediction = pd.DataFrame({
-    "Timestamp": [datetime.now()],
+    "Timestamp": [datetime],
     "Recency": [recency],
     "Frequency": [frequency],
     "Monetary": [monetary],

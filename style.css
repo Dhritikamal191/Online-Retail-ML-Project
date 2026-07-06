@@ -153,13 +153,48 @@ div[data-baseweb="popover"] li[aria-selected="true"] {
     ::placeholder {
         color: rgba(255, 255, 255, 0.5) !important;
     }
-    
-
+    
 /*  Block containers */
 [data-testid="stVerticalBlock"] {
     background-color: transparent;
 }
 
+
+/* JSON / code block */
+pre {
+    background-color: #1e293b !important;
+    color: #f8fafc !important;
+    border: 1px solid #334155 !important;
+    border-radius: 12px !important;
+    padding: 15px !important;
+    font-size: 15px !important;
+    overflow-x: auto !important;
+}
+
+/* Code inside the block */
+pre code {
+    color: #f8fafc !important;
+    background: transparent !important;
+}
+
+/* Streamlit code container */
+div[data-testid="stCodeBlock"] {
+    background-color: #1e293b !important;
+    border-radius: 12px !important;
+}
+
+/* Expanders */
+div[data-testid="stExpander"] {
+    background-color: #1e293b !important;
+    border-radius: 12px !important;
+    border: 1px solid #334155 !important;
+}
+
+/* Expander content */
+div[data-testid="stExpander"] pre {
+    background-color: #1e293b !important;
+    color: #f8fafc !important;
+}
 
 def styled_table(df):
 

@@ -49,7 +49,7 @@ def home_page():
     # -----------------------------
     st.subheader("Dataset Preview")
     
-    st.dataframe(show_table(df.head(10)), use_container_width=True)
+    st.dataframe(show_table(df.head(10)), use_container_width=True,hide_index=True)
 
     st.divider()
 

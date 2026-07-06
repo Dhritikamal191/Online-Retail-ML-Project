@@ -53,7 +53,7 @@ Production Monitoring Dashboard
 
     with c3:
 
-         if os.path.exists("reports/drift_report.html"):
+         if os.path.exists("artifacts/drift/drift_report.csv"):
 
             st.success("Drift Report")
 
@@ -62,7 +62,7 @@ Production Monitoring Dashboard
 
     with c4:
 
-         if os.path.exists("logs/prediction_logs.csv"):
+         if os.path.exists("artifacts/logs/prediction_logs.csv"):
 
             st.success("Monitoring")
 

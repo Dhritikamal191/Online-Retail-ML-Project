@@ -148,8 +148,7 @@ Production Monitoring Dashboard
 
        drift = pd.read_csv("artifacts/drift/drift_report.csv")
 
-       drift_score = drift ["drift_score"].iloc[0]
-
+       drift_score = drift ["Drift(%)"].mean()
 
        fig= go.Figure(go.Indicator(mode= "gauge+number",value=drift_score*100,title={"text":"Drift Score"},gauge={"axis":{"range":[0,100]},"bar":{"color": "royalblue"}, "steps":[{"range":[0,30], "color":"green"},{"range": [30,60], "color": "orange"},{"range":[60,100], "color": "red"}]}))
 

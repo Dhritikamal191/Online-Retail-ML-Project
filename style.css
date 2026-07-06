@@ -265,6 +265,11 @@ div[data-testid="stExpander"] pre {
     color: white;
 }
 
+h1,h2,h3{
+    color:white;
+    margin-bottom:12px;
+}
+
 def kpi_card(title, value, icon):
     
     <div class="kpi-card">

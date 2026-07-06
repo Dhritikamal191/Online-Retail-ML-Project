@@ -17,7 +17,7 @@ def eda_page():
     
     st.sidebar.header("EDA Filters")
 
-    feature = st.sidebar.pills("Feature",["Recency", "Frequency", "Monetary","CustomerValue","AverageOrderValue"],key="eda_feature_filter")
+    feature = st.sidebar.selectbox("Feature",["Recency", "Frequency", "Monetary","CustomerValue","AverageOrderValue"],key="eda_feature_filter")
 
     selected_clusters =st.sidebar.multiselect ("Select Cluster", sorted (df["Cluster"].unique()),default=sorted(df["Cluster"].unique()),key="cluster_filter")
 
@@ -145,13 +145,13 @@ def eda_page():
     col1, col2, col3 = st.columns(3)
 
     with col1:
-         x_axis = st.pills("X Axis", ["Recency","Frequency","Monetary"],key="bubble_x")
+         x_axis = st.selectbox("X Axis", ["Recency","Frequency","Monetary"],key="bubble_x")
 
     with col2:
-         y_axis = st.pills("Y Axis",["Recency","Frequency","Monetary"],index=2,key="bubble_y")
+         y_axis = st.selectbox("Y Axis",["Recency","Frequency","Monetary"],index=2,key="bubble_y")
 
     with col3:
-         size = st.pills("Bubble Size",["Frequency","Monetary", "Recency"],key="bubble_size")
+         size = st.selectbox("Bubble Size",["Frequency","Monetary", "Recency"],key="bubble_size")
 
     plot_df = filtered_df.copy()
 
@@ -269,7 +269,7 @@ def eda_page():
 
     radar = (filtered_df.groupby("Cluster")[["Recency","Frequency","Monetary"]].mean())
 
-    cluster_choice = st.pills("Select Cluster",radar.index)
+    cluster_choice = st.selectbox("Select Cluster",radar.index)
 
     values = radar.loc[cluster_choice]
 

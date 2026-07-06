@@ -47,11 +47,9 @@ def home_page():
     # Dataset Preview
     # -----------------------------
     st.subheader("Dataset Preview")
+    
+    st.markdown(styled_table(df.head(10)), unsafe_allow_html=True)
 
-    dataset_df = pd.DataFrame(df.head(10))
-
-    html_table = styled_df(dataset_df)
-    st.markdown(html_table, unsafe_allow_html=True)
     st.divider()
 
     # -----------------------------

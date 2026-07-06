@@ -179,10 +179,11 @@ Production Monitoring Dashboard
        st.dataframe(history.tail(20),
 use_container_width=True)
 
-       feature = st.selectbox("Select Feature",["Recency", "Frequency", "Monetary", "AverageOrderValue", "CustomerValue"])
+       plot_df = history.melt (id_vars = "Segment",value_vars=["Recency","Frequency",
+"Monetary","AverageOrderValue","CustomerValue"],var_name="Feature",value_name="Value")
 
-       fig = px.histogram(history,x=feature,
-color=feature,title=f"{feature} Distribution by Segment",marginal="box")
+       fig = px.histogram(plot_df,x="Value",
+color="Feature",facet_col="Feature",title="Prediction Distribution")
 
        fig.update_layout(font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
        

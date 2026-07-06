@@ -7,7 +7,7 @@ from utils import (
     model_last_updated,
     model_size,
     artifact_count,
-    table_style 
+    show_table 
 )
 
 def home_page():
@@ -46,7 +46,7 @@ def home_page():
     # -----------------------------
     st.subheader("Dataset Preview")
     
-    st.dataframe(table_style(df.head(10)), use_container_width=True)
+    st.dataframe(show_table(df.head(10)), use_container_width=True)
 
     st.divider()
 

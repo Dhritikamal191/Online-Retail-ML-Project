@@ -19,22 +19,26 @@ def reports_page():
 
     st.header("📜 Prediction Logs")
 
-    log_path = "artifacts/logs/prediction_logs.csv"
+    log_dir = "artifacts/logs"
+    os.makedirs(log_dir, exist_ok=True)
+
+    log_path = os.path.join(log_dir, "prediction_logs.csv")
 
     if os.path.exists(log_path):
+       prediction.to_csv(log_path, mode="a", header=False, index=False)
+    else:
+         prediction.to_csv(log_path, index=False)
 
+    if os.path.exists(log_path):
        logs = pd.read_csv(log_path)
-
        show_table(logs)
-       csv = logs.to_csv(index= False).encode()
 
        st.download_button("⬇ Download Prediction Logs",csv,"prediction_logs.csv",
 "text/csv")
 
     else:
-
-         st.info("Prediction logs not available.")
-
+         st.info("No predictions have been made yet.")
+      
     #######################################
     # Model Metrics
     #######################################

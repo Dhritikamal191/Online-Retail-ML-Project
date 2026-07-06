@@ -209,3 +209,13 @@ def artifact_count():
         count += len(files)
 
     return count
+
+def show_table(df):
+    styled_df = df.style.set_properties(
+        **{
+            "background-color": "#0f172a",
+            "color": "white",
+            "text-align": "center"
+        }
+    )
+    return styled_df

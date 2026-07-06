@@ -4,6 +4,7 @@ import os
 import json
 from pathlib import Path
 from utils import show_table
+from datetime import datetime
 
 def reports_page():
 
@@ -25,7 +26,7 @@ def reports_page():
     log_path = os.path.join(log_dir, "prediction_logs.csv")
 
     prediction = pd.DataFrame({
-    "Timestamp": [datetime],
+    "Timestamp": [datetime.now()],
     "Recency": [recency],
     "Frequency": [frequency],
     "Monetary": [monetary],

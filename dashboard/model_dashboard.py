@@ -3,7 +3,7 @@ import os
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-from utils import (load_metrics,model_last_updated,model_size,artifact_count)
+from utils import (load_metrics,model_last_updated,model_size,artifact_count, show_table)
 
 def model_dashboard_page():
 
@@ -52,7 +52,7 @@ def model_dashboard_page():
     st.subheader("Training Metrics")
 
     if not metrics.empty:
-       st.dataframe(metrics, use_container_width=True)
+       show_table(metrics)
 
     else:
          st.warning("Metrics file not found.")
@@ -199,7 +199,7 @@ def model_dashboard_page():
   
     })
   
-    st.dataframe(artifact_data,use_container_width=True)
+    show_table(artifact_data)
 
     st.divider()
 

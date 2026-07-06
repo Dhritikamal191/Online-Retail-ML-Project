@@ -3,6 +3,7 @@ import pandas as pd
 import os
 import json
 from pathlib import Path
+from utils import show_table
 
 def reports_page():
 
@@ -24,7 +25,7 @@ def reports_page():
 
        logs = pd.read_csv(log_path)
 
-       st.dataframe(logs,use_container_width= True)
+       show_table(logs)
        csv = logs.to_csv(index= False).encode()
 
        st.download_button("⬇ Download Prediction Logs",csv,"prediction_logs.csv",
@@ -48,7 +49,7 @@ def reports_page():
 
        metrics = pd.read_csv(metrics_path)
 
-       st.dataframe(metrics, use_container_width=True)
+       show_table(metrics)
 
     else:
 
@@ -68,7 +69,7 @@ def reports_page():
 
        profile = pd.read_csv(profile_path)
 
-       st.dataframe(profile, use_container_width=True)
+       show_table(profile)
 
     else:
 
@@ -128,7 +129,7 @@ def reports_page():
 
     if len(files):
 
-        st.dataframe(pd.DataFrame(files),use_container_width=True)
+        show_table(pd.DataFrame(files))
 
     ########################################
     # Download Center

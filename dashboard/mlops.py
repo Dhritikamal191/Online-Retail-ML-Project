@@ -146,19 +146,16 @@ Production Monitoring Dashboard
 
     if os.path.exists("artifacts/drift/drift_report.csv"):
 
-       with open(
+       drift = pd.read_csv("artifacts/drift/drift_report.csv")
 
-        "artifacts/drift/drift_report.csv") as f:
+       drift_score = drift ["drift_score"].iloc[0]
 
-            drift= load(f)
 
-            drift_score=drift.get ("drift_score",0)
-
-       fig=go.Figure(go.Indicator(mode="gauge+number",value=drift_score*100,title={"text":"Drift Score"},gauge={"axis":{"range":[0,100]},"bar":{"color": "royalblue"},"steps":[{"range":[0,30], "color":"green"},{"range": [30,60], "color": "orange"},{"range":[60,100], "color": "red"}]}))
+       fig= go.Figure(go.Indicator(mode= "gauge+number",value=drift_score*100,title={"text":"Drift Score"},gauge={"axis":{"range":[0,100]},"bar":{"color": "royalblue"}, "steps":[{"range":[0,30], "color":"green"},{"range": [30,60], "color": "orange"},{"range":[60,100], "color": "red"}]}))
 
        fig.update_layout(font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
        
-       st.plotly_chart(fig,use_container_width=True)
+       st.plotly_chart (fig,use_container_width=True)
 
     else:
          st.info("Drift report unavailable.")

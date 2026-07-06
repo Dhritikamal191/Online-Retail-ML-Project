@@ -9,7 +9,7 @@ import os
 import joblib 
 from pathlib import Path
 from datetime import datetime
-from utils.py import show_table
+from utils import show_table
 
 def mlops_page():
 

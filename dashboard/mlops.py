@@ -148,7 +148,7 @@ Production Monitoring Dashboard
 
        drift = pd.read_csv("artifacts/drift/drift_report.csv")
 
-       drift_score = drift ["Drift(%)"].mean()
+       drift_score = drift["Drift (%)"].mean()
 
        fig = px.bar(drift,x="Feature", y= "Drift (%)",color="Drift (%)", title= "Feature-wise Data Drift")
 

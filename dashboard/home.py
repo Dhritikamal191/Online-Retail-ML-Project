@@ -10,9 +10,6 @@ from utils import (
     show_table
 )
 
-with open("style.css") as f:
-    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-
 def home_page():
 
     st.title("🛍️ Online Retail Customer Segmentation Platform")
@@ -49,7 +46,7 @@ def home_page():
     # -----------------------------
     st.subheader("Dataset Preview")
     
-    st.dataframe(show_table(df.head(10)), use_container_width=True,hide_index=True)
+    st.dataframe(show_table(df.head(10)), use_container_width=True)
 
     st.divider()
 

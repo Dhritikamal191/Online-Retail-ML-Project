@@ -6,9 +6,9 @@ from utils import (
     load_cluster_profiles,
     model_last_updated,
     model_size,
-    artifact_count
+    artifact_count,
+    table_style 
 )
-from style.css import table_style
 
 def home_page():
 

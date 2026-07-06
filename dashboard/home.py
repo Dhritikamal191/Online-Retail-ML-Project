@@ -46,8 +46,8 @@ def home_page():
 
     dataset_df = pd.DataFrame(df.head(10))
 
-    html_table = styled_df(dataset_df, reset_index = True)
-    
+    html_table = styled_df(dataset_df)
+    st.markdown(html_table, unsafe_allow_html=True)
     st.divider()
 
     # -----------------------------

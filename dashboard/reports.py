@@ -24,6 +24,16 @@ def reports_page():
 
     log_path = os.path.join(log_dir, "prediction_logs.csv")
 
+    prediction = pd.DataFrame({
+    "Timestamp": [datetime.now()],
+    "Recency": [recency],
+    "Frequency": [frequency],
+    "Monetary": [monetary],
+    "Cluster": [cluster],
+    "Segment": [segment],
+    "Distance": [distance]
+    })
+
     if os.path.exists(log_path):
        prediction.to_csv(log_path, mode="a", header=False, index=False)
     else:

@@ -170,7 +170,7 @@ Production Monitoring Dashboard
 
     st.subheader("📊 Prediction Monitoring")
 
-    log="logs/prediction_logs.csv"
+    log="artifacts/logs/prediction_logs.csv"
 
     if os.path.exists(log):
 

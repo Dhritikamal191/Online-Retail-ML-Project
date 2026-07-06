@@ -9,6 +9,7 @@ import os
 import joblib 
 from pathlib import Path
 from datetime import datetime
+from utils.py import show_table
 
 def mlops_page():
 
@@ -213,8 +214,7 @@ color="PredictedCluster",facet_col="Feature",title="Prediction Feature Distribut
 
     if len(files)>0:
 
-       st.dataframe(pd.DataFrame(files),
-use_container_width=True)
+       show_table(pd.DataFrame(files))
 
     st.divider()
 
@@ -284,7 +284,7 @@ use_container_width=True)
 
     })
 
-    st.dataframe(deployment, use_container_width=True)
+    show_table(deployment)
 
     st.divider()
 

@@ -7,6 +7,7 @@ import os
 from datetime import datetime
 import requests
 import plotly.express as px
+from utils import show_table
 
 def prediction_page():
     
@@ -221,7 +222,7 @@ def prediction_page():
 
        st.subheader("📋 Current Prediction")
 
-       st.dataframe (prediction,use_container_width=True)
+       show_table (prediction)
 
        # ===================================
        # PREDICTION HISTORY
@@ -236,7 +237,7 @@ def prediction_page():
        if os.path.exists(log_file):
           history = pd.read_csv(log_file)
 
-          st.dataframe (history.tail(20),use_container_width=True)
+          show_table (history.tail(20))
 
        else:
             st.info("No prediction history available.")

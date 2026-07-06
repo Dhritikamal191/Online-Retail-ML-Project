@@ -95,6 +95,10 @@ def reports_page():
 
        show_table(drift)          
 
+       csv = drift.to_csv(index=False).encode ()
+
+       st.download_button("⬇ Download Drift Report",csv,"drift_report.csv","text/csv")
+
     else:
          st.info("Drift report unavailable.")
 

@@ -211,49 +211,26 @@ def artifact_count():
 
     return count
 
-def table_style(df):
-    """
-    Apply a common dark theme to all dashboard tables.
-    """
+def show_table(df):
 
-    return (
-        df.style
-        .set_properties(**{
-            "background-color": "#0f172a",
-            "color": "white",
-            "border": "1px solid #1e293b",
-            "text-align": "center",
-            "font-size": "14px"
-        })
-        .set_table_styles([
-            {
-                "selector": "th",
-                "props": [
-                    ("background-color", "#1e293b"),
-                    ("color", "white"),
-                    ("font-weight", "bold"),
-                    ("text-align", "center"),
-                    ("border", "1px solid #334155"),
-                    ("padding", "8px")
-                ]
-            },
-            {
-                "selector": "td",
-                "props": [
-                    ("padding", "8px")
-                ]
-            },
-            {
-                "selector": "tr:nth-child(even)",
-                "props": [
-                    ("background-color", "#111827")
-                ]
-            },
-            {
-                "selector": "tr:hover",
-                "props": [
-                    ("background-color", "#1d4ed8")
-                ]
-            }
-        ])
-    )
+    html = '<div class="table-container">'
+    html += '<table class="custom-table">'
+
+    # Header
+    html += "<thead><tr>"
+    for col in df.columns:
+        html += f"<th>{col}</th>"
+    html += "</tr></thead>"
+
+    # Body
+    html += "<tbody>"
+    for _, row in df.iterrows():
+        html += "<tr>"
+        for value in row:
+            html += f"<td>{value}</td>"
+        html += "</tr>"
+    html += "</tbody>"
+
+    html += "</table></div>"
+
+    st.markdown(html, unsafe_allow_html=True)

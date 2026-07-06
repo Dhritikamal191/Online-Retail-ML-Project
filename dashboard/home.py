@@ -6,9 +6,9 @@ from utils import (
     load_cluster_profiles,
     model_last_updated,
     model_size,
-    artifact_count,
-    show_table
+    artifact_count
 )
+from style.css import table_style
 
 def home_page():
 
@@ -46,7 +46,7 @@ def home_page():
     # -----------------------------
     st.subheader("Dataset Preview")
     
-    st.dataframe(show_table(df.head(10)), use_container_width=True)
+    st.dataframe(table_style(df.head(10)), use_container_width=True)
 
     st.divider()
 

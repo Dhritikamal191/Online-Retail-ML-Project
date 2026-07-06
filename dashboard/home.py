@@ -6,7 +6,8 @@ from utils import (
     load_cluster_profiles,
     model_last_updated,
     model_size,
-    artifact_count
+    artifact_count,
+    show_table
 )
 
 with open("style.css") as f:
@@ -48,7 +49,7 @@ def home_page():
     # -----------------------------
     st.subheader("Dataset Preview")
     
-    st.markdown(styled_table(df.head(10)), unsafe_allow_html=True)
+    st.dataframe(show_table(df.head(10)), use_container_width=True)
 
     st.divider()
 

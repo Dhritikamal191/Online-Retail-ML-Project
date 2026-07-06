@@ -250,6 +250,21 @@ div[data-testid="stExpander"] pre {
     border-bottom-right-radius:16px;
 }
 
+.stDownloadButton > button {
+    width: 100%;
+    background: #344966;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-weight: 600;
+}
+
+.stDownloadButton > button:hover {
+    background: #415A77;
+    color: white;
+}
+
 def kpi_card(title, value, icon):
     
     <div class="kpi-card">

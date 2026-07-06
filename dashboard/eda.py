@@ -142,11 +142,16 @@ def eda_page():
 
     st.subheader("Customer Bubble Analysis")
 
-    x_axis = st.selectbox("X Axis", ["Recency","Frequency","Monetary"],key="bubble_x")
+    col1, col2, col3 = st.columns(3)
 
-    y_axis = st.selectbox("Y Axis",["Recency","Frequency","Monetary"],index=2,key="bubble_y")
+    with col1:
+         x_axis = st.selectbox("X Axis", ["Recency","Frequency","Monetary"],key="bubble_x")
 
-    size = st.selectbox("Bubble Size",["Frequency","Monetary", "Recency"],key="bubble_size")
+    with col2:
+         y_axis = st.selectbox("Y Axis",["Recency","Frequency","Monetary"],index=2,key="bubble_y")
+
+    with col3:
+         size = st.selectbox("Bubble Size",["Frequency","Monetary", "Recency"],key="bubble_size")
 
     plot_df = filtered_df.copy()
 

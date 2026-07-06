@@ -5,6 +5,7 @@ import pandas as pd
 import requests
 from pathlib import Path
 from datetime import datetime
+import streamlit as st
 
 # =====================================
 # PATHS
@@ -210,12 +211,49 @@ def artifact_count():
 
     return count
 
-def show_table(df):
-    styled_df = df.style.set_properties(
-        **{
+def table_style(df):
+    """
+    Apply a common dark theme to all dashboard tables.
+    """
+
+    return (
+        df.style
+        .set_properties(**{
             "background-color": "#0f172a",
             "color": "white",
-            "text-align": "center"
-        }
+            "border": "1px solid #1e293b",
+            "text-align": "center",
+            "font-size": "14px"
+        })
+        .set_table_styles([
+            {
+                "selector": "th",
+                "props": [
+                    ("background-color", "#1e293b"),
+                    ("color", "white"),
+                    ("font-weight", "bold"),
+                    ("text-align", "center"),
+                    ("border", "1px solid #334155"),
+                    ("padding", "8px")
+                ]
+            },
+            {
+                "selector": "td",
+                "props": [
+                    ("padding", "8px")
+                ]
+            },
+            {
+                "selector": "tr:nth-child(even)",
+                "props": [
+                    ("background-color", "#111827")
+                ]
+            },
+            {
+                "selector": "tr:hover",
+                "props": [
+                    ("background-color", "#1d4ed8")
+                ]
+            }
+        ])
     )
-    return styled_df

@@ -150,7 +150,7 @@ Production Monitoring Dashboard
 
        drift_score = drift ["Drift(%)"].mean()
 
-       fig= go.Figure(go.Indicator(mode= "gauge+number",value=drift_score*100,title={"text":"Drift Score"},gauge={"axis":{"range":[0,100]},"bar":{"color": "royalblue"}, "steps":[{"range":[0,30], "color":"green"},{"range": [30,60], "color": "orange"},{"range":[60,100], "color": "red"}]}))
+       fig = px.bar(drift,x="Feature", y= "Drift (%)",color="Drift (%)", title= "Feature-wise Data Drift")
 
        fig.update_layout(font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
        

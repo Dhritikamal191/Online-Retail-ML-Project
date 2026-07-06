@@ -46,7 +46,7 @@ def home_page():
     # -----------------------------
     st.subheader("Dataset Preview")
     
-    st.dataframe(show_table(df.head(10)), use_container_width=True)
+    show_table(df.head(10), use_container_width=True)
 
     st.divider()
 
@@ -56,7 +56,7 @@ def home_page():
     st.subheader("Cluster Profiles")
 
     if not profiles.empty:
-        st.dataframe(profiles, use_container_width=True)
+       show_table(profiles, use_container_width=True)
     else:
         st.warning("Cluster profile file not found.")
 
@@ -68,7 +68,7 @@ def home_page():
     st.subheader("Model Comparison")
 
     if not metrics.empty:
-        st.dataframe(metrics, use_container_width=True)
+        show_table(metrics, use_container_width=True)
     else:
         st.warning("Model metrics not found.")
 

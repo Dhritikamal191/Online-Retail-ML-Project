@@ -43,8 +43,11 @@ def home_page():
     # Dataset Preview
     # -----------------------------
     st.subheader("Dataset Preview")
-    st.dataframe(df.head(10), use_container_width=True)
 
+    dataset_df = pd.DataFrame(df.head(10))
+
+    html_table = styled_df(dataset_df, reset_index = True)
+    
     st.divider()
 
     # -----------------------------

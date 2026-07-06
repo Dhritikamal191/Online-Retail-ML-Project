@@ -83,20 +83,19 @@ def reports_page():
 
     st.divider()
 
-    st.header("📈 Drift Report")
+    st.header("📈 Drift Report")    
 
-    html_report = "artifacts/drift/drift_report.csv"
+    drift_path = "artifacts/drift/drift_report.csv"
 
-    if os.path.exists(html_report):
+    if os.path.exists(drift_path):
 
-       with open(html_report, "r", encoding="utf-8") as f:
+       drift = pd.read_csv(drift_path)
 
-            html = f.read()
+       drift = drift.round(2)
 
-            st.components.v1.html(html,height =700,scrolling=True)
+       show_table(drift)          
 
     else:
-
          st.info("Drift report unavailable.")
 
     ######################################

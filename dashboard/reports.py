@@ -4,7 +4,6 @@ import os
 import json
 from pathlib import Path
 from utils import show_table
-from datetime import datetime
 
 def reports_page():
 
@@ -20,35 +19,23 @@ def reports_page():
 
     st.header("📜 Prediction Logs")
 
-    log_dir = "artifacts/logs"
-    os.makedirs(log_dir, exist_ok=True)
-
-    log_path = os.path.join(log_dir, "prediction_logs.csv")
-
-    prediction = pd.DataFrame({
-    "Timestamp": [datetime.now()],
-    "Recency": [recency],
-    "Frequency": [frequency],
-    "Monetary": [monetary],
-    "Cluster": [cluster],
-    "Segment": [segment],
-    "Distance": [distance]
-    })
-
-    if os.path.exists(log_path):
-       prediction.to_csv(log_path, mode="a", header=False, index=False)
-    else:
-         prediction.to_csv(log_path, index=False)
+    log_path = "artifacts/logs/prediction_logs.csv"
 
     if os.path.exists(log_path):
        logs = pd.read_csv(log_path)
+
        show_table(logs)
 
-       st.download_button("⬇ Download Prediction Logs",csv,"prediction_logs.csv",
-"text/csv")
+       csv = logs.to_csv(index=False).encode()
 
+       st.download_button(
+        "⬇ Download Prediction Logs",
+        csv,
+        "prediction_logs.csv",
+        "text/csv"
+        )
     else:
-         st.info("No predictions have been made yet.")
+         st.info("Prediction logs not available.")
       
     #######################################
     # Model Metrics

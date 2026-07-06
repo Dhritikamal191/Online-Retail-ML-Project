@@ -179,7 +179,7 @@ Production Monitoring Dashboard
        st.dataframe(history.tail(20),
 use_container_width=True)
 
-       plot_df = history.melt (id_vars= "Cluster",value_vars=["Recency","Frequency",
+       plot_df = history.melt (id_vars= "PredictedCluster",value_vars=["Recency","Frequency",
 "Monetary","AverageOrderValue","CustomerValue"],var_name="Feature",value_name="Value")
 
        fig = px.histogram(plot_df,x="Value",

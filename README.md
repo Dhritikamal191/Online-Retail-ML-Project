@@ -179,21 +179,11 @@ Detect data drift
 Retrain models automatically
 Improve marketing efficiency
 
-### 📸 Project Screenshots
-Add screenshots of:
-Home Page
-Prediction Dashboard
-Customer Persona
-Monitoring Dashboard
-Drift Dashboard
-API Swagger
-Reports Dashboard
-
 ### 👨‍💻 Author
 Dhritikamal Das
 M.Sc. MACS
-Machine Learning Engineer | Data Analyst | MLOps Enthusiast
-GitHub: (Add your GitHub Profile)
+Machine Learning Enthusiast | MLOps Enthusiast
+GitHub: (https//github.com/Dhritikamal191)
 LinkedIn: (Add your LinkedIn)
 
 ### ⭐ Future Enhancements

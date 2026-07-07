@@ -8,7 +8,7 @@ The project demonstrates a production-ready ML workflow integrating FastAPI, Str
 
 ### 🚀 Live Demo
 🌐 Streamlit Dashboard
-(Add your Streamlit URL)
+(https://online-retail-ml-project-6amdxys7t5plfppj5bujck.streamlit.app/)
 
 ### ⚡ FastAPI Swagger
 (Add your Railway/Render Swagger URL)

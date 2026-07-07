@@ -80,11 +80,7 @@ Production Monitoring Dashboard
 
     try:
 
-        response=requests.get(
-
-        "https://online-retail-ml-project.onrender.com/docs#/default/health_health_get",
-
-        timeout=3)
+        response=requests.get("https://online-retail-ml-project-production.up.railway.app/docs#/default/health_health_get",timeout=3)
 
         if response.status_code==200:
 
@@ -175,11 +171,9 @@ Production Monitoring Dashboard
 
        show_table(history.tail(20))
 
-       plot_df = history.melt (id_vars= "PredictedCluster",value_vars=["Recency","Frequency",
-"Monetary","AverageOrderValue","CustomerValue"],var_name="Feature",value_name="Value")
+       plot_df = history.melt (id_vars= "PredictedCluster",value_vars=["Recency","Frequency","Monetary","AverageOrderValue","CustomerValue"],var_name="Feature",value_name="Value")
 
-       fig = px.histogram(plot_df,x="Value",
-color="PredictedCluster",facet_col="Feature",title="Prediction Feature Distribution")
+       fig = px.histogram(plot_df,x="Value",color="PredictedCluster",facet_col="Feature",title="Prediction Feature Distribution")
 
        fig.update_layout(font=dict(size=17, color="white"),legend=dict(font=dict(color="white")),height=400,template="plotly_dark",paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
        

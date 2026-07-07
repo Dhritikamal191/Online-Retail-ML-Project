@@ -8,10 +8,12 @@ The project demonstrates a production-ready ML workflow integrating FastAPI, Str
 
 ### 🚀 Live Demo
 🌐 Streamlit Dashboard
-(https://online-retail-ml-project-6amdxys7t5plfppj5bujck.streamlit.app/)
+
+[![Live Dashboard](https://img.shields.io/badge/🚀_Live_Dashboard-Streamlit-FF4B4B?style=for-the-badge)](https://online-retail-ml-project-6amdxys7t5plfppj5bujck.streamlit.app/)
 
 ### ⚡ FastAPI Swagger
-(https://online-retail-ml-project-production.up.railway.app/docs#)
+
+[![FastAPI Docs](https://img.shields.io/badge/📖_Swagger_API-FastAPI-009688?style=for-the-badge)](https://online-retail-ml-project-production.up.railway.app/docs#)
 
 ### 🎯 Objectives
 Perform customer segmentation using RFM analysis
@@ -183,8 +185,8 @@ Improve marketing efficiency
 Dhritikamal Das
 M.Sc. MACS
 Machine Learning Enthusiast | MLOps Enthusiast
-GitHub: (https//github.com/Dhritikamal191)
-LinkedIn: (Add your LinkedIn)
+GitHub: [![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/Dhritikamal191)
+LinkedIn: [![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/dhritikamal-das-9912652a5)
 
 ### ⭐ Future Enhancements
 Deep Learning-based Customer Segmentation

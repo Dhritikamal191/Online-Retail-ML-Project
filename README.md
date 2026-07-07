@@ -1,6 +1,6 @@
 ## 🛍️ Online Retail Customer Segmentation using Machine Learning & MLOps
 
-###📌 Project Overview
+### 📌 Project Overview
 This project develops an end-to-end Machine Learning Operations (MLOps) pipeline for customer segmentation using the Online Retail Dataset.
 
 The system automatically preprocesses customer transaction data, performs RFM (Recency, Frequency, Monetary) analysis, predicts customer segments using K-Means Clustering, monitors prediction quality, detects data drift, and supports automated model retraining.

@@ -8,11 +8,6 @@ def get_monitoring_metrics():
     if not os.path.exists(LOG_FILE):
        return {"Total Predictions": 0, "Latest Prediction": None, "Cluster Distribution": {}} 
     
-    with open(LOG_FILE, "r") as f:
-         print("========== LOG FILE ==========")
-         print(f.read())
-         print ("==============================")
-
     df = pd.read_csv(LOG_FILE)
 
     metrics = {"Total Predictions": len(df), "Latest Prediction": df.iloc[-1].to_dict(), "Cluster Distribution": df["PredictedCluster"].value_counts().to_dict()}

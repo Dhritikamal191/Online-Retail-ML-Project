@@ -17,7 +17,7 @@ def eda_page():
     
     st.sidebar.header("EDA Filters")
 
-    feature = st.sidebar.selectbox("Feature",["Recency", "Frequency", "Monetary","CustomerValue","AverageOrderValue"],key="eda_feature_filter")
+    feature = st.sidebar.radio("Feature",["Recency", "Frequency", "Monetary","CustomerValue","AverageOrderValue"],key="eda_feature_filter")
 
     selected_clusters =st.sidebar.multiselect ("Select Cluster", sorted (df["Cluster"].unique()),default=sorted(df["Cluster"].unique()),key="cluster_filter")
 

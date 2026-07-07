@@ -12,3 +12,4 @@ pytest
 uvicorn
 scipy
 fastapi
+streamlit-ant-design-components

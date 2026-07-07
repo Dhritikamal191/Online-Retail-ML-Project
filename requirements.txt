@@ -12,4 +12,3 @@ pytest
 uvicorn
 scipy
 fastapi
-streamlit-ant-design-components==0.3.2

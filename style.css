@@ -301,23 +301,7 @@ div[data-baseweb="menu"] div:hover {
     background-color: #3B4A69 !important;
 }
 
-/* Closed selectbox */
-div[data-baseweb="select"] > div {
-    background: #253352 !important;
-    border: 1px solid #415A77 !important;
-    border-radius: 12px !important;
-    color: white !important;
-}
 
-/* Selected text */
-div[data-baseweb="select"] span {
-    color: white !important;
-}
-
-/* Arrow */
-div[data-baseweb="select"] svg {
-    fill: white !important;
-}
 
 def kpi_card(title, value, icon):
     

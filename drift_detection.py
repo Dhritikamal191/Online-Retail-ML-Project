@@ -14,7 +14,7 @@ def detect_drift():
            return {"Error": "Prediction logs not found."}
 
     train = pd.read_csv(TRAIN_FILE)
-    prod = pd.read_csv(LOG_FILE,engine= "python",on_bad_lines="skip")
+    prod = pd.read_csv(LOG_FILE)
 
     features = ["Recency", "Frequency", "Monetary", "AverageOrderValue", "CustomerValue"]
 

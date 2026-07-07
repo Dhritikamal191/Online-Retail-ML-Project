@@ -1,14 +1,19 @@
-🛍️ Online Retail Customer Segmentation using Machine Learning & MLOps
-📌 Project Overview
+## 🛍️ Online Retail Customer Segmentation using Machine Learning & MLOps
+
+###📌 Project Overview
 This project develops an end-to-end Machine Learning Operations (MLOps) pipeline for customer segmentation using the Online Retail Dataset.
+
 The system automatically preprocesses customer transaction data, performs RFM (Recency, Frequency, Monetary) analysis, predicts customer segments using K-Means Clustering, monitors prediction quality, detects data drift, and supports automated model retraining.
 The project demonstrates a production-ready ML workflow integrating FastAPI, Streamlit, Docker, GitHub Actions, MLflow, and Evidently AI.
-🚀 Live Demo
+
+### 🚀 Live Demo
 🌐 Streamlit Dashboard
 (Add your Streamlit URL)
-⚡ FastAPI Swagger
+
+### ⚡ FastAPI Swagger
 (Add your Railway/Render Swagger URL)
-🎯 Objectives
+
+### 🎯 Objectives
 Perform customer segmentation using RFM analysis
 Build an automated ML pipeline
 Deploy prediction API
@@ -17,7 +22,8 @@ Monitor production predictions
 Detect data drift
 Support automated retraining
 Demonstrate complete MLOps workflow
-📂 Project Structure
+
+### 📂 Project Structure
 Online-Retail-ML-Project
 │
 ├── api.py
@@ -48,7 +54,8 @@ Online-Retail-ML-Project
 │
 ├── requirements.txt
 └── README.md
-📊 Dataset
+
+### 📊 Dataset
 Dataset: Online Retail Dataset
 Features
 InvoiceNo
@@ -57,14 +64,16 @@ InvoiceDate
 Quantity
 UnitPrice
 Country
-🧹 Feature Engineering
+
+### 🧹 Feature Engineering
 Customer behaviour is transformed into RFM features.
 Recency
 Frequency
 Monetary
 Average Order Value
 Customer Value
-🤖 Machine Learning Model
+
+### 🤖 Machine Learning Model
 Algorithm:
 K-Means Clustering
 Segments include:
@@ -73,33 +82,33 @@ Segments include:
 ⚠️ At Risk Customers
 🔴 Inactive Customers
 📈 Interactive Dashboard
+
 The Streamlit dashboard includes:
-Customer Segmentation Prediction
-Customer Persona Analysis
-Business Recommendations
-RFM Radar Chart
-Prediction Confidence Gauge
-Prediction History
-Prediction Monitoring
-Data Drift Dashboard
-Model Monitoring
-Executive Reports
-Download Prediction Reports
-⚙️ FastAPI
-REST API Endpoints
-Endpoint
-Description
-/
-Home
-/health
-Health Check
-/predict
-Predict Customer Segment
-/monitor
-Model Monitoring
-/drift
-Data Drift Detection
-📦 MLOps Pipeline
+- Customer Segmentation Prediction
+- Customer Persona Analysis
+- Business Recommendations
+- RFM Radar Chart
+- Prediction Confidence Gauge
+- Prediction History
+- Prediction Monitoring
+- Data Drift Dashboard
+- Model Monitoring
+- Executive Reports
+- Download Prediction Reports
+- ⚙️ FastAPI
+- REST API Endpoints
+  - Endpoint Description
+    /Home
+    /health
+    Health Check
+    /predict
+    Predict Customer Segment
+    /monitor
+    Model Monitoring
+    /drift
+    Data Drift Detection
+
+### 📦 MLOps Pipeline
 ✔ Data Validation
 ✔ Data Preprocessing
 ✔ Feature Engineering
@@ -111,7 +120,8 @@ Data Drift Detection
 ✔ Automatic Retraining
 ✔ API Deployment
 ✔ Interactive Dashboard
-📊 Monitoring
+
+### 📊 Monitoring
 Production monitoring includes
 Prediction Count
 Average Customer Value
@@ -119,7 +129,8 @@ Average Order Value
 Cluster Distribution
 Segment Distribution
 Prediction Logs
-🔍 Drift Detection
+
+### 🔍 Drift Detection
 The application compares
 Training Data
 vs
@@ -131,7 +142,8 @@ Monetary
 Average Order Value
 Customer Value
 Automatic retraining is triggered whenever significant drift is detected.
-📈 Technologies Used
+
+### 📈 Technologies Used
 Programming
 Python
 Machine Learning
@@ -149,12 +161,14 @@ MLflow
 Docker
 GitHub Actions
 Evidently AI
-📊 Deployment
+
+### 📊 Deployment
 Streamlit
 FastAPI
 Railway / Render
 GitHub
-💼 Business Value
+
+### 💼 Business Value
 This solution enables businesses to:
 Identify high-value customers
 Improve customer retention
@@ -164,7 +178,8 @@ Monitor production model performance
 Detect data drift
 Retrain models automatically
 Improve marketing efficiency
-📸 Project Screenshots
+
+### 📸 Project Screenshots
 Add screenshots of:
 Home Page
 Prediction Dashboard
@@ -173,13 +188,15 @@ Monitoring Dashboard
 Drift Dashboard
 API Swagger
 Reports Dashboard
-👨‍💻 Author
+
+### 👨‍💻 Author
 Dhritikamal Das
 M.Sc. MACS
 Machine Learning Engineer | Data Analyst | MLOps Enthusiast
 GitHub: (Add your GitHub Profile)
 LinkedIn: (Add your LinkedIn)
-⭐ Future Enhancements
+
+### ⭐ Future Enhancements
 Deep Learning-based Customer Segmentation
 Real-time Streaming Predictions
 Cloud Storage Integration
@@ -189,5 +206,6 @@ Kubernetes Deployment
 Automated CI/CD Pipeline Enhancements
 Email Alerts for Model Drift
 Multi-model Experiment Tracking
-📜 License
+
+### 📜 License
 This project is intended for educational and portfolio purposes.

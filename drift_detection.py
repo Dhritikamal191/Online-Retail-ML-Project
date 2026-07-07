@@ -14,7 +14,7 @@ def detect_drift():
            return {"Error": "Prediction logs not found."}
 
     train = pd.read_csv(TRAIN_FILE)
-    prod =pd.read_csv(LOG_FILE)
+    prod = pd.read_csv(LOG_FILE,engine= "python",on_bad_lines="skip")
 
     features = ["Recency", "Frequency", "Monetary", "AverageOrderValue", "CustomerValue"]
 
@@ -26,21 +26,22 @@ def detect_drift():
         drift_percent = abs(prod_mean - train_mean) / train_mean * 100
         reports[feature] = {"Training Mean": round(train_mean,2), "Production Mean": round(prod_mean,2), "Drift (%)": round(drift_percent,2), "Status": "Drift Detected" if drift_percent > 20 else "Stable"}
  
-        os.makedirs("artifacts/drift", exist_ok=True)
-        drift_df = pd.DataFrame(reports).T
-        drift_df.index.name ="Feature"
-        drift_df.reset_index(inplace=True)
-        drift_df.to_csv("artifacts/drift/drift_report.csv", index=False)
-        print("Drift report saved to artifacts/drift/drift_reports.csv")
-        print("Drift report saved.")
+       
+    drift_df = pd.DataFrame(reports).T
+    os.makedirs("artifacts/drift", exist_ok=True)
+    drift_df.index.name ="Feature"
+    drift_df.reset_index(inplace=True)
+    drift_df.to_csv("artifacts/drift/drift_report.csv", index=False)
+    print("Drift report saved to artifacts/drift/drift_reports.csv")
+    print("Drift report saved.")
 
-        drift_count = (drift_df["Status"] == "Drift").sum()
+    drift_count = (drift_df["Status"] == "Drift Detected").sum()
 
-        if drift_count >= 3:
-           print("Significant drift detected. Starting retraining...")
-           retrain()
-        else:
-             print("Drift is within acceptable limits.")
+    if drift_count >= 3:
+       print("Significant drift detected. Starting retraining...")
+       retrain()
+    else:
+         print("Drift is within acceptable limits.")
 
     return drift_df.to_dict(orient="records")
 

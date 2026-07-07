@@ -3,7 +3,6 @@ import pandas as pd
 from utils import load_clustered_dataset, show_table
 import plotly.express as px
 import plotly.graph_objects as go
-import streamlit_ant_design_components as sac
 
 def eda_page():
     st.title("📊 Exploratory Data Analysis")
@@ -18,7 +17,7 @@ def eda_page():
     
     st.sidebar.header("EDA Filters")
 
-    feature = sac.sidebar.select("Feature",["Recency", "Frequency", "Monetary","CustomerValue","AverageOrderValue"],items=features,key="eda_feature_filter")
+    feature = st.sidebar.radio("Feature",["Recency", "Frequency", "Monetary","CustomerValue","AverageOrderValue"],key="eda_feature_filter")
 
     selected_clusters =st.sidebar.multiselect ("Select Cluster", sorted (df["Cluster"].unique()),default=sorted(df["Cluster"].unique()),key="cluster_filter")
 
@@ -146,13 +145,13 @@ def eda_page():
     col1, col2, col3 = st.columns(3)
 
     with col1:
-         x_axis = ssc.select("X Axis", ["Recency","Frequency","Monetary"],items=features,key="bubble_x")
+         x_axis = st.radio("X Axis", ["Recency","Frequency","Monetary"],key="bubble_x")
 
     with col2:
-         y_axis = st.selectbox("Y Axis",["Recency","Frequency","Monetary"],items=features,index=2,key="bubble_y")
+         y_axis = st.radio("Y Axis",["Recency","Frequency","Monetary"],index=2,key="bubble_y")
 
     with col3:
-         size = st.selectbox("Bubble Size",["Frequency","Monetary", "Recency"],items=features,key="bubble_size")
+         size = st.radio("Bubble Size",["Frequency","Monetary", "Recency"],key="bubble_size")
 
     plot_df = filtered_df.copy()
 

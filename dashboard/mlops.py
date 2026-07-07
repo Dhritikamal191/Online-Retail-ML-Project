@@ -78,17 +78,20 @@ Production Monitoring Dashboard
 
     st.subheader("🌐 FastAPI Health")
 
-    response= requests.get("https://online-retail-ml-project-production.up.railway.app/docs#/default/health_health_get",timeout=3)
+    try:
+        response= requests.get("https://online-retail-ml-project-production.up.railway.app/docs#/default/health_health_get",timeout=3)
 
-    if response.status_code==200:
+        if response.status_code==200:
 
-       st.success("🟢 API Running")
+           st.success("🟢 API Running")
 
-       st.json(response.json())
+           st.json(response.json())
 
-    else:
-
-         st.error("API Error")
+        else:
+              st.error("API Error")
+    
+    except:
+           st.warning("FastAPI Not Running")
 
     st.divider()
 

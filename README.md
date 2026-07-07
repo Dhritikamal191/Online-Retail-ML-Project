@@ -11,7 +11,7 @@ The project demonstrates a production-ready ML workflow integrating FastAPI, Str
 (https://online-retail-ml-project-6amdxys7t5plfppj5bujck.streamlit.app/)
 
 ### ⚡ FastAPI Swagger
-(online-retail-ml-project-production.up.railway.app/docs#)
+(https://online-retail-ml-project-production.up.railway.app/docs#)
 
 ### 🎯 Objectives
 Perform customer segmentation using RFM analysis

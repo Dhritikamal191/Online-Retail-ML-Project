@@ -186,6 +186,7 @@ Dhritikamal Das
 M.Sc. MACS
 Machine Learning Enthusiast | MLOps Enthusiast
 GitHub: [![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/Dhritikamal191)
+
 LinkedIn: [![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/dhritikamal-das-9912652a5)
 
 ### ⭐ Future Enhancements

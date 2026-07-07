@@ -1,0 +1,6 @@
+Feature,Training Mean,Production Mean,Drift (%),Status
+Recency,92.06,40.25,56.28,Drift Detected
+Frequency,4.27,36.25,748.55,Drift Detected
+Monetary,2054.27,72565.5,3432.43,Drift Detected
+AverageOrderValue,419.17,1306.39,211.66,Drift Detected
+CustomerValue,2054.27,72565.5,3432.43,Drift Detected

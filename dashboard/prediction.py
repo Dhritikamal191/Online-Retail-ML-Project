@@ -288,7 +288,7 @@ def prediction_page():
        st.subheader("🌐 FastAPI Status")
 
        try:
-           response = requests.get("https://online-retail-ml-project.onrender.com/docs#",timeout=3)
+           response = requests.get("online-retail-ml-project-production.up.railway.app/docs#",timeout=3)
 
            if response.status_code == 200:
               st.success("🟢 FastAPI is Running")

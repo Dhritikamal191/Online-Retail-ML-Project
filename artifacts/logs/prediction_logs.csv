@@ -1,0 +1,5 @@
+Recency,Frequency,Monetary,AverageOrderValue,CustomerValue,Timestamp,PredictedCluster,Segment
+2.0,77.0,209343.0,2718.7402597402597,209343.0,2026-07-07 10:26:45,1,VIP Customers
+17.0,23.0,14128.0,614.2608695652174,14128.0,2026-07-07 10:28:22,2,At Risk Customers
+47.0,41.0,65623.0,1600.560975609756,65623.0,2026-07-07 10:29:35,3,Inactive Customers
+95.0,4.0,1168.0,292.0,1168.0,2026-07-07 10:30:33,0,New Customers

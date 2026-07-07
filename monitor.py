@@ -9,9 +9,9 @@ def get_monitoring_metrics():
        return {"Total Predictions": 0, "Latest Prediction": None, "Cluster Distribution": {}} 
     
     with open(LOG_FILE, "r") as f:
-    print("========== LOG FILE ==========")
-    print(f.read())
-    print("==============================")
+         print("========== LOG FILE ==========")
+         print(f.read())
+         print ("==============================")
 
     df = pd.read_csv(LOG_FILE)
 

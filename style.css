@@ -270,6 +270,44 @@ h1,h2,h3{
     margin-bottom:12px;
 }
 
+/* Number Input Container */
+.stNumberInput > div > div{
+    background: #1b2745 !important;
+    border: 1px solid #31456d !important;
+    border-radius: 16px !important;
+}
+
+/* Input Box */
+.stNumberInput input{
+    background: #1b2745 !important;
+    color: #ffffff !important;
+    border: none !important;
+    font-size: 18px !important;
+}
+
+/* Plus & Minus Buttons */
+.stNumberInput button{
+    background: #1b2745 !important;
+    color: #ffffff !important;
+    border: none !important;
+}
+
+.stNumberInput button:hover{
+    background: #26375c !important;
+}
+
+/* Remove white focus */
+.stNumberInput input:focus{
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* Placeholder */
+.stNumberInput input::placeholder{
+    color: #b8c5d9 !important;
+}
+
 def kpi_card(title, value, icon):
     
     <div class="kpi-card">
